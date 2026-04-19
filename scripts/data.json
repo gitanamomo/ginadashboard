@@ -1,5 +1,67 @@
 {
-  "gov_policies": [],
-  "reg_policies": [],
-  "last_update": "2026-04-19 08:14:38"
+  "gov_policies": [
+    {
+      "title": "深圳市2026年优化国际化营商环境工作方案",
+      "link": "https://www.sz.gov.cn/cn/xxgk/zfxxgj/zcfg/content/post_12697108.html",
+      "date": "2026-03-23",
+      "source": "深圳市商务局"
+    },
+    {
+      "title": "支持前海金融高质量发展行动方案（2025-2026年）",
+      "link": "https://www.sz.gov.cn/cn/xxgk/zfxxgj/zcfg/content/post_12697108.html",
+      "date": "2025-03-03",
+      "source": "深圳市委金融办"
+    },
+    {
+      "title": "境内外资银行2026年度中长期外债规模申报",
+      "link": "https://www.sz.gov.cn/szzt2010/wgkzl/jcgk/jcygk/zdzcjc/content/post_12632473.html",
+      "date": "2026-02-05",
+      "source": "深圳市发改委"
+    },
+    {
+      "title": "前海自贸试验区资本项目结汇及NRA账户退汇便利化",
+      "link": "http://www.safe.gov.cn/shenzhen/2026/0410/2359.html",
+      "date": "2026-04-10",
+      "source": "国家外汇管理局深圳市分局"
+    },
+    {
+      "title": "深圳抢抓APEC机遇优化营商环境方案",
+      "link": "https://www.udfspace.com",
+      "date": "2026-03-25",
+      "source": "深圳市人民政府"
+    }
+  ],
+  "reg_policies": [
+    {
+      "title": "前海自贸区资本项目结汇及NRA账户退汇便利化",
+      "link": "http://www.safe.gov.cn/shenzhen/2026/0410/2359.html",
+      "date": "2026-04-10",
+      "source": "外管局深圳分局"
+    },
+    {
+      "title": "深圳推出\"科薪通\"跨境薪酬用汇便利化试点",
+      "link": "https://shenzhen.pbc.gov.cn/shenzhen/122807/2026040215412774749/index.html",
+      "date": "2026-04-02",
+      "source": "人行深圳分行"
+    },
+    {
+      "title": "中国人民银行公告〔2026〕第10号",
+      "link": "https://www.pbc.gov.cn/tiaofasi/144941/3581332/2026041715444050196/index.html",
+      "date": "2026-04-17",
+      "source": "中国人民银行"
+    },
+    {
+      "title": "本外币一体化资金池\"深圳经验\"",
+      "link": "http://www.safe.gov.cn/shenzhen/2026/0313/2348.html",
+      "date": "2026-03-13",
+      "source": "外管局深圳分局"
+    },
+    {
+      "title": "跨境理财通收付达585.2亿元",
+      "link": "#",
+      "date": "2026-03-09",
+      "source": "深圳金融监管局"
+    }
+  ],
+  "last_update": "2026-04-19 08:38:14"
 }
