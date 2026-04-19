@@ -1,4 +1,19 @@
-#!/usr/bin/env python3
+import random
+import time
+
+# 每次请求前随机休眠 1~3 秒
+def safe_request(url, max_retries=3):
+    for i in range(max_retries):
+        try:
+            time.sleep(random.uniform(1, 3))  # 新增延时
+            resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
+            resp.raise_for_status()
+            resp.encoding = resp.apparent_encoding or 'utf-8'
+            return resp
+        except Exception as e:
+            print(f"请求失败 ({i+1}/{max_retries}): {url}, 错误: {e}")
+            time.sleep(5)  # 失败后等待更久
+    return None#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 深圳金融资讯爬虫 - 用于 GitHub Actions 自动化更新
