@@ -2,97 +2,55 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>深银·政策月报工作台 · 行政版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深银·政策月报工作台</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { background:#f5f7fb; color:#1e293b; padding:20px; line-height:1.5; font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif; }
+        body { background:#f5f7fb; color:#1e293b; padding:20px; line-height:1.5; font-family:system-ui, -apple-system, sans-serif; }
         .dashboard { max-width:1600px; margin:0 auto; }
         .header { margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
         .header h1 { font-size:28px; font-weight:600; display:flex; align-items:center; gap:8px; }
         .header h1 i { color:#1e4bd2; background:#e9efff; padding:10px; border-radius:12px; }
         .date-badge { color:#64748b; background:white; display:inline-block; padding:6px 20px; border-radius:40px; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.02); }
-        .update-time { color:#1e4bd2; font-size:13px; margin-left:15px; font-weight:400; }
-        .header-actions { display:flex; gap:12px; align-items:center; }
-        .btn-primary { background:#1e4bd2; color:white; border:none; padding:12px 24px; border-radius:40px; font-weight:500; font-size:14px; cursor:pointer; box-shadow:0 4px 10px rgba(30,75,210,0.2); transition:all 0.15s; display:flex; align-items:center; gap:8px; }
-        .btn-primary:hover { background:#0f3bb5; transform:translateY(-1px); }
-        .btn-outline { background:white; border:1px solid #cbd5e1; padding:12px 20px; border-radius:40px; font-size:14px; color:#1e293b; cursor:pointer; display:flex; align-items:center; gap:8px; transition:all 0.15s; }
-        .btn-outline:hover { border-color:#1e4bd2; background:#f8fafc; }
-        .basket-badge { background:#dc2626; color:white; border-radius:40px; padding:2px 10px; font-size:13px; margin-left:6px; }
+        .header-actions { display:flex; gap:12px; }
+        .btn-primary { background:#1e4bd2; color:white; border:none; padding:12px 24px; border-radius:40px; font-weight:500; font-size:14px; cursor:pointer; box-shadow:0 4px 10px rgba(30,75,210,0.2); display:flex; align-items:center; gap:8px; }
+        .btn-outline { background:white; border:1px solid #cbd5e1; padding:12px 20px; border-radius:40px; font-size:14px; color:#1e293b; cursor:pointer; display:flex; align-items:center; gap:8px; }
         .quick-links { display:grid; grid-template-columns:repeat(7,1fr); gap:12px; margin-bottom:24px; }
-        .link-card { background:white; padding:14px 6px; border-radius:18px; text-align:center; text-decoration:none; color:#0f172a; font-weight:500; font-size:13px; box-shadow:0 4px 8px rgba(0,0,0,0.02); border:1px solid #eef2f6; transition:all 0.15s; display:flex; flex-direction:column; align-items:center; gap:8px; }
+        .link-card { background:white; padding:14px 6px; border-radius:18px; text-align:center; text-decoration:none; color:#0f172a; font-weight:500; font-size:13px; box-shadow:0 4px 8px rgba(0,0,0,0.02); border:1px solid #eef2f6; display:flex; flex-direction:column; align-items:center; gap:8px; }
         .link-card i { font-size:24px; color:#1e4bd2; background:#f0f4ff; width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:16px; }
-        .link-card:hover { transform:translateY(-2px); box-shadow:0 12px 20px -8px rgba(0,35,110,0.12); border-color:#cddfff; }
-        .main-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)) !important; gap:24px; margin-bottom:24px; }
+        .main-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:24px; }
         .card { background:white; border-radius:24px; padding:20px 22px; box-shadow:0 8px 20px rgba(0,0,0,0.02); border:1px solid #eef2f6; }
         .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
         .card-header h2 { font-size:20px; font-weight:600; display:flex; align-items:center; gap:8px; }
         .tag { background:#f1f5f9; padding:4px 10px; border-radius:40px; font-size:12px; color:#334155; }
-        .policy-list { display:flex; flex-direction:column; gap:14px; max-height:600px; overflow-y:auto; padding-right:8px; }
-        .policy-item { border-bottom:1px solid #f1f5f9; padding-bottom:12px; display:flex; align-items:flex-start; gap:10px; }
-        .policy-item:last-child { border-bottom:none; }
-        .policy-checkbox { margin-top:4px; width:18px; height:18px; cursor:pointer; accent-color:#1e4bd2; flex-shrink:0; }
+        .policy-list { display:flex; flex-direction:column; gap:14px; max-height:600px; overflow-y:auto; }
+        .policy-item { border-bottom:1px solid #f1f5f9; padding-bottom:12px; display:flex; gap:10px; }
+        .policy-checkbox { margin-top:4px; width:18px; height:18px; accent-color:#1e4bd2; }
         .policy-content { flex:1; }
         .policy-badge { display:inline-block; background:#dc2626; color:white; font-size:11px; font-weight:600; padding:2px 10px; border-radius:30px; margin-right:8px; }
-        .policy-badge.orange { background:#ea580c; }
-        .policy-badge.blue { background:#1e4bd2; }
-        .policy-badge.green { background:#0d9488; }
-        .policy-title { font-weight:650; font-size:16px; margin:4px 0 4px; }
+        .policy-title { font-weight:650; font-size:16px; margin:4px 0; }
         .policy-title a { color:#0f172a; text-decoration:none; }
-        .policy-title a:hover { color:#1e4bd2; text-decoration:underline; }
         .policy-meta { font-size:12px; color:#64748b; display:flex; gap:16px; margin:6px 0; }
-        .policy-meta i { margin-right:4px; }
-        .news-summary { font-size:13px; color:#334155; line-height:1.5; }
-        .empty-state { color:#94a3b8; text-align:center; padding:40px 20px; font-size:14px; }
-        .chart-box { background:white; border-radius:24px; padding:18px; margin-bottom:20px; border:1px solid #eef2f6; }
-        .chart-box h3 { font-size:16px; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
-        canvas { width:100% !important; height:auto !important; max-height:200px; }
-        .leaders-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-height:520px; overflow-y:auto; padding-right:8px; }
-        .leader-card { background:#fafcff; border-radius:16px; padding:16px 12px; border:1px solid #eef2f6; display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; transition:all 0.15s; position:relative; }
-        .leader-card:hover { border-color:#1e4bd2; box-shadow:0 8px 16px rgba(0,0,0,0.06); }
+        .news-summary { font-size:13px; color:#334155; }
+        .empty-state { color:#94a3b8; text-align:center; padding:40px; }
+        .leaders-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-height:520px; overflow-y:auto; }
+        .leader-card { background:#fafcff; border-radius:16px; padding:16px 12px; border:1px solid #eef2f6; display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; position:relative; }
         .leader-card.selected { border-color:#1e4bd2; background:#f0f4ff; }
-        .leader-checkbox { position:absolute; top:10px; left:10px; width:20px; height:20px; cursor:pointer; accent-color:#1e4bd2; z-index:2; }
-        .leader-avatar { width:70px; height:70px; border-radius:50%; background:linear-gradient(145deg,#e9efff,#d0dfff); display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:#1e4bd2; font-weight:600; font-size:28px; overflow:hidden; }
-        .leader-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+        .leader-checkbox { position:absolute; top:10px; left:10px; width:20px; height:20px; accent-color:#1e4bd2; }
+        .leader-avatar { width:70px; height:70px; border-radius:50%; background:#1e4bd2; display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:white; font-weight:600; font-size:28px; }
         .leader-card h4 { font-size:16px; font-weight:600; margin-bottom:4px; }
         .leader-title { font-size:12px; color:#64748b; margin-bottom:4px; }
         .leader-dept { font-size:11px; color:#94a3b8; }
         .bottom-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:24px; }
-        .metric-table { width:100%; border-collapse:collapse; font-size:14px; }
-        .metric-table th { text-align:left; padding:10px 6px 6px 0; color:#475569; font-weight:500; border-bottom:1px solid #e2e8f0; }
-        .metric-table td { padding:10px 6px 10px 0; border-bottom:1px solid #f1f5f9; }
-        .trend-up { color:#0d9488; font-weight:500; }
-        .trend-down { color:#b91c1c; }
-        .sc-card { background:linear-gradient(145deg,#0a1a2f 0%,#112b4f 100%); color:white; }
-        .sc-card .card-header h2 { color:white; }
-        .sc-card .tag { background:#3b5e8b; color:white; }
-        .sc-news-item { border-bottom:1px solid #2a4a6a; padding:12px 0; }
-        .sc-links { display:flex; gap:12px; margin-top:12px; }
-        .sc-link-btn { background:#2a5f9e; color:white; padding:8px 16px; border-radius:40px; text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px; }
-        .leader-basket-panel { background:#f0f7ff; border-radius:20px; padding:18px; }
-        .leader-basket-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-        .leader-basket-list { max-height:240px; overflow-y:auto; background:white; border-radius:16px; padding:8px; }
-        .leader-basket-item { display:flex; align-items:center; padding:8px 12px; border-bottom:1px solid #eef2f6; font-size:13px; }
-        .leader-basket-item i { color:#dc2626; margin-right:8px; cursor:pointer; }
-        .basket-empty { color:#94a3b8; text-align:center; padding:20px; }
-        .generate-btn { background:#0d9488; color:white; border:none; padding:14px 20px; border-radius:40px; font-weight:600; font-size:16px; cursor:pointer; width:100%; margin-top:16px; transition:all 0.15s; }
-        .generate-btn:hover { background:#0f766e; }
         .basket-panel { background:#f0f7ff; border-radius:20px; padding:18px; }
-        .basket-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+        .basket-header { display:flex; justify-content:space-between; margin-bottom:12px; }
         .basket-list { max-height:240px; overflow-y:auto; background:white; border-radius:16px; padding:8px; }
-        .peer-table-container { overflow-x:auto; margin:16px 0; max-height:500px; overflow-y:auto; }
-        .peer-table { width:100%; border-collapse:collapse; font-size:13px; min-width:800px; }
-        .peer-table th { background:#1e4bd2; color:white; padding:12px 10px; text-align:left; font-weight:600; white-space:nowrap; }
-        .peer-table td { padding:12px 10px; border-bottom:1px solid #eef2f6; vertical-align:top; }
-        .peer-table tr:hover { background:#fafcff; }
-        .bank-badge { display:inline-block; background:#e9efff; color:#1e4bd2; font-size:11px; padding:2px 8px; border-radius:20px; margin-left:6px; }
-        .news-tag { background:#fff3e0; color:#ea580c; font-size:11px; padding:2px 6px; border-radius:12px; display:inline-block; margin-right:4px; }
-        .footer-note { margin-top:24px; color:#94a3b8; font-size:12px; text-align:right; border-top:1px dashed #cbd5e1; padding-top:16px; }
-        @media (max-width:1200px) { .main-grid { grid-template-columns:repeat(2, minmax(0, 1fr)) !important; } .bottom-grid { grid-template-columns:1fr; } .quick-links { grid-template-columns:repeat(4,1fr); } .leaders-grid { grid-template-columns:repeat(2,1fr); } }
-        @media (max-width:800px) { .main-grid { grid-template-columns:1fr !important; } .quick-links { grid-template-columns:repeat(3,1fr); } }
-        @media (max-width:600px) { .quick-links { grid-template-columns:repeat(2,1fr); } .leaders-grid { grid-template-columns:1fr; } .header { flex-direction:column; align-items:flex-start; gap:16px; } }
+        .basket-item { display:flex; align-items:center; padding:8px 12px; border-bottom:1px solid #eef2f6; font-size:13px; }
+        .generate-btn { background:#0d9488; color:white; border:none; padding:14px 20px; border-radius:40px; font-weight:600; font-size:16px; cursor:pointer; width:100%; margin-top:16px; }
+        @media (max-width:1200px) { .main-grid { grid-template-columns:repeat(2,1fr); } .quick-links { grid-template-columns:repeat(4,1fr); } }
+        @media (max-width:800px) { .main-grid { grid-template-columns:1fr; } }
     </style>
 </head>
 <body>
@@ -100,13 +58,10 @@
     <div class="header">
         <div>
             <h1><i class="fas fa-landmark"></i> 深银·政策月报工作台</h1>
-            <div class="date-badge">
-                <i class="far fa-calendar-alt"></i> 2026年4月 · 第22期 
-                <span class="update-time" id="updateTime"><i class="far fa-clock"></i> 更新于 2026-04-19 09:17:54</span>
-            </div>
+            <div class="date-badge"><i class="far fa-calendar-alt"></i> 2026年4月 · 第22期</div>
         </div>
         <div class="header-actions">
-            <button class="btn-outline" id="viewBasketBtn"><i class="fas fa-basket-shopping"></i> 政策篮 <span id="basketCount" class="basket-badge">0</span></button>
+            <button class="btn-outline" id="viewBasketBtn"><i class="fas fa-basket-shopping"></i> 政策篮 <span id="basketCount">0</span></button>
             <button class="btn-primary" id="generateReportBtn"><i class="fas fa-file-word"></i> 生成行政报告</button>
             <button class="btn-primary" id="generateResumeBtn" style="background:#0d9488;"><i class="fas fa-user-tie"></i> 生成领导简历</button>
         </div>
@@ -123,399 +78,80 @@
     </div>
 
     <div class="main-grid">
-        <div class="card"><div class="card-header"><h2><i class="fas fa-gavel" style="color:#1e4bd2"></i> 政府政策·金融风向</h2><span class="tag">金融局·统计局</span></div><div class="policy-list" id="govPolicyList">
-        <div class="news-item" data-id="gov-0">
-            <input type="checkbox" class="policy-checkbox" id="chk-gov-0" data-id="gov-0">
-            <div class="policy-content">
-                <span class="policy-badge">政府政策</span>
-                <div class="policy-title">
-                    <a href="https://www.sz.gov.cn/cn/xxgk/zfxxgj/zcfg/content/post_12697108.html" target="_blank">深圳市2026年优化国际化营商环境工作方案</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 深圳市商务局</span>
-                    <span><i class="far fa-calendar"></i> 2026-03-23</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="gov-1">
-            <input type="checkbox" class="policy-checkbox" id="chk-gov-1" data-id="gov-1">
-            <div class="policy-content">
-                <span class="policy-badge">政府政策</span>
-                <div class="policy-title">
-                    <a href="https://www.sz.gov.cn/cn/xxgk/zfxxgj/zcfg/content/post_12697108.html" target="_blank">支持前海金融高质量发展行动方案（2025-2026年）</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 深圳市委金融办</span>
-                    <span><i class="far fa-calendar"></i> 2025-03-03</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="gov-2">
-            <input type="checkbox" class="policy-checkbox" id="chk-gov-2" data-id="gov-2">
-            <div class="policy-content">
-                <span class="policy-badge">政府政策</span>
-                <div class="policy-title">
-                    <a href="https://www.sz.gov.cn/szzt2010/wgkzl/jcgk/jcygk/zdzcjc/content/post_12632473.html" target="_blank">境内外资银行2026年度中长期外债规模申报</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 深圳市发改委</span>
-                    <span><i class="far fa-calendar"></i> 2026-02-05</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="gov-3">
-            <input type="checkbox" class="policy-checkbox" id="chk-gov-3" data-id="gov-3">
-            <div class="policy-content">
-                <span class="policy-badge">政府政策</span>
-                <div class="policy-title">
-                    <a href="http://www.safe.gov.cn/shenzhen/2026/0410/2359.html" target="_blank">前海自贸试验区资本项目结汇及NRA账户退汇便利化</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 国家外汇管理局深圳市分局</span>
-                    <span><i class="far fa-calendar"></i> 2026-04-10</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="gov-4">
-            <input type="checkbox" class="policy-checkbox" id="chk-gov-4" data-id="gov-4">
-            <div class="policy-content">
-                <span class="policy-badge">政府政策</span>
-                <div class="policy-title">
-                    <a href="https://www.udfspace.com" target="_blank">深圳抢抓APEC机遇优化营商环境方案</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 深圳市人民政府</span>
-                    <span><i class="far fa-calendar"></i> 2026-03-25</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        </div></div></div>
-        <div class="card"><div class="card-header"><h2><i class="fas fa-shield-alt" style="color:#dc2626"></i> 监管政策·银行关切</h2><span class="tag">外管局·人行·金监</span></div><div class="policy-list" id="regulatoryPolicyList">
-        <div class="news-item" data-id="reg-0">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-0" data-id="reg-0">
-            <div class="policy-content">
-                <span class="policy-badge orange">监管政策</span>
-                <div class="policy-title">
-                    <a href="http://www.safe.gov.cn/shenzhen/2026/0410/2359.html" target="_blank">前海自贸区资本项目结汇及NRA账户退汇便利化</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 外管局深圳分局</span>
-                    <span><i class="far fa-calendar"></i> 2026-04-10</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-1">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-1" data-id="reg-1">
-            <div class="policy-content">
-                <span class="policy-badge blue">监管政策</span>
-                <div class="policy-title">
-                    <a href="https://shenzhen.pbc.gov.cn/shenzhen/122807/2026040215412774749/index.html" target="_blank">深圳推出&quot;科薪通&quot;跨境薪酬用汇便利化试点</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 人行深圳分行</span>
-                    <span><i class="far fa-calendar"></i> 2026-04-02</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-2">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-2" data-id="reg-2">
-            <div class="policy-content">
-                <span class="policy-badge">监管政策</span>
-                <div class="policy-title">
-                    <a href="https://www.pbc.gov.cn/tiaofasi/144941/3581332/2026041715444050196/index.html" target="_blank">中国人民银行公告〔2026〕第10号</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 中国人民银行</span>
-                    <span><i class="far fa-calendar"></i> 2026-04-17</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-3">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-3" data-id="reg-3">
-            <div class="policy-content">
-                <span class="policy-badge orange">监管政策</span>
-                <div class="policy-title">
-                    <a href="http://www.safe.gov.cn/shenzhen/2026/0313/2348.html" target="_blank">本外币一体化资金池&quot;深圳经验&quot;</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 外管局深圳分局</span>
-                    <span><i class="far fa-calendar"></i> 2026-03-13</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-4">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-4" data-id="reg-4">
-            <div class="policy-content">
-                <span class="policy-badge">监管政策</span>
-                <div class="policy-title">
-                    <a href="#" target="_blank">跨境理财通收付达585.2亿元</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 深圳金融监管局</span>
-                    <span><i class="far fa-calendar"></i> 2026-03-09</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        </div></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-gavel" style="color:#1e4bd2"></i> 政府政策</h2><span class="tag">金融局·统计局</span></div><div class="policy-list" id="govPolicyList"><div class="empty-state">等待数据更新...</div></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-shield-alt" style="color:#dc2626"></i> 监管政策</h2><span class="tag">外管局·人行·金监</span></div><div class="policy-list" id="regulatoryPolicyList"><div class="empty-state">等待数据更新...</div></div></div>
         <div class="card">
             <div class="card-header"><h2><i class="fas fa-user-circle" style="color:#1e4bd2;"></i> 领导简介</h2><span class="tag">勾选放入简历篮</span></div>
             <div class="leaders-grid" id="leadersGrid"></div>
-            <div style="margin-top:12px;display:flex;gap:8px;"><span style="background:#e9efff;color:#1e4bd2;padding:6px 12px;border-radius:30px;font-size:12px;"><i class="fas fa-user-check"></i> 已勾选 <span id="leaderCount">0</span> 位领导</span></div>
-        </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px;">
-        <div class="chart-box"><h3><i class="fas fa-chart-bar" style="color:#1e4bd2;"></i> 深圳主要经济指标 (2026.1-2)</h3><canvas id="gdpChart"></canvas><div style="font-size:12px;color:#64748b;margin-top:10px;">数据来源：深圳市统计局</div></div>
-        <div class="chart-box"><h3><i class="fas fa-coins"></i> 存贷款规模 (含外资)</h3><canvas id="financeChart"></canvas><div style="font-size:12px;color:#64748b;margin-top:10px;">存款154464.31亿↑10.3% · 贷款100709.91亿↑4.4%</div></div>
-        <div class="chart-box" style="background:#fafdff;"><h3><i class="fas fa-globe"></i> 深圳进出口 & 社消零</h3><canvas id="tradeChart"></canvas><p style="font-size:12px;margin-top:8px;"><i class="fas fa-arrow-up" style="color:#0d9488;"></i> 进出口8242.34亿元，同比+37.3%</p></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
-        <div class="card"><div class="card-header"><h2><i class="fas fa-rocket" style="color:#ea580c;"></i> 深圳十五五规划</h2><span class="tag" style="background:#fff3e0;color:#ea580c;">2026-2030</span></div><div style="padding:8px 0;"><div style="background:linear-gradient(135deg,#fff3e0,#fff8e1);padding:16px;border-radius:12px;margin-bottom:12px;"><div style="font-weight:600;color:#c2410c;margin-bottom:8px;"><i class="fas fa-bullseye"></i> 主要目标</div><p style="font-size:13px;line-height:1.7;color:#475569;">高质量发展迈上新台阶，地区生产总值<strong>超过5万亿元</strong>；全社会研发投入强度<strong>超7%</strong>；改革开放迈出新步伐，民生福祉取得新成效。</p></div><a href="https://sz.bendibao.com/news/2026224/998366.htm" target="_blank" style="display:inline-block;margin-top:8px;color:#1e4bd2;text-decoration:none;font-size:13px;"><i class="fas fa-external-link-alt"></i> 查看完整规划</a></div></div>
-        <div class="card"><div class="card-header"><h2><i class="fas fa-gavel" style="color:#dc2626;"></i> 监管近期处罚</h2><span class="tag" style="background:#fee2e2;color:#dc2626;">人行·金监</span></div><div style="padding:8px 0;"><div style="border-left:4px solid #dc2626;padding:10px 14px;background:#fef2f2;border-radius:0 10px 10px 0;margin-bottom:10px;"><div style="font-weight:600;color:#991b1b;font-size:14px;margin-bottom:4px;"><i class="fas fa-building-columns"></i> 人行深圳分行</div><p style="font-size:12px;color:#475569;line-height:1.6;">重点处罚领域：支付结算违规、反洗钱不合规、金融统计虚报、征信管理违规等。</p></div><div style="border-left:4px solid #dc2626;padding:10px 14px;background:#fef2f2;border-radius:0 10px 10px 0;margin-bottom:10px;"><div style="font-weight:600;color:#991b1b;font-size:14px;margin-bottom:4px;"><i class="fas fa-shield-alt"></i> 深圳金融监管局</div><p style="font-size:12px;color:#475569;line-height:1.6;">重点处罚领域：贷款三查不尽职、理财销售违规、同业业务风险管理、公司治理缺陷等。</p></div></div></div>
-    </div>
-
-    <div class="card hr-card" style="margin-bottom:24px;">
-        <div class="card-header"><h2><i class="fas fa-user-tie" style="color:#0d9488"></i> 人事人才·金融专题</h2><span class="tag">人社局·金融银行</span></div>
-        <div class="policy-list" id="hrPolicyList"></div>
-    </div>
-
-    <div class="card" style="margin-bottom:24px;">
-        <div class="card-header"><h2><i class="fas fa-chart-simple" style="color:#1e4bd2;"></i> 同业比较·深圳外资银行</h2><span class="tag">39家机构 · 资产超4000亿</span></div>
-        <div style="background:#f0f7ff;padding:12px 16px;border-radius:16px;margin-bottom:16px;"><i class="fas fa-info-circle" style="color:#1e4bd2;"></i> 深圳已集聚9个国家和地区35家银行设立的39家营业性机构。</div>
-        <div class="peer-table-container">
-            <table class="peer-table">
-                <thead><tr><th>银行</th><th>背景</th><th>在深网点</th><th>业务特色</th><th>最新动态</th></tr></thead>
-                <tbody><tr><td><strong>渣打银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>大湾区共4网点</td><td>优先私人理财中心</td><td><span class="news-tag">2026.01</span>大湾区首家优先私人理财中心在深圳湾开业</td></tr><tr><td><strong>汇丰银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>深圳12个营业网点</td><td>财富管理旗舰网点</td><td><span class="news-tag">2025</span>在深圳、广州新设3家财富管理旗舰网点</td></tr></tbody>
-            </table>
+            <div style="margin-top:12px;"><span style="background:#e9efff;color:#1e4bd2;padding:6px 12px;border-radius:30px;font-size:12px;">已勾选 <span id="leaderCount">0</span> 位领导</span></div>
         </div>
     </div>
 
     <div class="bottom-grid">
-        <div class="card"><div class="card-header"><h2><i class="fas fa-table"></i> 经济数据 · 横向纵向对比</h2></div><table class="metric-table"><tr><th>指标</th><th>2026年1-2月</th><th>同比变化</th></tr><tr><td>规上工业增加值</td><td>+10.4%</td><td class="trend-up">↑ 加快5.0p.p</td></tr><tr><td>固定资产投资</td><td>+0.6%</td><td class="trend-up">↑ 上年末-21.7%</td></tr><tr><td>社会消费品零售总额</td><td>1705.64亿</td><td>+2.6%</td></tr><tr><td>进出口总额</td><td>8242.34亿</td><td class="trend-up">+37.3%</td></tr><tr><td>金融机构存款余额</td><td>154464.31亿</td><td>+10.3%</td></tr><tr><td>金融机构贷款余额</td><td>100709.91亿</td><td>+4.4%</td></tr></table></div>
-        <div class="card sc-card"><div class="card-header"><h2><i class="fab fa-stripe-s"></i> 渣打集团 & 渣打中国</h2></div><div class="sc-news-item"><strong>渣打中国大湾区首家优先私人理财中心落地深圳</strong><p style="font-size:12px;opacity:0.9;">1月29日，渣打中国深圳湾支行优先私人理财中心正式开业。</p></div><div class="sc-links"><a href="https://www.sc.com/cn/" target="_blank" class="sc-link-btn">渣打中国</a></div></div>
-        <div class="card" style="background:#f9fcff;"><div class="card-header"><h2><i class="fas fa-address-card"></i> 领导简历篮</h2><span class="tag" id="leaderBasketCount">0位</span></div><div class="leader-basket-panel"><div class="leader-basket-header"><span><i class="fas fa-info-circle"></i> 勾选领导后自动加入</span><button class="btn-outline" id="clearLeaderBasketBtn" style="padding:6px 16px;"><i class="fas fa-trash"></i> 清空</button></div><div class="leader-basket-list" id="leaderBasketListContainer"><div class="basket-empty">暂无选中领导</div></div><button class="generate-btn" id="confirmGenerateLeaderResumeBtn"><i class="fas fa-file-word"></i> 生成领导简历</button></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-address-card"></i> 领导简历篮</h2><span id="leaderBasketCount">0位</span></div><div class="basket-panel"><div class="basket-header"><span>勾选领导后自动加入</span><button class="btn-outline" id="clearLeaderBasketBtn" style="padding:6px 16px;">清空</button></div><div class="basket-list" id="leaderBasketListContainer"><div class="empty-state">暂无选中领导</div></div><button class="generate-btn" id="confirmGenerateLeaderResumeBtn">生成领导简历</button></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-basket-shopping"></i> 政策报告篮</h2><span id="policyBasketHeaderCount">0项</span></div><div class="basket-panel"><div class="basket-header"><span>勾选政策后自动加入</span><button class="btn-outline" id="clearPolicyBasketBtn" style="padding:6px 16px;">清空</button></div><div class="basket-list" id="policyBasketListContainer"><div class="empty-state">暂无选中政策</div></div><button class="generate-btn" id="confirmGeneratePolicyReportBtn">生成Word报告</button></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-chart-simple"></i> 同业信息</h2></div><p>深圳已集聚39家外资银行营业性机构。</p></div>
     </div>
-
-    <div class="card" style="margin-top:24px;background:#f9fcff;">
-        <div class="card-header"><h2><i class="fas fa-basket-shopping"></i> 政策报告篮 · 已选政策</h2><span class="tag" id="policyBasketHeaderCount">0项</span></div>
-        <div class="basket-panel"><div class="basket-header"><span><i class="fas fa-info-circle"></i> 勾选政策后自动加入</span><button class="btn-outline" id="clearPolicyBasketBtn" style="padding:6px 16px;"><i class="fas fa-trash"></i> 清空</button></div><div class="basket-list" id="policyBasketListContainer"><div class="basket-empty">暂无选中政策</div></div><button class="generate-btn" id="confirmGeneratePolicyReportBtn"><i class="fas fa-file-word"></i> 确认并生成Word报告</button></div>
-    </div>
-
-    <div class="footer-note"><i class="far fa-copy"></i> 每月更新 · 集成七大数据源。报告生成：仿宋12号，简历：中文12号仿宋，标题黑体。</div>
 </div>
 
 <script>
-(function(){"use strict";
+(function(){
     const leadersData = [
-        { id:'ld1', name:'孟凡利', title:'广东省委副书记、省政府省长', dept:'广东省人民政府', gender:'男', birth:'1965年9月', political:'中共党员', ethnicity:'汉族', education:'研究生学历，经济学博士，教授', photo:'', color:'#1e4bd2',
-          career:'1982.09-1986.07 山东经济学院会计系商业会计专业学习\n1986.07-1997.12 山东经济学院会计系教师\n1997.12-2000.01 山东经济学院财务会计系副主任\n2000.01-2000.06 山东经济学院财务会计系主任\n2000.06-2005.07 山东省财政厅副厅长、党组成员\n2005.07-2009.07 山东省鲁信投资控股集团有限公司副董事长、总经理、党委副书记\n2009.07-2013.03 山东省鲁信投资控股集团有限公司董事长、党委书记、总经理\n2013.03-2013.07 山东省商务厅厅长、党组书记\n2013.07-2015.05 山东省烟台市委副书记、代市长、市长\n2015.05-2017.03 山东省烟台市委书记、市人大常委会主任\n2017.03-2020.09 山东省青岛市委副书记、市长\n2020.09-2022.04 内蒙古自治区党委常委、包头市委书记，后任自治区党委副书记\n2022.04-2025.09 广东省委副书记、深圳市委书记\n2025.10- 广东省委副书记，省政府省长、党组书记', appointment:'第二十届中央委员，广东省委副书记，省政府省长、党组书记', activity:'2025年4月与中国银行行长会谈，深化科技金融、普惠金融、跨境金融合作；2026年1月主持省委金融委扩大会议。',
-          en:{ name:'Meng Fanli', title:'Governor of Guangdong Province', dept:'Guangdong Provincial Government', gender:'Male', birth:'Sep 1965', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics',
-            career:'1982-1986: Studied at Shandong Economic College. 1986-2000: Teaching and administrative positions at Shandong Economic College. 2000-2005: Deputy Director-General of Shandong Provincial Department of Finance. 2005-2013: Leadership roles at Shandong Luxin Investment Holding Group. 2013-2015: Director-General of Shandong Department of Commerce. 2013-2017: Mayor and Party Secretary of Yantai. 2017-2020: Mayor of Qingdao. 2020-2022: Party Secretary of Baotou, Deputy Secretary of Inner Mongolia CPC. 2022-2025: Party Secretary of Shenzhen. 2025-: Governor of Guangdong Province.',
-            appointment:'Member of the 20th CPC Central Committee, Governor of Guangdong Province.',
-            activity:'Met with Bank of China President in April 2025; chaired Provincial Financial Committee meeting in Jan 2026.'
-        }},
-        { id:'ld2', name:'李运', title:'广东省人民政府副省长', dept:'分管金融、人社、住建等领域', gender:'男', birth:'1973年9月', political:'中共党员', ethnicity:'汉族', education:'武汉大学经济学博士，正高级经济师', photo:'', color:'#0d9488',
-          career:'1997年武汉大学硕士研究生毕业，2000年获武汉大学博士学位。长期在银行系统工作，曾任中国农业银行贵州省分行行长。2021年11月任中国建设银行党委委员、副行长。2025年3月任广东省人民政府副省长、党组成员。', appointment:'2025年3月任广东省人民政府副省长。', activity:'2025年8月出席全省金融系统党建工作会议；2025年9月在粤港澳大湾区金融发展论坛致辞。',
-          en:{ name:'Li Yun', title:'Vice Governor of Guangdong Province', dept:'Finance, Human Resources, Housing', gender:'Male', birth:'Sep 1973', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics, Wuhan University',
-            career:'Graduated from Wuhan University with Ph.D. in 2000. Served as President of Agricultural Bank of China Guizhou Branch. Appointed Vice President of China Construction Bank in Nov 2021. Appointed Vice Governor of Guangdong Province in Mar 2025.',
-            appointment:'Vice Governor of Guangdong Province since Mar 2025.',
-            activity:'Attended provincial financial system party building conference in Aug 2025.'
-        }},
-        { id:'ld3', name:'于海平', title:'省委金融办副主任、省地方金融管理局局长', dept:'广东省委金融委员会办公室', gender:'男', birth:'1972年4月', political:'中共党员', ethnicity:'汉族', education:'在职研究生学历，工商管理硕士', photo:'', color:'#ea580c',
-          career:'历任中国进出口银行信贷管理部副处长、风险管理部总经理助理、广东省分行副行长、湖南省分行行长、资产负债管理部总经理等职。2021年1月任广东省地方金融监督管理局局长。2024年1月任省委金融办副主任、省地方金融管理局局长。', appointment:'2024年1月任省委金融办副主任、省地方金融管理局局长。', activity:'2024年12月带队赴汕尾调研金融支持新型城镇化建设。',
-          en:{ name:'Yu Haiping', title:'Director of Guangdong Local Financial Administration Bureau', dept:'Finance Committee Office of CPC Guangdong Committee', gender:'Male', birth:'Apr 1972', political:'CPC Member', ethnicity:'Han', education:'MBA',
-            career:'Served in various positions at Export-Import Bank of China. Appointed Director of Guangdong Local Financial Supervision Bureau in Jan 2021. Appointed Deputy Director of Provincial Party Committee Finance Office in Jan 2024.',
-            appointment:'Director of Guangdong Local Financial Administration Bureau since Jan 2024.',
-            activity:'Led research team to Shanwei in Dec 2024.'
-        }},
-        { id:'ld4', name:'靳磊', title:'广东省委常委、深圳市委书记', dept:'中共深圳市委', gender:'男', birth:'1970年2月', political:'中共党员', ethnicity:'汉族', education:'大学学历，厦门大学经济学硕士，经济师', photo:'', color:'#dc2626',
-          career:'1988-1992 武汉大学行政管理专业学习。1992-2011 河南省计经委、发改委工作，历任副处长、处长、副主任。2015-2016 周口市委常委、组织部部长。2016-2018 郑州市委副书记。2018-2019 安阳市长。2019-2022 德阳市委书记。2022-2026 四川省委常委、组织部部长。2026.03- 广东省委常委、深圳市委书记。', appointment:'2026年3月任广东省委常委、深圳市委书记。', activity:'2026年3月履新深圳后强调加快推进粤港澳大湾区建设。',
-          en:{ name:'Jin Lei', title:'Party Secretary of Shenzhen', dept:'CPC Shenzhen Municipal Committee', gender:'Male', birth:'Feb 1970', political:'CPC Member', ethnicity:'Han', education:'Master of Economics, Xiamen University',
-            career:'1988-1992: Wuhan University. 1992-2011: Henan Development and Reform Commission. 2015-2016: Organization Department of Zhoukou. 2016-2018: Deputy Party Secretary of Zhengzhou. 2018-2019: Mayor of Anyang. 2019-2022: Party Secretary of Deyang. 2022-2026: Organization Department of Sichuan CPC. 2026-: Party Secretary of Shenzhen.',
-            appointment:'Party Secretary of Shenzhen since Mar 2026.',
-            activity:'Emphasized accelerating Greater Bay Area construction.'
-        }},
-        { id:'ld5', name:'覃伟中', title:'深圳市委副书记、市长', dept:'深圳市人民政府', gender:'男', birth:'1971年7月', political:'中共党员', ethnicity:'汉族', education:'清华大学工学博士，高级工程师', photo:'', color:'#8b5cf6',
-          career:'1988-1996 清华大学学习，获双学士、硕士。1996-2010 中国石化工作，历任副处长、处长、副主任。2010-2017 中国石化九江分公司总经理。2017-2019 中国石油天然气集团公司副总经理。2019-2021 广东省副省长。2021- 深圳市委副书记、市长。', appointment:'第二十届中央候补委员，深圳市委副书记、市长。', activity:'2025年政府工作报告首提建设"产业金融中心"。',
-          en:{ name:'Qin Weizhong', title:'Mayor of Shenzhen', dept:'Shenzhen Municipal Government', gender:'Male', birth:'Jul 1971', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Engineering, Tsinghua University',
-            career:'1988-1996: Tsinghua University. 1996-2010: Sinopec. 2010-2017: President of Sinopec Jiujiang. 2017-2019: Vice President of CNPC. 2019-2021: Vice Governor of Guangdong. 2021-: Mayor of Shenzhen.',
-            appointment:'Alternate member of 20th CPC Central Committee, Mayor of Shenzhen.',
-            activity:'Proposed "Industrial Finance Center" in 2025 government report.'
-        }},
-        { id:'ld6', name:'罗晃浩', title:'深圳市政府副市长', dept:'分管金融、商务、港澳事务', gender:'男', birth:'1973年10月', political:'中共党员', ethnicity:'汉族', education:'北京大学行政管理学本科，中山大学工商管理硕士', photo:'', color:'#ec4899',
-          career:'1996年北京大学毕业后进入中国建设银行，工作超20年。2020年5月任东莞市副市长。2021年11月任茂名市委常委、副市长。2023年7月任茂名市委副书记。2024年5月任深圳市副市长。', appointment:'2024年5月任深圳市人民政府副市长。', activity:'2024年5月履新后强调金融高质量发展。',
-          en:{ name:'Luo Huanghao', title:'Vice Mayor of Shenzhen', dept:'Finance, Commerce, Hong Kong & Macao Affairs', gender:'Male', birth:'Oct 1973', political:'CPC Member', ethnicity:'Han', education:'Peking University, Sun Yat-sen University MBA',
-            career:'Joined China Construction Bank in 1996. Appointed Vice Mayor of Dongguan in May 2020. Deputy Party Secretary of Maoming in Jul 2023. Vice Mayor of Shenzhen since May 2024.',
-            appointment:'Vice Mayor of Shenzhen since May 2024.',
-            activity:'Emphasized high-quality financial development.'
-        }},
-        { id:'ld7', name:'时卫干', title:'深圳市地方金融管理局局长', dept:'深圳市地方金融管理局', gender:'男', birth:'1975年8月', political:'中共党员', ethnicity:'汉族', education:'首都经济贸易大学硕士，中国社科院经济学博士', photo:'', color:'#14b8a6',
-          career:'1997年参加工作，在中国农业银行工作超过十年。2016年任深圳市盐田区委常委、常务副区长。2019年任深圳市地方金融监督管理局副局长。2024年2月任深圳市地方金融管理局局长。', appointment:'2024年2月任深圳市地方金融管理局局长。', activity:'2025年5月在清华五道口全球金融论坛强调大湾区深度融合。',
-          en:{ name:'Shi Weigan', title:'Director of Shenzhen Local Financial Administration Bureau', dept:'Shenzhen Local Financial Administration Bureau', gender:'Male', birth:'Aug 1975', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics, CASS',
-            career:'Worked at Agricultural Bank of China for over 10 years. Appointed Executive Deputy Head of Yantian District in 2016. Deputy Director of Shenzhen Local Financial Supervision Bureau in 2019. Director since Feb 2024.',
-            appointment:'Director of Shenzhen Local Financial Administration Bureau since Feb 2024.',
-            activity:'Spoke at Tsinghua PBCSF Global Finance Forum in May 2025.'
-        }},
-        { id:'ld8', name:'蔡英权', title:'深圳市市场监管局党组书记、局长', dept:'深圳市市场监督管理局', gender:'男', birth:'1976年9月', political:'中共党员', ethnicity:'汉族', education:'中山大学法学学士', photo:'', color:'#f59e0b',
-          career:'1998年参加工作，曾任宝安区人民检察院干部、区委组织部办公室副主任、区城管局局长。2016年任宝安区委常委、副区长。2021年任福田区委副书记。2023年9月任深圳市市场监管局局长。', appointment:'2023年9月任深圳市市场监管局党组书记、局长。', activity:'2024年5月在青年工作座谈会上阐述对事业和岗位的思考。',
-          en:{ name:'Cai Yingquan', title:'Director of Shenzhen Market Supervision Administration', dept:'Shenzhen Market Supervision Administration', gender:'Male', birth:'Sep 1976', political:'CPC Member', ethnicity:'Han', education:'Bachelor of Law, Sun Yat-sen University',
-            career:'Started working in 1998. Served in Baoan District Procuratorate and Organization Department. Director of Baoan District Urban Management Bureau. Standing Committee Member of Baoan District in 2016. Deputy Party Secretary of Futian District in 2021. Director of Shenzhen Market Supervision Administration since Sep 2023.',
-            appointment:'Director of Shenzhen Market Supervision Administration since Sep 2023.',
-            activity:'Spoke at youth work symposium in May 2024.'
-        }},
-        { id:'ld9', name:'张非梦', title:'深圳市商务局党组书记、局长', dept:'深圳市商务局', gender:'女', birth:'1974年8月', political:'中共党员', ethnicity:'汉族', education:'中山大学管理学硕士', photo:'', color:'#6366f1',
-          career:'历任深圳市义务工作者联合会主任科员、市食品药品监督管理局宝安分局副局长、市投资推广署副署长。2019年任深圳市商务局副局长。2021年4月任深圳市商务局局长。', appointment:'2021年4月任深圳市商务局党组书记、局长。', activity:'2025年8月表示深圳坚持"政策+活动"双轮驱动。',
-          en:{ name:'Zhang Feimeng', title:'Director of Shenzhen Commerce Bureau', dept:'Shenzhen Commerce Bureau', gender:'Female', birth:'Aug 1974', political:'CPC Member', ethnicity:'Han', education:'Master of Management, Sun Yat-sen University',
-            career:'Served in Shenzhen Volunteer Association, Food and Drug Administration, Investment Promotion Bureau. Deputy Director of Shenzhen Commerce Bureau in 2019. Director since Apr 2021.',
-            appointment:'Director of Shenzhen Commerce Bureau since Apr 2021.',
-            activity:'Stated "policy + activity" dual-drive in Aug 2025.'
-        }},
-        { id:'ld10', name:'包祖明', title:'国家金融监督管理总局广东监管局党委书记、局长', dept:'广东金融监管局', gender:'男', birth:'1971年4月', political:'中共党员', ethnicity:'汉族', education:'经济学博士，高级经济师', photo:'', color:'#ef4444',
-          career:'1997年参加工作，曾任大连银监局副局长、浙江银监局副局长、中国银监会政策研究局副局长。2015年任黑龙江银监局局长。2019年任浙江银保监局局长。2023年任深圳金融监管局局长。2025年3月任广东金融监管局局长。', appointment:'2025年3月任广东金融监管局党委书记、局长。', activity:'2025年强调深耕蓝色金融助力海洋经济。',
-          en:{ name:'Bao Zuming', title:'Director of Guangdong Regulatory Bureau of NFRA', dept:'Guangdong Bureau of NFRA', gender:'Male', birth:'Apr 1971', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics',
-            career:'Served in Dalian, Zhejiang banking regulatory bureaus. Deputy Director of Policy Research Bureau of CBRC. Director of Heilongjiang Banking Regulatory Bureau in 2015. Director of Zhejiang CBIRC in 2019. Director of Shenzhen Financial Regulation Bureau in 2023. Director of Guangdong Financial Regulation Bureau since Mar 2025.',
-            appointment:'Director of Guangdong Financial Regulation Bureau since Mar 2025.',
-            activity:'Emphasized blue finance for marine economy.'
-        }},
-        { id:'ld11', name:'任庆华', title:'国家金融监督管理总局深圳监管局党委书记、局长', dept:'深圳金融监管局', gender:'男', birth:'1970年7月', political:'中共党员', ethnicity:'满族', education:'在职博士研究生，经济学博士', photo:'', color:'#3b82f6',
-          career:'2013年11月起任广东银监局副局长。2020年7月任广西银保监局局长。2025年3月任深圳金融监管局局长。', appointment:'2025年3月任深圳金融监管局党委书记、局长。', activity:'2021年参加银行业保险业新闻发布会介绍广西金融成效。',
-          en:{ name:'Ren Qinghua', title:'Director of Shenzhen Regulatory Bureau of NFRA', dept:'Shenzhen Bureau of NFRA', gender:'Male', birth:'Jul 1970', political:'CPC Member', ethnicity:'Manchu', education:'Ph.D. in Economics',
-            career:'Deputy Director of Guangdong Banking Regulatory Bureau since Nov 2013. Director of Guangxi CBIRC in Jul 2020. Director of Shenzhen Financial Regulation Bureau since Mar 2025.',
-            appointment:'Director of Shenzhen Financial Regulation Bureau since Mar 2025.',
-            activity:'Attended banking and insurance press conference in 2021.'
-        }},
-        { id:'ld12', name:'温信祥', title:'人行深圳市分行行长、外汇局深圳市分局局长', dept:'中国人民银行深圳市分行', gender:'男', birth:'1970年', political:'中共党员', ethnicity:'汉族', education:'北京大学经济学硕士，清华五道口金融学院博士', photo:'', color:'#10b981',
-          career:'1988年考入北京大学。曾在中国工商银行总行工作，历任国际业务部副总经理。2014年任中国人民银行金融研究所副所长。后任支付结算司司长。2022年12月任人行深圳市分行行长。', appointment:'2022年12月任人行深圳市分行党委书记、行长。', activity:'2024年2月在深圳两会期间聚焦科技金融发展。',
-          en:{ name:'Wen Xinxiang', title:'Governor of PBC Shenzhen Branch', dept:'People\'s Bank of China Shenzhen Branch', gender:'Male', birth:'1970', political:'CPC Member', ethnicity:'Han', education:'Master of Economics, Peking University; Ph.D., Tsinghua PBCSF',
-            career:'Entered Peking University in 1988. Worked at ICBC head office. Deputy Director of PBC Financial Research Institute in 2014. Director of Payment and Settlement Department. Governor of PBC Shenzhen Branch since Dec 2022.',
-            appointment:'Governor of PBC Shenzhen Branch since Dec 2022.',
-            activity:'Focused on tech finance at Shenzhen Two Sessions in Feb 2024.'
-        }}
+        { id:'ld1', name:'孟凡利', title:'广东省委副书记、省政府省长', dept:'广东省人民政府', color:'#1e4bd2' },
+        { id:'ld2', name:'李运', title:'广东省人民政府副省长', dept:'分管金融、人社、住建', color:'#0d9488' },
+        { id:'ld3', name:'于海平', title:'省委金融办副主任', dept:'省地方金融管理局', color:'#ea580c' },
+        { id:'ld4', name:'靳磊', title:'广东省委常委、深圳市委书记', dept:'中共深圳市委', color:'#dc2626' },
+        { id:'ld5', name:'覃伟中', title:'深圳市委副书记、市长', dept:'深圳市人民政府', color:'#8b5cf6' },
+        { id:'ld6', name:'罗晃浩', title:'深圳市政府副市长', dept:'分管金融、商务', color:'#ec4899' }
     ];
-
-    const hrPolicyData = [
-        { id:'hr1',badge:'青年人才',badgeClass:'green',title:'青年人才来深发展服务保障若干措施',link:'https://hrss.sz.gov.cn/gkmlpt/content/12/12551/post_12551351.html#25167',source:'深圳市人社局',date:'2025-12-16',summary:'年龄45岁以下首次来深就业创业可申请过渡性住房或安居补贴；博士入户补贴10万元、硕士最高5万元、本科最高3万元。' },
-        { id:'hr2',badge:'职称考试',badgeClass:'blue',title:'2026年度高级经济专业技术资格考试通知',link:'https://hrss.sz.gov.cn/szksy/ztzl/zyjsks/zyjskslb/jjzy/zxksxx_89396/content/post_12702219.html',source:'深圳市人社局',date:'2026-03-26',summary:'银行业专业人员中级职业资格可对应中级经济专业技术资格；设金融等10个专业类别。' },
-        { id:'hr3',badge:'稳岗贷款',badgeClass:'orange',title:'与中国银行深圳分行合作金融助企稳岗扩岗',link:'https://hrss.sz.gov.cn/gkmlpt/content/12/12199/post_12199614.html#1690',source:'深圳市人社局',date:'2025-05-28',summary:'小微企业稳岗扩岗贷款单户最高5000万元，利率最低2.9%；个人最高1000万元。' }
-    ];
-
     let selectedLeaders = new Set();
-    function renderLeadersGrid(){
-        const grid=document.getElementById('leadersGrid'); grid.innerHTML='';
-        leadersData.forEach(ld=>{
-            const card=document.createElement('div');
-            card.className='leader-card'+(selectedLeaders.has(ld.id)?' selected':'');
-            const chk=document.createElement('input'); chk.type='checkbox'; chk.className='leader-checkbox'; chk.dataset.id=ld.id; chk.checked=selectedLeaders.has(ld.id);
-            chk.addEventListener('change',e=>{ if(e.target.checked) selectedLeaders.add(ld.id); else selectedLeaders.delete(ld.id); renderLeadersGrid(); updateLeaderBasketUI(); });
-            const avatar=document.createElement('div'); avatar.className='leader-avatar'; avatar.style.background=ld.color; avatar.style.color='white'; avatar.style.display='flex'; avatar.style.alignItems='center'; avatar.style.justifyContent='center'; avatar.textContent=ld.name.charAt(0);
-            const name=document.createElement('h4'); name.textContent=ld.name;
-            const title=document.createElement('div'); title.className='leader-title'; title.textContent=ld.title;
-            const dept=document.createElement('div'); dept.className='leader-dept'; dept.textContent=ld.dept;
-            card.appendChild(chk); card.appendChild(avatar); card.appendChild(name); card.appendChild(title); card.appendChild(dept);
+    function renderLeaders(){
+        const grid = document.getElementById('leadersGrid');
+        grid.innerHTML = '';
+        leadersData.forEach(ld => {
+            const card = document.createElement('div');
+            card.className = 'leader-card' + (selectedLeaders.has(ld.id)?' selected':'');
+            card.innerHTML = `<input type="checkbox" class="leader-checkbox" data-id="${ld.id}" ${selectedLeaders.has(ld.id)?'checked':''}>
+                <div class="leader-avatar" style="background:${ld.color};">${ld.name.charAt(0)}</div>
+                <h4>${ld.name}</h4><div class="leader-title">${ld.title}</div><div class="leader-dept">${ld.dept}</div>`;
             grid.appendChild(card);
+            card.querySelector('.leader-checkbox').addEventListener('change', e => {
+                if(e.target.checked) selectedLeaders.add(ld.id); else selectedLeaders.delete(ld.id);
+                renderLeaders(); updateLeaderBasket();
+            });
         });
-        document.getElementById('leaderCount').textContent=selectedLeaders.size;
+        document.getElementById('leaderCount').textContent = selectedLeaders.size;
     }
-
-    function updateLeaderBasketUI(){
-        const list=leadersData.filter(ld=>selectedLeaders.has(ld.id));
-        document.getElementById('leaderBasketCount').textContent=list.length+'位';
-        const cont=document.getElementById('leaderBasketListContainer');
-        cont.innerHTML=list.length?'' :'<div class="basket-empty">暂无选中领导</div>';
-        list.forEach(ld=>{ const div=document.createElement('div'); div.className='leader-basket-item';
-            div.innerHTML=`<i class="fas fa-times-circle" data-id="${ld.id}" style="cursor:pointer;color:#dc2626;"></i><span><strong>${ld.name}</strong> — ${ld.title}</span>`;
-            cont.appendChild(div); });
-        cont.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',e=>{ selectedLeaders.delete(e.target.dataset.id); renderLeadersGrid(); updateLeaderBasketUI(); }));
-    }
-
-    function renderHrList(){
-        const cont=document.getElementById('hrPolicyList');
-        hrPolicyData.forEach(p=>{
-            const div=document.createElement('div'); div.className='policy-item';
-            div.innerHTML=`<input type="checkbox" class="policy-checkbox" id="chk-${p.id}" data-id="${p.id}"><div class="policy-content"><span class="policy-badge ${p.badgeClass}">${p.badge}</span><div class="policy-title"><a href="${p.link}" target="_blank">${p.title}</a></div><div class="policy-meta"><span><i class="far fa-building"></i> ${p.source}</span><span><i class="far fa-calendar"></i> ${p.date}</span></div><p class="news-summary">${p.summary}</p></div>`;
+    function updateLeaderBasket(){
+        const list = leadersData.filter(ld => selectedLeaders.has(ld.id));
+        document.getElementById('leaderBasketCount').textContent = list.length + '位';
+        const cont = document.getElementById('leaderBasketListContainer');
+        cont.innerHTML = list.length ? '' : '<div class="empty-state">暂无选中领导</div>';
+        list.forEach(ld => {
+            const div = document.createElement('div');
+            div.className = 'basket-item';
+            div.innerHTML = `<i class="fas fa-times-circle" data-id="${ld.id}" style="cursor:pointer;color:#dc2626;"></i><span><strong>${ld.name}</strong> — ${ld.title}</span>`;
             cont.appendChild(div);
         });
-    }
-
-    function getAllPolicyItems(){
-        const items=[]; document.querySelectorAll('.policy-item').forEach(el=>{
-            const chk=el.querySelector('input[type=checkbox]'); const a=el.querySelector('.policy-title a'); const src=el.querySelector('.policy-meta span:first-child');
-            if(chk&&a) items.push({ id:chk.dataset.id||chk.id, title:a.textContent.trim(), source:src?src.textContent.trim():'', checked:chk.checked });
-        }); return items;
-    }
-
-    function updatePolicyBasketUI(){
-        const items=getAllPolicyItems().filter(p=>p.checked);
-        document.getElementById('basketCount').textContent=items.length;
-        document.getElementById('policyBasketHeaderCount').textContent=items.length+'项';
-        const cont=document.getElementById('policyBasketListContainer');
-        cont.innerHTML=items.length? '' :'<div class="basket-empty">暂无选中政策</div>';
-        items.forEach(p=>{ const div=document.createElement('div'); div.className='basket-item';
-            div.innerHTML=`<i class="fas fa-times-circle" data-id="${p.id}" style="cursor:pointer;color:#dc2626;"></i><span><strong>${p.title}</strong> <span style="color:#64748b;">${p.source}</span></span>`;
-            cont.appendChild(div); });
-        cont.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',e=>{
-            const chk=document.getElementById(`chk-${e.target.dataset.id}`)||document.querySelector(`input[data-id="${e.target.dataset.id}"]`);
-            if(chk){ chk.checked=false; chk.dispatchEvent(new Event('change',{bubbles:true})); } updatePolicyBasketUI();
-        }));
-    }
-
-    document.addEventListener('change',e=>{ if(e.target.classList.contains('policy-checkbox')) updatePolicyBasketUI(); });
-
-    function generateResume(){
-        if(selectedLeaders.size===0){ alert('请至少勾选一位领导'); return; }
-        const list=leadersData.filter(ld=>selectedLeaders.has(ld.id));
-        const d=new Date(); const dateStr=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
-        const dateStrEn=d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-        let html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>领导简历</title><style>body{font-family:仿宋,SimSun,serif;font-size:14pt;line-height:1.8;padding:30px;max-width:1000px;margin:0 auto;}h1{font-size:20pt;text-align:center;}h2{font-size:16pt;border-bottom:1px solid #333;}hr{page-break-after:always;border:0;}</style></head><body>';
-        list.forEach((ld,idx)=>{
-            html+=`<div style="margin-bottom:40px;"><h1>领导简历</h1><h2>${ld.name}</h2><p><strong>现任职务：</strong>${ld.title}</p><p><strong>性别：</strong>${ld.gender}　　<strong>出生日期：</strong>${ld.birth}　　<strong>民族：</strong>${ld.ethnicity}</p><p><strong>政治面貌：</strong>${ld.political}</p><p><strong>学历：</strong>${ld.education}</p><h3>📋 人物履历</h3><p style="white-space:pre-line;">${ld.career}</p><h3>📌 职务任免</h3><p>${ld.appointment}</p><h3>📰 近期活动</h3><p>${ld.activity}</p><p style="text-align:right;margin-top:30px;">生成日期：${dateStr}</p></div>`;
-            html+=`<div style="page-break-before:always;margin-top:40px;"><h1>Resume</h1><h2>${ld.en.name}</h2><p><strong>Current Position:</strong> ${ld.en.title}</p><p><strong>Gender:</strong> ${ld.en.gender}　　<strong>Date of Birth:</strong> ${ld.en.birth}　　<strong>Ethnicity:</strong> ${ld.en.ethnicity}</p><p><strong>Political Affiliation:</strong> ${ld.en.political}</p><p><strong>Education:</strong> ${ld.en.education}</p><h3>📋 Career</h3><p style="white-space:pre-line;">${ld.en.career}</p><h3>📌 Appointment</h3><p>${ld.en.appointment}</p><h3>📰 Activities</h3><p>${ld.en.activity}</p><p style="text-align:right;margin-top:30px;">Generated: ${dateStrEn}</p></div>`;
-            if(idx<list.length-1) html+='<hr>';
+        cont.querySelectorAll('.fa-times-circle').forEach(icon => {
+            icon.addEventListener('click', e => {
+                selectedLeaders.delete(e.target.dataset.id);
+                renderLeaders(); updateLeaderBasket();
+            });
         });
-        html+='</body></html>';
-        const w=window.open(); w.document.write(html); w.document.close();
     }
-
-    function generateReport(){
-        const items=getAllPolicyItems().filter(p=>p.checked);
-        if(items.length===0){ alert('请至少勾选一项政策'); return; }
-        const d=new Date(); const dateStr=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
-        let content=`<html><head><meta charset="UTF-8"><title>分行月度行政报告</title><style>body{font-family:仿宋;font-size:14pt;}</style></head><body><h1>分行月度行政报告</h1><p>${dateStr}</p>`;
-        items.forEach((p,i)=>{ content+=`<h3>${i+1}. ${p.title}</h3><p>${p.source} | ${p.summary||''}</p>`; });
-        content+='<h2>十五五规划相关内容</h2><p>地区生产总值超过5万亿元...</p><h2>监管处罚信息</h2><p>支付结算违规、反洗钱不合规...</p><h2>经济数据</h2><p>存款154464.31亿...</p></body></html>';
-        const blob=new Blob([content],{type:'application/msword'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`分行月度行政报告_${d.getFullYear()}年${d.getMonth()+1}月.doc`; a.click();
-    }
-
-    document.getElementById('generateResumeBtn').addEventListener('click',generateResume);
-    document.getElementById('confirmGenerateLeaderResumeBtn').addEventListener('click',generateResume);
-    document.getElementById('generateReportBtn').addEventListener('click',generateReport);
-    document.getElementById('confirmGeneratePolicyReportBtn').addEventListener('click',generateReport);
-    document.getElementById('clearLeaderBasketBtn').addEventListener('click',()=>{ selectedLeaders.clear(); renderLeadersGrid(); updateLeaderBasketUI(); });
-    document.getElementById('clearPolicyBasketBtn').addEventListener('click',()=>{ document.querySelectorAll('.policy-checkbox').forEach(cb=>{ cb.checked=false; cb.dispatchEvent(new Event('change',{bubbles:true})); }); });
-    document.getElementById('viewBasketBtn').addEventListener('click',()=>document.querySelector('.bottom-grid').scrollIntoView({behavior:'smooth'}));
-    renderLeadersGrid(); renderHrList(); updateLeaderBasketUI(); updatePolicyBasketUI();
-    new Chart(document.getElementById('gdpChart'),{type:'bar',data:{labels:['规上工业','固投','社消零'],datasets:[{label:'同比增速%',data:[10.4,0.6,2.6],backgroundColor:['#1e4bd2','#ea580c','#0d9488']}]}});
-    new Chart(document.getElementById('financeChart'),{type:'bar',data:{labels:['存款余额','贷款余额'],datasets:[{label:'2月末',data:[154464.31,100709.91],backgroundColor:'#2563eb'}]}});
-    new Chart(document.getElementById('tradeChart'),{type:'bar',data:{labels:['出口','进口','社消零'],datasets:[{label:'金额(亿)',data:[4943.63,3298.70,1705.64],backgroundColor:['#0f766e','#0284c7','#b45309']}]}});
+    document.getElementById('generateResumeBtn').addEventListener('click', ()=>{
+        if(selectedLeaders.size===0) alert('请至少勾选一位领导');
+        else alert('简历生成功能开发中...\n已选中：'+Array.from(selectedLeaders).join(','));
+    });
+    document.getElementById('confirmGenerateLeaderResumeBtn').addEventListener('click', ()=>{
+        if(selectedLeaders.size===0) alert('请至少勾选一位领导');
+        else alert('简历生成功能开发中...');
+    });
+    document.getElementById('clearLeaderBasketBtn').addEventListener('click', ()=>{
+        selectedLeaders.clear(); renderLeaders(); updateLeaderBasket();
+    });
+    renderLeaders(); updateLeaderBasket();
 })();
 </script>
 </body>
