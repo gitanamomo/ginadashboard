@@ -7,19 +7,118 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        /* 所有样式保持不变，此处省略以节省篇幅，但请确保包含之前完整的 CSS */
-        /* 实际使用时请复制之前提供的完整 CSS，或者保留原有样式 */
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif; }
+        body { background:#f5f7fb; color:#1e293b; padding:20px; line-height:1.5; }
+        .dashboard { max-width:1600px; margin:0 auto; }
+        .header { margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+        .header h1 { font-size:28px; font-weight:600; display:flex; align-items:center; gap:8px; }
+        .header h1 i { color:#1e4bd2; background:#e9efff; padding:10px; border-radius:12px; }
+        .date-badge { color:#64748b; background:white; display:inline-block; padding:6px 20px; border-radius:40px; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.02); }
+        .update-time { color:#1e4bd2; font-size:13px; margin-left:15px; font-weight:400; }
+        .header-actions { display:flex; gap:12px; align-items:center; }
+        .btn-primary { background:#1e4bd2; color:white; border:none; padding:12px 24px; border-radius:40px; font-weight:500; font-size:14px; cursor:pointer; box-shadow:0 4px 10px rgba(30,75,210,0.2); transition:all 0.15s; display:flex; align-items:center; gap:8px; }
+        .btn-primary:hover { background:#0f3bb5; transform:translateY(-1px); }
+        .btn-outline { background:white; border:1px solid #cbd5e1; padding:12px 20px; border-radius:40px; font-size:14px; color:#1e293b; cursor:pointer; display:flex; align-items:center; gap:8px; transition:all 0.15s; }
+        .btn-outline:hover { border-color:#1e4bd2; background:#f8fafc; }
+        .basket-badge { background:#dc2626; color:white; border-radius:40px; padding:2px 10px; font-size:13px; margin-left:6px; }
+        .quick-links { display:grid; grid-template-columns:repeat(7,1fr); gap:12px; margin-bottom:24px; }
+        .link-card { background:white; padding:14px 6px; border-radius:18px; text-align:center; text-decoration:none; color:#0f172a; font-weight:500; font-size:13px; box-shadow:0 4px 8px rgba(0,0,0,0.02); border:1px solid #eef2f6; transition:all 0.15s; display:flex; flex-direction:column; align-items:center; gap:8px; }
+        .link-card i { font-size:24px; color:#1e4bd2; background:#f0f4ff; width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:16px; }
+        .link-card:hover { transform:translateY(-2px); box-shadow:0 12px 20px -8px rgba(0,35,110,0.12); border-color:#cddfff; }
+        .main-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:24px; }
+        .card { background:white; border-radius:24px; padding:20px 22px; box-shadow:0 8px 20px rgba(0,0,0,0.02); border:1px solid #eef2f6; }
+        .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+        .card-header h2 { font-size:20px; font-weight:600; display:flex; align-items:center; gap:8px; }
+        .tag { background:#f1f5f9; padding:4px 10px; border-radius:40px; font-size:12px; color:#334155; }
+        .policy-list { display:flex; flex-direction:column; gap:14px; max-height:600px; overflow-y:auto; padding-right:8px; }
+        .policy-item { border-bottom:1px solid #f1f5f9; padding-bottom:12px; display:flex; align-items:flex-start; gap:10px; }
+        .policy-item:last-child { border-bottom:none; }
+        .policy-checkbox { margin-top:4px; width:18px; height:18px; cursor:pointer; accent-color:#1e4bd2; flex-shrink:0; }
+        .policy-content { flex:1; }
+        .policy-badge { display:inline-block; background:#dc2626; color:white; font-size:11px; font-weight:600; padding:2px 10px; border-radius:30px; margin-right:8px; }
+        .policy-badge.orange { background:#ea580c; }
+        .policy-badge.blue { background:#1e4bd2; }
+        .policy-badge.green { background:#0d9488; }
+        .policy-title { font-weight:650; font-size:16px; margin:4px 0 4px; }
+        .policy-title a { color:#0f172a; text-decoration:none; }
+        .policy-title a:hover { color:#1e4bd2; text-decoration:underline; }
+        .policy-meta { font-size:12px; color:#64748b; display:flex; gap:16px; margin:6px 0; }
+        .policy-meta i { margin-right:4px; }
+        .news-summary { font-size:13px; color:#334155; line-height:1.5; }
+        .empty-state { color:#94a3b8; text-align:center; padding:40px 20px; font-size:14px; }
+        .chart-box { background:white; border-radius:24px; padding:18px; margin-bottom:20px; border:1px solid #eef2f6; }
+        .chart-box h3 { font-size:16px; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
+        canvas { width:100% !important; height:auto !important; max-height:200px; }
+        .leaders-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-height:520px; overflow-y:auto; padding-right:8px; }
+        .leader-card { background:#fafcff; border-radius:16px; padding:16px 12px; border:1px solid #eef2f6; display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; transition:all 0.15s; position:relative; }
+        .leader-card:hover { border-color:#1e4bd2; box-shadow:0 8px 16px rgba(0,0,0,0.06); }
+        .leader-card.selected { border-color:#1e4bd2; background:#f0f4ff; }
+        .leader-checkbox { position:absolute; top:10px; left:10px; width:20px; height:20px; cursor:pointer; accent-color:#1e4bd2; }
+        .leader-avatar { width:70px; height:70px; border-radius:50%; background:linear-gradient(145deg,#e9efff,#d0dfff); display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:#1e4bd2; font-weight:600; font-size:28px; overflow:hidden; }
+        .leader-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+        .leader-card h4 { font-size:16px; font-weight:600; margin-bottom:4px; }
+        .leader-title { font-size:12px; color:#64748b; margin-bottom:4px; }
+        .leader-dept { font-size:11px; color:#94a3b8; }
+        .bottom-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:24px; }
+        .metric-table { width:100%; border-collapse:collapse; font-size:14px; }
+        .metric-table th { text-align:left; padding:10px 6px 6px 0; color:#475569; font-weight:500; border-bottom:1px solid #e2e8f0; }
+        .metric-table td { padding:10px 6px 10px 0; border-bottom:1px solid #f1f5f9; }
+        .trend-up { color:#0d9488; font-weight:500; }
+        .trend-down { color:#b91c1c; }
+        .sc-card { background:linear-gradient(145deg,#0a1a2f 0%,#112b4f 100%); color:white; }
+        .sc-card .card-header h2 { color:white; }
+        .sc-card .tag { background:#3b5e8b; color:white; }
+        .sc-news-item { border-bottom:1px solid #2a4a6a; padding:12px 0; }
+        .sc-news-item a { color:#bdd3ff; font-weight:500; text-decoration:none; }
+        .sc-news-item a:hover { text-decoration:underline; }
+        .sc-links { display:flex; gap:12px; margin-top:12px; }
+        .sc-link-btn { background:#2a5f9e; color:white; padding:8px 16px; border-radius:40px; text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px; }
+        .leader-basket-panel { background:#f0f7ff; border-radius:20px; padding:18px; }
+        .leader-basket-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+        .leader-basket-list { max-height:240px; overflow-y:auto; background:white; border-radius:16px; padding:8px; }
+        .leader-basket-item { display:flex; align-items:center; padding:8px 12px; border-bottom:1px solid #eef2f6; font-size:13px; }
+        .leader-basket-item i { color:#dc2626; margin-right:8px; cursor:pointer; }
+        .basket-empty { color:#94a3b8; text-align:center; padding:20px; }
+        .generate-btn { background:#0d9488; color:white; border:none; padding:14px 20px; border-radius:40px; font-weight:600; font-size:16px; cursor:pointer; width:100%; margin-top:16px; transition:all 0.15s; }
+        .generate-btn:hover { background:#0f766e; }
+        .basket-item { display:flex; align-items:center; padding:8px 12px; border-bottom:1px solid #eef2f6; font-size:13px; }
+        .basket-panel { background:#f0f7ff; border-radius:20px; padding:18px; }
+        .basket-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+        .basket-list { max-height:240px; overflow-y:auto; background:white; border-radius:16px; padding:8px; }
+        .peer-table-container { overflow-x:auto; margin:16px 0; max-height:500px; overflow-y:auto; }
+        .peer-table { width:100%; border-collapse:collapse; font-size:13px; min-width:800px; }
+        .peer-table th { background:#1e4bd2; color:white; padding:12px 10px; text-align:left; font-weight:600; white-space:nowrap; }
+        .peer-table td { padding:12px 10px; border-bottom:1px solid #eef2f6; vertical-align:top; }
+        .peer-table tr:hover { background:#fafcff; }
+        .bank-badge { display:inline-block; background:#e9efff; color:#1e4bd2; font-size:11px; padding:2px 8px; border-radius:20px; margin-left:6px; }
+        .news-tag { background:#fff3e0; color:#ea580c; font-size:11px; padding:2px 6px; border-radius:12px; display:inline-block; margin-right:4px; }
+        .footer-note { margin-top:24px; color:#94a3b8; font-size:12px; text-align:right; border-top:1px dashed #cbd5e1; padding-top:16px; }
+        .hr-card { margin-top:20px; }
+        @media (max-width:1200px) {
+            .main-grid { grid-template-columns:1fr 1fr; }
+            .bottom-grid { grid-template-columns:1fr; }
+            .quick-links { grid-template-columns:repeat(4,1fr); }
+            .leaders-grid { grid-template-columns:repeat(2,1fr); }
+        }
+        @media (max-width:800px) {
+            .main-grid { grid-template-columns:1fr; }
+            .quick-links { grid-template-columns:repeat(3,1fr); }
+        }
+        @media (max-width:600px) {
+            .quick-links { grid-template-columns:repeat(2,1fr); }
+            .leaders-grid { grid-template-columns:1fr; }
+            .header { flex-direction:column; align-items:flex-start; gap:16px; }
+        }
     </style>
 </head>
 <body>
 <div class="dashboard">
-    <!-- 头部 -->
     <div class="header">
         <div>
             <h1><i class="fas fa-landmark"></i> 深银·政策月报工作台</h1>
             <div class="date-badge">
                 <i class="far fa-calendar-alt"></i> 2026年4月 · 第22期 
-                <span class="update-time" id="updateTime"><i class="far fa-clock"></i> 更新于 2026-04-19 06:54:51</span>
+                <span class="update-time" id="updateTime"><i class="far fa-clock"></i> 等待首次更新</span>
             </div>
         </div>
         <div class="header-actions">
@@ -29,7 +128,6 @@
         </div>
     </div>
 
-    <!-- 快捷链接 -->
     <div class="quick-links">
         <a href="https://tjj.sz.gov.cn" target="_blank" class="link-card"><i class="fas fa-chart-line"></i><span>深圳统计局</span></a>
         <a href="https://www.nfra.gov.cn/branch/shenzhen/view/pages/index/index.html" target="_blank" class="link-card"><i class="fas fa-shield-alt"></i><span>深圳金融监管局</span></a>
@@ -40,55 +138,200 @@
         <a href="https://hrss.sz.gov.cn" target="_blank" class="link-card"><i class="fas fa-users"></i><span>市人社局</span></a>
     </div>
 
-    <!-- 三列主模块 -->
     <div class="main-grid">
-        <!-- 政府政策 -->
+        <!-- 政府政策 (自动更新) -->
         <div class="card">
-            <div class="card-header">
-                <h2><i class="fas fa-gavel" style="color:#1e4bd2"></i> 政府政策·金融风向</h2>
-                <span class="tag">金融局·统计局</span>
-            </div>
-            <div class="policy-list" id="govPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 暂无数据，请稍后刷新</div></div>
-            </div>
+            <div class="card-header"><h2><i class="fas fa-gavel" style="color:#1e4bd2"></i> 政府政策·金融风向</h2><span class="tag">金融局·统计局</span></div>
+            <div class="policy-list" id="govPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 等待数据更新...</div></div>
         </div>
-        <!-- 监管政策 -->
+        <!-- 监管政策 (自动更新) -->
         <div class="card">
-            <div class="card-header">
-                <h2><i class="fas fa-shield-alt" style="color:#dc2626"></i> 监管政策·银行关切</h2>
-                <span class="tag">外管局·人行·金监</span>
-            </div>
-            <div class="policy-list" id="regulatoryPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 暂无数据，请稍后刷新</div></div>
-            </div>
+            <div class="card-header"><h2><i class="fas fa-shield-alt" style="color:#dc2626"></i> 监管政策·银行关切</h2><span class="tag">外管局·人行·金监</span></div>
+            <div class="policy-list" id="regulatoryPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 等待数据更新...</div></div>
         </div>
         <!-- 领导简介 -->
         <div class="card">
-            <div class="card-header">
-                <h2><i class="fas fa-user-circle" style="color:#1e4bd2;"></i> 领导简介</h2>
-                <span class="tag">勾选放入简历篮</span>
-            </div>
+            <div class="card-header"><h2><i class="fas fa-user-circle" style="color:#1e4bd2;"></i> 领导简介</h2><span class="tag">勾选放入简历篮</span></div>
             <div class="leaders-grid" id="leadersGrid"></div>
-            <div style="margin-top: 12px;">
-                <span style="background:#e9efff; color:#1e4bd2; padding:6px 12px; border-radius:30px; font-size:12px;">
-                    <i class="fas fa-user-check"></i> 已勾选 <span id="leaderCount">0</span> 位领导
-                </span>
-            </div>
+            <div style="margin-top:12px;display:flex;gap:8px;"><span style="background:#e9efff;color:#1e4bd2;padding:6px 12px;border-radius:30px;font-size:12px;"><i class="fas fa-user-check"></i> 已勾选 <span id="leaderCount">0</span> 位领导</span></div>
         </div>
     </div>
 
-    <!-- 图表行、规划处罚行、人事人才卡片、同业表格、底部三卡片等，请从之前完整版复制 -->
-    <!-- 由于篇幅，这里省略了中间部分，但在实际替换时，必须包含所有原有内容，特别是图表、表格、报告篮等 -->
-    <!-- 重要：确保 <script> 标签完整存在且内容正确 -->
+    <!-- 图表行 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:24px;">
+        <div class="chart-box"><h3><i class="fas fa-chart-bar" style="color:#1e4bd2;"></i> 深圳主要经济指标 (2026.1-2)</h3><canvas id="gdpChart"></canvas><div style="font-size:12px;color:#64748b;margin-top:10px;">数据来源：深圳市统计局</div></div>
+        <div class="chart-box"><h3><i class="fas fa-coins"></i> 存贷款规模 (含外资)</h3><canvas id="financeChart"></canvas><div style="font-size:12px;color:#64748b;margin-top:10px;">存款154464.31亿↑10.3% · 贷款100709.91亿↑4.4%</div></div>
+        <div class="chart-box" style="background:#fafdff;"><h3><i class="fas fa-globe"></i> 深圳进出口 & 社消零</h3><canvas id="tradeChart"></canvas><p style="font-size:12px;margin-top:8px;"><i class="fas fa-arrow-up" style="color:#0d9488;"></i> 进出口8242.34亿元，同比+37.3%</p></div>
+    </div>
 
-    <!-- 此处应包含之前完整的其余 HTML 内容（图表、规划处罚、人事人才、同业、底部三卡片、政策篮、footer） -->
+    <!-- 规划 & 处罚行 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+        <div class="card"><div class="card-header"><h2><i class="fas fa-rocket" style="color:#ea580c;"></i> 深圳十五五规划</h2><span class="tag" style="background:#fff3e0;color:#ea580c;">2026-2030</span></div><div style="padding:8px 0;"><div style="background:linear-gradient(135deg,#fff3e0,#fff8e1);padding:16px;border-radius:12px;margin-bottom:12px;"><div style="font-weight:600;color:#c2410c;margin-bottom:8px;"><i class="fas fa-bullseye"></i> 主要目标</div><p style="font-size:13px;line-height:1.7;color:#475569;">高质量发展迈上新台阶，地区生产总值<strong>超过5万亿元</strong>；全社会研发投入强度<strong>超7%</strong>；改革开放迈出新步伐，民生福祉取得新成效。</p></div><a href="https://sz.bendibao.com/news/2026224/998366.htm" target="_blank" style="display:inline-block;margin-top:8px;color:#1e4bd2;text-decoration:none;font-size:13px;"><i class="fas fa-external-link-alt"></i> 查看完整规划</a></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-gavel" style="color:#dc2626;"></i> 监管近期处罚</h2><span class="tag" style="background:#fee2e2;color:#dc2626;">人行·金监</span></div><div style="padding:8px 0;"><div style="border-left:4px solid #dc2626;padding:10px 14px;background:#fef2f2;border-radius:0 10px 10px 0;margin-bottom:10px;"><div style="font-weight:600;color:#991b1b;font-size:14px;margin-bottom:4px;"><i class="fas fa-building-columns"></i> 人行深圳分行</div><p style="font-size:12px;color:#475569;line-height:1.6;">重点处罚领域：支付结算违规、反洗钱不合规、金融统计虚报、征信管理违规等。</p></div><div style="border-left:4px solid #dc2626;padding:10px 14px;background:#fef2f2;border-radius:0 10px 10px 0;margin-bottom:10px;"><div style="font-weight:600;color:#991b1b;font-size:14px;margin-bottom:4px;"><i class="fas fa-shield-alt"></i> 深圳金融监管局</div><p style="font-size:12px;color:#475569;line-height:1.6;">重点处罚领域：贷款三查不尽职、理财销售违规、同业业务风险管理、公司治理缺陷等。</p></div></div></div>
+    </div>
 
-    <!-- 底部 -->
-    <div class="footer-note"><i class="far fa-copy"></i> 每月更新 · 集成七大数据源。</div>
+    <!-- 人事人才卡片 -->
+    <div class="card hr-card" style="margin-bottom:24px;">
+        <div class="card-header"><h2><i class="fas fa-user-tie" style="color:#0d9488"></i> 人事人才·金融专题</h2><span class="tag">人社局·金融银行</span></div>
+        <div class="policy-list" id="hrPolicyList"></div>
+    </div>
+
+    <!-- 同业信息表格 -->
+    <div class="card" style="margin-bottom:24px;">
+        <div class="card-header"><h2><i class="fas fa-chart-simple" style="color:#1e4bd2;"></i> 同业比较·深圳外资银行</h2><span class="tag">39家机构 · 资产超4000亿</span></div>
+        <div style="background:#f0f7ff;padding:12px 16px;border-radius:16px;margin-bottom:16px;"><i class="fas fa-info-circle" style="color:#1e4bd2;"></i> 深圳已集聚9个国家和地区35家银行设立的39家营业性机构。</div>
+        <div class="peer-table-container">
+            <table class="peer-table">
+                <thead><tr><th>银行</th><th>背景</th><th>在深网点</th><th>业务特色</th><th>最新动态</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>渣打银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>大湾区共4网点</td><td>优先私人理财中心</td><td><span class="news-tag">2026.01</span>大湾区首家优先私人理财中心在深圳湾开业</td></tr>
+                    <tr><td><strong>汇丰银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>深圳12个营业网点</td><td>财富管理旗舰网点</td><td><span class="news-tag">2025</span>在深圳、广州新设3家财富管理旗舰网点</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 底部三个卡片 -->
+    <div class="bottom-grid">
+        <div class="card"><div class="card-header"><h2><i class="fas fa-table"></i> 经济数据 · 横向纵向对比</h2></div><table class="metric-table"><tr><th>指标</th><th>2026年1-2月</th><th>同比变化</th></tr><tr><td>规上工业增加值</td><td>+10.4%</td><td class="trend-up">↑ 加快5.0p.p</td></tr><tr><td>固定资产投资</td><td>+0.6%</td><td class="trend-up">↑ 上年末-21.7%</td></tr><tr><td>社会消费品零售总额</td><td>1705.64亿</td><td>+2.6%</td></tr><tr><td>进出口总额</td><td>8242.34亿</td><td class="trend-up">+37.3%</td></tr><tr><td>金融机构存款余额</td><td>154464.31亿</td><td>+10.3%</td></tr><tr><td>金融机构贷款余额</td><td>100709.91亿</td><td>+4.4%</td></tr></table></div>
+        <div class="card sc-card"><div class="card-header"><h2><i class="fab fa-stripe-s"></i> 渣打集团 & 渣打中国</h2></div><div class="sc-news-item"><strong>渣打中国大湾区首家优先私人理财中心落地深圳</strong><p style="font-size:12px;opacity:0.9;">1月29日，渣打中国深圳湾支行优先私人理财中心正式开业。</p></div><div class="sc-links"><a href="https://www.sc.com/cn/" target="_blank" class="sc-link-btn">渣打中国</a></div></div>
+        <div class="card" style="background:#f9fcff;"><div class="card-header"><h2><i class="fas fa-address-card"></i> 领导简历篮</h2><span class="tag" id="leaderBasketCount">0位</span></div><div class="leader-basket-panel"><div class="leader-basket-header"><span><i class="fas fa-info-circle"></i> 勾选领导后自动加入</span><button class="btn-outline" id="clearLeaderBasketBtn" style="padding:6px 16px;"><i class="fas fa-trash"></i> 清空</button></div><div class="leader-basket-list" id="leaderBasketListContainer"><div class="basket-empty">暂无选中领导</div></div><button class="generate-btn" id="confirmGenerateLeaderResumeBtn"><i class="fas fa-file-word"></i> 生成领导简历</button></div></div>
+    </div>
+
+    <!-- 政策篮 -->
+    <div class="card" style="margin-top:24px;background:#f9fcff;">
+        <div class="card-header"><h2><i class="fas fa-basket-shopping"></i> 政策报告篮 · 已选政策</h2><span class="tag" id="policyBasketHeaderCount">0项</span></div>
+        <div class="basket-panel"><div class="basket-header"><span><i class="fas fa-info-circle"></i> 勾选政策后自动加入</span><button class="btn-outline" id="clearPolicyBasketBtn" style="padding:6px 16px;"><i class="fas fa-trash"></i> 清空</button></div><div class="basket-list" id="policyBasketListContainer"><div class="basket-empty">暂无选中政策</div></div><button class="generate-btn" id="confirmGeneratePolicyReportBtn"><i class="fas fa-file-word"></i> 确认并生成Word报告</button></div>
+    </div>
+
+    <div class="footer-note"><i class="far fa-copy"></i> 每月更新 · 集成七大数据源。报告生成：仿宋12号，简历：中文12号仿宋，标题黑体。</div>
 </div>
 
 <script>
-    // 完整 JS 逻辑，包含 leadersData, hrPolicyData, 交互函数，以及兼容动态政策列表的 basket 逻辑
-    // 请确保从之前工作版本中复制完整的 <script> 部分，尤其是 openResumeInNewTab 和 generatePolicyReport 函数
-    // 同时需要修改政策篮逻辑，使其能从 DOM 中读取动态添加的复选框，而不是依赖硬编码数组
+(function(){"use strict";
+    const leadersData = [
+        { id:'ld1',name:'孟凡利',title:'广东省委副书记、省政府省长',dept:'广东省人民政府',gender:'男',birth:'1965年9月',political:'中共党员',ethnicity:'汉族',education:'经济学博士，教授',career:'1986年7月参加工作。曾任山东经济学院会计系教师...2025年10月当选广东省省长。',appointment:'现任第二十届中央委员，广东省委副书记，省政府省长。',activity:'2025年4月与中国银行行长会谈...' },
+        { id:'ld2',name:'李运',title:'广东省人民政府副省长',dept:'分管金融、人社、住建等领域',gender:'男',birth:'1973年9月',political:'中共党员',ethnicity:'汉族',education:'武汉大学经济学博士，正高级经济师',career:'长期在银行系统工作...2025年3月任广东省副省长。',appointment:'2025年3月任广东省人民政府副省长。',activity:'2025年8月出席全省金融系统党建工作会议...' },
+        { id:'ld3',name:'于海平',title:'省委金融办副主任、省地方金融管理局局长',dept:'广东省委金融委员会办公室',gender:'男',birth:'1972年4月',political:'中共党员',ethnicity:'汉族',education:'在职研究生学历，工商管理硕士',career:'历任中国进出口银行...2024年1月任省委金融办副主任。',appointment:'2024年1月任省委金融委员会办公室副主任。',activity:'2024年12月带队赴汕尾调研...' },
+        { id:'ld4',name:'靳磊',title:'广东省委常委、深圳市委书记',dept:'中共深圳市委',gender:'男',birth:'1970年2月',political:'中共党员',ethnicity:'汉族',education:'武汉大学行政管理专业毕业，厦门大学经济学硕士',career:'1992年7月参加工作...2026年3月任深圳市委书记。',appointment:'2026年3月任广东省委常委、深圳市委书记。',activity:'2026年3月履新深圳...' },
+        { id:'ld5',name:'覃伟中',title:'深圳市委副书记、市长',dept:'深圳市人民政府',gender:'男',birth:'1971年7月',political:'中共党员',ethnicity:'汉族',education:'清华大学工学博士，高级工程师',career:'1996年7月参加工作...2021年5月当选深圳市市长。',appointment:'2021年5月当选深圳市市长。',activity:'2025年政府工作报告首提建设"产业金融中心"...' },
+        { id:'ld6',name:'罗晃浩',title:'深圳市政府副市长',dept:'分管金融、商务、港澳事务',gender:'男',birth:'1973年10月',political:'中共党员',ethnicity:'汉族',education:'北京大学行政管理学本科，中山大学工商管理硕士',career:'长期在中国建设银行工作...2024年5月任深圳市副市长。',appointment:'2024年5月任深圳市副市长。',activity:'2024年5月履新...' },
+        { id:'ld7',name:'时卫干',title:'深圳市地方金融管理局局长',dept:'深圳市地方金融管理局',gender:'男',birth:'1975年8月',political:'中共党员',ethnicity:'汉族',education:'中国社会科学院研究生院经济学博士',career:'1997年8月参加工作...2024年2月任市地方金融管理局局长。',appointment:'2024年2月任深圳市地方金融管理局局长。',activity:'2024年9月表示将聚深圳金融之力...' },
+        { id:'ld8',name:'蔡英权',title:'深圳市市场监管局党组书记、局长',dept:'深圳市市场监督管理局',gender:'男',birth:'1976年9月',political:'中共党员',ethnicity:'汉族',education:'中山大学法学学士',career:'1998年7月参加工作...2023年9月任市市场监管局局长。',appointment:'2023年9月任深圳市市场监管局党组书记、局长。',activity:'2024年5月在青年工作座谈会上阐述思考...' },
+        { id:'ld9',name:'张非梦',title:'深圳市商务局党组书记、局长',dept:'深圳市商务局',gender:'女',birth:'1974年8月14日',political:'中共党员',ethnicity:'汉族',education:'中山大学管理学硕士',career:'历任深圳市义务工作者联合会主任科员...2021年4月任局长。',appointment:'2021年4月任深圳市商务局党组书记、局长。',activity:'2025年8月表示深圳坚持"政策+活动"双轮驱动...' },
+        { id:'ld10',name:'包祖明',title:'国家金融监督管理总局广东监管局党委书记、局长',dept:'广东金融监管局',gender:'男',birth:'1971年4月',political:'中共党员',ethnicity:'汉族',education:'经济学博士，高级经济师',career:'1997年7月参加工作...2025年3月任广东金融监管局局长。',appointment:'2025年3月任广东金融监管局局长。',activity:'2025年强调深耕蓝色金融...' },
+        { id:'ld11',name:'任庆华',title:'国家金融监督管理总局深圳监管局党委书记、局长',dept:'深圳金融监管局',gender:'男',birth:'1970年7月',political:'中共党员',ethnicity:'满族',education:'经济学博士',career:'2013年11月起任广东银监局副局长...2025年3月任深圳金融监管局局长。',appointment:'2025年3月任深圳金融监管局局长。',activity:'2021年4月参加银行业保险业例行新闻发布会...' },
+        { id:'ld12',name:'温信祥',title:'人行深圳市分行行长、外汇局深圳市分局局长',dept:'中国人民银行深圳市分行',gender:'男',birth:'1970年',political:'中共党员',ethnicity:'汉族',education:'北京大学经济学硕士，清华五道口金融学院博士',career:'1988年考入北京大学...2022年12月任人行深圳市分行行长。',appointment:'2022年12月任人行深圳市分行行长。',activity:'2024年2月在深圳两会期间带来多份建议...' }
+    ];
+    const hrPolicyData = [
+        { id:'hr1',badge:'青年人才',badgeClass:'green',title:'青年人才来深发展服务保障若干措施',link:'https://hrss.sz.gov.cn/gkmlpt/content/12/12551/post_12551351.html#25167',source:'深圳市人社局',date:'2025-12-16',summary:'年龄45岁以下首次来深就业创业可申请过渡性住房或安居补贴；博士入户补贴10万元、硕士最高5万元、本科最高3万元。' },
+        { id:'hr2',badge:'职称考试',badgeClass:'blue',title:'2026年度高级经济专业技术资格考试通知',link:'https://hrss.sz.gov.cn/szksy/ztzl/zyjsks/zyjskslb/jjzy/zxksxx_89396/content/post_12702219.html',source:'深圳市人社局',date:'2026-03-26',summary:'银行业专业人员中级职业资格可对应中级经济专业技术资格；设金融等10个专业类别。' },
+        { id:'hr3',badge:'稳岗贷款',badgeClass:'orange',title:'与中国银行深圳分行合作金融助企稳岗扩岗',link:'https://hrss.sz.gov.cn/gkmlpt/content/12/12199/post_12199614.html#1690',source:'深圳市人社局',date:'2025-05-28',summary:'小微企业稳岗扩岗贷款单户最高5000万元，利率最低2.9%；个人最高1000万元。' }
+    ];
+    let selectedLeaders = new Set();
+    function renderLeadersGrid(){
+        const grid=document.getElementById('leadersGrid');
+        grid.innerHTML='';
+        leadersData.forEach(ld=>{
+            const card=document.createElement('div');
+            card.className='leader-card'+(selectedLeaders.has(ld.id)?' selected':'');
+            const chk=document.createElement('input');
+            chk.type='checkbox'; chk.className='leader-checkbox'; chk.dataset.id=ld.id;
+            chk.checked=selectedLeaders.has(ld.id);
+            chk.addEventListener('change',e=>{
+                if(e.target.checked) selectedLeaders.add(ld.id); else selectedLeaders.delete(ld.id);
+                renderLeadersGrid(); updateLeaderBasketUI();
+            });
+            const avatar=document.createElement('div'); avatar.className='leader-avatar';
+            const ext=(ld.name==='孟凡利'||ld.name==='包祖明'||ld.name==='时卫干'||ld.name==='李运')?'png':'jpeg';
+            const img=document.createElement('img'); img.src=ld.name+'.'+ext; img.alt=ld.name;
+            img.onerror=()=>{ avatar.style.background='#1e4bd2'; avatar.textContent=ld.name.charAt(0); img.style.display='none'; };
+            avatar.appendChild(img);
+            const name=document.createElement('h4'); name.textContent=ld.name;
+            const title=document.createElement('div'); title.className='leader-title'; title.textContent=ld.title;
+            const dept=document.createElement('div'); dept.className='leader-dept'; dept.textContent=ld.dept;
+            card.appendChild(chk); card.appendChild(avatar); card.appendChild(name); card.appendChild(title); card.appendChild(dept);
+            grid.appendChild(card);
+        });
+        document.getElementById('leaderCount').textContent=selectedLeaders.size;
+    }
+    function updateLeaderBasketUI(){
+        const list=leadersData.filter(ld=>selectedLeaders.has(ld.id));
+        document.getElementById('leaderBasketCount').textContent=list.length+'位';
+        const cont=document.getElementById('leaderBasketListContainer');
+        cont.innerHTML=list.length?'' :'<div class="basket-empty">暂无选中领导</div>';
+        list.forEach(ld=>{ const div=document.createElement('div'); div.className='leader-basket-item';
+            div.innerHTML=`<i class="fas fa-times-circle" data-id="${ld.id}" style="cursor:pointer;color:#dc2626;"></i><span><strong>${ld.name}</strong> — ${ld.title}</span>`;
+            cont.appendChild(div); });
+        cont.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',e=>{
+            selectedLeaders.delete(e.target.dataset.id); renderLeadersGrid(); updateLeaderBasketUI();
+        }));
+    }
+    function renderHrList(){
+        const cont=document.getElementById('hrPolicyList');
+        hrPolicyData.forEach(p=>{
+            const div=document.createElement('div'); div.className='policy-item';
+            div.innerHTML=`<input type="checkbox" class="policy-checkbox" id="chk-${p.id}" data-id="${p.id}">
+                <div class="policy-content"><span class="policy-badge ${p.badgeClass}">${p.badge}</span>
+                <div class="policy-title"><a href="${p.link}" target="_blank">${p.title}</a></div>
+                <div class="policy-meta"><span><i class="far fa-building"></i> ${p.source}</span><span><i class="far fa-calendar"></i> ${p.date}</span></div>
+                <p class="news-summary">${p.summary}</p></div>`;
+            cont.appendChild(div);
+        });
+    }
+    function getAllPolicyItems(){
+        const items=[]; document.querySelectorAll('.policy-item').forEach(el=>{
+            const chk=el.querySelector('input[type=checkbox]'); const a=el.querySelector('.policy-title a');
+            const src=el.querySelector('.policy-meta span:first-child');
+            if(chk&&a) items.push({ id:chk.dataset.id||chk.id, title:a.textContent.trim(), source:src?src.textContent.trim():'', checked:chk.checked });
+        }); return items;
+    }
+    function updatePolicyBasketUI(){
+        const items=getAllPolicyItems().filter(p=>p.checked);
+        document.getElementById('basketCount').textContent=items.length;
+        document.getElementById('policyBasketHeaderCount').textContent=items.length+'项';
+        const cont=document.getElementById('policyBasketListContainer');
+        cont.innerHTML=items.length? '' :'<div class="basket-empty">暂无选中政策</div>';
+        items.forEach(p=>{ const div=document.createElement('div'); div.className='basket-item';
+            div.innerHTML=`<i class="fas fa-times-circle" data-id="${p.id}" style="cursor:pointer;color:#dc2626;"></i><span><strong>${p.title}</strong> <span style="color:#64748b;">${p.source}</span></span>`;
+            cont.appendChild(div); });
+        cont.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',e=>{
+            const chk=document.getElementById(`chk-${e.target.dataset.id}`)||document.querySelector(`input[data-id="${e.target.dataset.id}"]`);
+            if(chk){ chk.checked=false; chk.dispatchEvent(new Event('change',{bubbles:true})); } updatePolicyBasketUI();
+        }));
+    }
+    document.addEventListener('change',e=>{ if(e.target.classList.contains('policy-checkbox')) updatePolicyBasketUI(); });
+    function generateResume(){
+        if(selectedLeaders.size===0){ alert('请至少勾选一位领导'); return; }
+        const list=leadersData.filter(ld=>selectedLeaders.has(ld.id));
+        const d=new Date(); const dateStr=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+        let html='<html><head><meta charset="UTF-8"><title>领导简历</title><style>body{font-family:仿宋;font-size:14pt;}</style></head><body>';
+        list.forEach(ld=>{ html+=`<h2>${ld.name}</h2><p><strong>职务：</strong>${ld.title}<br><strong>性别：</strong>${ld.gender} ${ld.birth}<br><strong>民族：</strong>${ld.ethnicity}<br><strong>学历：</strong>${ld.education}<br><strong>履历：</strong>${ld.career}<br><strong>活动：</strong>${ld.activity}</p><hr>`; });
+        html+=`<p>生成日期：${dateStr}</p></body></html>`;
+        const w=window.open(); w.document.write(html); w.document.close();
+    }
+    function generateReport(){
+        const items=getAllPolicyItems().filter(p=>p.checked);
+        if(items.length===0){ alert('请至少勾选一项政策'); return; }
+        const d=new Date(); const dateStr=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+        let content=`<html><head><meta charset="UTF-8"><title>分行月度行政报告</title><style>body{font-family:仿宋;font-size:14pt;}</style></head><body><h1>分行月度行政报告</h1><p>${dateStr}</p>`;
+        items.forEach((p,i)=>{ content+=`<h3>${i+1}. ${p.title}</h3><p>${p.source} | ${p.summary||''}</p>`; });
+        content+='<h2>十五五规划相关内容</h2><p>地区生产总值超过5万亿元...</p><h2>监管处罚信息</h2><p>支付结算违规、反洗钱不合规...</p><h2>经济数据</h2><p>存款154464.31亿...</p></body></html>';
+        const blob=new Blob([content],{type:'application/msword'});
+        const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`分行月度行政报告_${d.getFullYear()}年${d.getMonth()+1}月.doc`; a.click();
+    }
+    document.getElementById('generateResumeBtn').addEventListener('click',generateResume);
+    document.getElementById('confirmGenerateLeaderResumeBtn').addEventListener('click',generateResume);
+    document.getElementById('generateReportBtn').addEventListener('click',generateReport);
+    document.getElementById('confirmGeneratePolicyReportBtn').addEventListener('click',generateReport);
+    document.getElementById('clearLeaderBasketBtn').addEventListener('click',()=>{ selectedLeaders.clear(); renderLeadersGrid(); updateLeaderBasketUI(); });
+    document.getElementById('clearPolicyBasketBtn').addEventListener('click',()=>{ document.querySelectorAll('.policy-checkbox').forEach(cb=>{ cb.checked=false; cb.dispatchEvent(new Event('change',{bubbles:true})); }); });
+    document.getElementById('viewBasketBtn').addEventListener('click',()=>document.querySelector('.bottom-grid').scrollIntoView({behavior:'smooth'}));
+    renderLeadersGrid(); renderHrList(); updateLeaderBasketUI(); updatePolicyBasketUI();
+    new Chart(document.getElementById('gdpChart'),{type:'bar',data:{labels:['规上工业','固投','社消零'],datasets:[{label:'同比增速%',data:[10.4,0.6,2.6],backgroundColor:['#1e4bd2','#ea580c','#0d9488']}]}});
+    new Chart(document.getElementById('financeChart'),{type:'bar',data:{labels:['存款余额','贷款余额'],datasets:[{label:'2月末',data:[154464.31,100709.91],backgroundColor:'#2563eb'}]}});
+    new Chart(document.getElementById('tradeChart'),{type:'bar',data:{labels:['出口','进口','社消零'],datasets:[{label:'金额(亿)',data:[4943.63,3298.70,1705.64],backgroundColor:['#0f766e','#0284c7','#b45309']}]}});
+})();
 </script>
 </body>
 </html>
