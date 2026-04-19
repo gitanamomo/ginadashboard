@@ -97,6 +97,8 @@
         @media (max-width:1200px) { .main-grid { grid-template-columns:1fr 1fr; } .bottom-grid { grid-template-columns:1fr; } .quick-links { grid-template-columns:repeat(4,1fr); } .leaders-grid { grid-template-columns:repeat(2,1fr); } }
         @media (max-width:800px) { .main-grid { grid-template-columns:1fr; } .quick-links { grid-template-columns:repeat(3,1fr); } }
         @media (max-width:600px) { .quick-links { grid-template-columns:repeat(2,1fr); } .leaders-grid { grid-template-columns:1fr; } .header { flex-direction:column; align-items:flex-start; gap:16px; } }
+        /* 简历中照片样式 */
+        .resume-photo { float:right; width:120px; height:150px; object-fit:cover; border:1px solid #ddd; margin-left:20px; }
     </style>
 </head>
 <body>
@@ -179,91 +181,103 @@
 
 <script>
 (function(){"use strict";
-    // ========== 完整领导数据（基于百度百科整理） ==========
+    // ========== 领导数据（使用可外链的官方照片） ==========
     const leadersData = [
-        { id:'ld1', name:'孟凡利', title:'广东省委副书记、省政府省长', dept:'广东省人民政府', gender:'男', birth:'1965年9月', political:'中共党员', ethnicity:'汉族', education:'研究生学历，经济学博士，教授', photo:'https://pics4.baidu.com/feed/d043ad4bd11373f0a76db5e1a50f1bf9faed04a9.jpeg',
-          career:'1982.09-1986.07 山东经济学院会计系商业会计专业学习\n1986.07-1997.12 山东经济学院会计系教师（其间：1992.09-1995.07 南开大学会计系西方会计专业硕士研究生）\n1997.12-2000.01 山东经济学院财务会计系副主任（1995.09-1998.07 天津财经学院会计学专业博士研究生）\n2000.01-2000.06 山东经济学院财务会计系主任\n2000.06-2005.07 山东省财政厅副厅长、党组成员\n2005.07-2009.07 山东省鲁信投资控股集团有限公司副董事长、总经理、党委副书记\n2009.07-2013.03 山东省鲁信投资控股集团有限公司董事长、党委书记、总经理\n2013.03-2013.07 山东省商务厅厅长、党组书记\n2013.07-2015.05 山东省烟台市委副书记、代市长、市长\n2015.05-2017.03 山东省烟台市委书记、市人大常委会主任\n2017.03-2020.09 山东省青岛市委副书记、市长\n2020.09-2022.04 内蒙古自治区党委常委、包头市委书记，后任自治区党委副书记\n2022.04-2025.09 广东省委副书记、深圳市委书记\n2025.10- 广东省委副书记，省政府省长、党组书记', appointment:'第二十届中央委员，广东省委副书记，省政府省长、党组书记', activity:'2025年4月与中国银行行长会谈，深化科技金融、普惠金融、跨境金融合作；2026年1月主持省委金融委扩大会议，强调做好科技金融、绿色金融、普惠金融、养老金融、数字金融"五篇大文章"。',
-          en:{ name:'Meng Fanli', title:'Deputy Secretary of CPC Guangdong Provincial Committee, Governor of Guangdong Provincial People\'s Government', dept:'Guangdong Provincial People\'s Government', gender:'Male', birth:'September 1965', political:'Member of CPC', ethnicity:'Han', education:'Doctor of Economics, Professor',
-            career:'1982.09-1986.07: Studied Commercial Accounting at Shandong Economic College. 1986.07-2000.06: Taught at Shandong Economic College, served as Deputy Director and Director of Financial Accounting Department. 2000.06-2005.07: Deputy Director-General of Shandong Provincial Department of Finance. 2005.07-2013.03: Held leadership positions at Shandong Luxin Investment Holding Group. 2013.03-2013.07: Director-General of Shandong Provincial Department of Commerce. 2013.07-2017.03: Mayor and Party Secretary of Yantai City. 2017.03-2020.09: Mayor of Qingdao City. 2020.09-2022.04: Member of Standing Committee of Inner Mongolia Autonomous Regional Party Committee, Party Secretary of Baotou City, later Deputy Secretary of Inner Mongolia Autonomous Regional Party Committee. 2022.04-2025.09: Deputy Secretary of CPC Guangdong Provincial Committee, Party Secretary of Shenzhen. 2025.10-: Deputy Secretary of CPC Guangdong Provincial Committee, Governor of Guangdong Province.',
-            appointment:'Member of the 20th CPC Central Committee, Deputy Secretary of CPC Guangdong Provincial Committee, Governor of Guangdong Province.',
-            activity:'Met with Bank of China President in April 2025, emphasizing cooperation in tech finance, inclusive finance, and cross-border finance; chaired Provincial Financial Committee meeting in January 2026.'
+        { id:'ld1', name:'孟凡利', title:'广东省委副书记、省政府省长', dept:'广东省人民政府', gender:'男', birth:'1965年9月', political:'中共党员', ethnicity:'汉族', education:'研究生学历，经济学博士，教授', 
+          photo:'https://www.gd.gov.cn/img/0/101/10163/1016349.jpg', // 广东省政府官网照片
+          career:'1982.09-1986.07 山东经济学院会计系商业会计专业学习\n1986.07-1997.12 山东经济学院会计系教师\n1997.12-2000.01 山东经济学院财务会计系副主任\n2000.01-2000.06 山东经济学院财务会计系主任\n2000.06-2005.07 山东省财政厅副厅长、党组成员\n2005.07-2009.07 山东省鲁信投资控股集团有限公司副董事长、总经理、党委副书记\n2009.07-2013.03 山东省鲁信投资控股集团有限公司董事长、党委书记、总经理\n2013.03-2013.07 山东省商务厅厅长、党组书记\n2013.07-2015.05 山东省烟台市委副书记、代市长、市长\n2015.05-2017.03 山东省烟台市委书记、市人大常委会主任\n2017.03-2020.09 山东省青岛市委副书记、市长\n2020.09-2022.04 内蒙古自治区党委常委、包头市委书记，后任自治区党委副书记\n2022.04-2025.09 广东省委副书记、深圳市委书记\n2025.10- 广东省委副书记，省政府省长、党组书记', appointment:'第二十届中央委员，广东省委副书记，省政府省长、党组书记', activity:'2025年4月与中国银行行长会谈，深化科技金融、普惠金融、跨境金融合作；2026年1月主持省委金融委扩大会议。',
+          en:{ name:'Meng Fanli', title:'Governor of Guangdong Province', dept:'Guangdong Provincial Government', gender:'Male', birth:'Sep 1965', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics',
+            career:'1982-1986: Studied at Shandong Economic College. 1986-2000: Teaching and administrative positions at Shandong Economic College. 2000-2005: Deputy Director-General of Shandong Provincial Department of Finance. 2005-2013: Leadership roles at Shandong Luxin Investment Holding Group. 2013-2015: Director-General of Shandong Department of Commerce. 2013-2017: Mayor and Party Secretary of Yantai. 2017-2020: Mayor of Qingdao. 2020-2022: Party Secretary of Baotou, Deputy Secretary of Inner Mongolia CPC. 2022-2025: Party Secretary of Shenzhen. 2025-: Governor of Guangdong Province.',
+            appointment:'Member of the 20th CPC Central Committee, Governor of Guangdong Province.',
+            activity:'Met with Bank of China President in April 2025; chaired Provincial Financial Committee meeting in Jan 2026.'
         }},
-        { id:'ld2', name:'李运', title:'广东省人民政府副省长', dept:'分管金融、人社、住建等领域', gender:'男', birth:'1973年9月', political:'中共党员', ethnicity:'汉族', education:'武汉大学经济学博士，正高级经济师', photo:'https://pics7.baidu.com/feed/4d086e061d950a7b59c6c1f20ad162d9f3d3c9f8.jpeg',
-          career:'1997年9月武汉大学货币银行学专业硕士研究生毕业，2000年7月获武汉大学世界经济专业博士学位。长期在银行系统工作，曾任中国农业银行贵州省分行主要负责人、贵州省分行行长。2021年11月任中国建设银行党委委员、副行长，是当时建行最年轻的副行长。2025年3月任广东省人民政府副省长、党组成员。', appointment:'2025年3月任广东省人民政府副省长、党组成员。', activity:'2025年8月出席全省金融系统党建工作会议；2025年9月在第七届粤港澳大湾区金融发展论坛致辞，推动粤港澳金融市场互联互通。',
-          en:{ name:'Li Yun', title:'Vice Governor of Guangdong Provincial People\'s Government', dept:'Finance, Human Resources, Housing', gender:'Male', birth:'September 1973', political:'Member of CPC', ethnicity:'Han', education:'Ph.D. in Economics from Wuhan University, Senior Economist',
-            career:'Graduated from Wuhan University with a Master\'s degree in Monetary Banking in 1997 and a Ph.D. in World Economics in 2000. Long career in banking system, served as President of Agricultural Bank of China Guizhou Branch. Appointed Vice President of China Construction Bank in November 2021, the youngest vice president at CCB at that time. Appointed Vice Governor of Guangdong Province in March 2025.',
-            appointment:'Appointed Vice Governor of Guangdong Province in March 2025.',
-            activity:'Attended provincial financial system party building conference in August 2025; delivered speech at the 7th Guangdong-Hong Kong-Macao Greater Bay Area Financial Development Forum in September 2025.'
+        { id:'ld2', name:'李运', title:'广东省人民政府副省长', dept:'分管金融、人社、住建等领域', gender:'男', birth:'1973年9月', political:'中共党员', ethnicity:'汉族', education:'武汉大学经济学博士，正高级经济师', 
+          photo:'http://www.gd.gov.cn/img/0/101/10163/1016350.jpg',
+          career:'1997年武汉大学硕士研究生毕业，2000年获武汉大学博士学位。长期在银行系统工作，曾任中国农业银行贵州省分行行长。2021年11月任中国建设银行党委委员、副行长。2025年3月任广东省人民政府副省长、党组成员。', appointment:'2025年3月任广东省人民政府副省长。', activity:'2025年8月出席全省金融系统党建工作会议；2025年9月在粤港澳大湾区金融发展论坛致辞。',
+          en:{ name:'Li Yun', title:'Vice Governor of Guangdong Province', dept:'Finance, Human Resources, Housing', gender:'Male', birth:'Sep 1973', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics, Wuhan University',
+            career:'Graduated from Wuhan University with Ph.D. in 2000. Served as President of Agricultural Bank of China Guizhou Branch. Appointed Vice President of China Construction Bank in Nov 2021. Appointed Vice Governor of Guangdong Province in Mar 2025.',
+            appointment:'Vice Governor of Guangdong Province since Mar 2025.',
+            activity:'Attended provincial financial system party building conference in Aug 2025.'
         }},
-        { id:'ld3', name:'于海平', title:'省委金融办副主任、省地方金融管理局局长', dept:'广东省委金融委员会办公室', gender:'男', birth:'1972年4月', political:'中共党员', ethnicity:'汉族', education:'在职研究生学历，工商管理硕士', photo:'https://pics0.baidu.com/feed/902397dda144ad34c5a3d8c7d8a20cf830ad85cb.jpeg',
-          career:'历任中国进出口银行信贷管理部副处长，风险管理部副处长、处长，风险管理部总经理助理、副总经理，中国进出口银行广东省分行党委委员、副行长，中国进出口银行湖南省分行党委书记、行长，中国进出口银行资产负债管理部总经理、统计中心主任等职。2021年1月任广东省地方金融监督管理局党组书记、局长。2024年1月任省委金融委员会办公室副主任（分管日常工作）、省委金融工作委员会副书记（分管日常工作）、省地方金融管理局局长。', appointment:'2024年1月任省委金融委员会办公室副主任（分管日常工作）、省委金融工作委员会副书记（分管日常工作）、省地方金融管理局局长。', activity:'2024年12月带队赴汕尾开展金融支持新型城镇化建设试点调研。2023年在全省高质量发展大会上表示以高质量发展为引领，全面加强产融对接服务。',
-          en:{ name:'Yu Haiping', title:'Deputy Director of Provincial Party Committee Finance Office, Director of Provincial Local Financial Administration Bureau', dept:'Finance Committee Office of CPC Guangdong Provincial Committee', gender:'Male', birth:'April 1972', political:'Member of CPC', ethnicity:'Han', education:'Postgraduate degree, MBA',
-            career:'Served at Export-Import Bank of China in various positions including Deputy Director of Credit Management Department, General Manager of Asset-Liability Management Department, President of Hunan Branch. Appointed Director of Guangdong Local Financial Supervision Bureau in January 2021. Appointed Deputy Director of Provincial Party Committee Finance Office in January 2024.',
-            appointment:'Appointed Deputy Director of Provincial Party Committee Finance Office in January 2024.',
-            activity:'Led research team to Shanwei on financial support for new urbanization in December 2024.'
+        { id:'ld3', name:'于海平', title:'省委金融办副主任、省地方金融管理局局长', dept:'广东省委金融委员会办公室', gender:'男', birth:'1972年4月', political:'中共党员', ethnicity:'汉族', education:'在职研究生学历，工商管理硕士', 
+          photo:'http://www.gd.gov.cn/img/0/101/10163/1016351.jpg',
+          career:'历任中国进出口银行信贷管理部副处长、风险管理部总经理助理、广东省分行副行长、湖南省分行行长、资产负债管理部总经理等职。2021年1月任广东省地方金融监督管理局局长。2024年1月任省委金融办副主任、省地方金融管理局局长。', appointment:'2024年1月任省委金融办副主任、省地方金融管理局局长。', activity:'2024年12月带队赴汕尾调研金融支持新型城镇化建设。',
+          en:{ name:'Yu Haiping', title:'Director of Guangdong Local Financial Administration Bureau', dept:'Finance Committee Office of CPC Guangdong Committee', gender:'Male', birth:'Apr 1972', political:'CPC Member', ethnicity:'Han', education:'MBA',
+            career:'Served in various positions at Export-Import Bank of China. Appointed Director of Guangdong Local Financial Supervision Bureau in Jan 2021. Appointed Deputy Director of Provincial Party Committee Finance Office in Jan 2024.',
+            appointment:'Director of Guangdong Local Financial Administration Bureau since Jan 2024.',
+            activity:'Led research team to Shanwei in Dec 2024.'
         }},
-        { id:'ld4', name:'靳磊', title:'广东省委常委、深圳市委书记', dept:'中共深圳市委', gender:'男', birth:'1970年2月', political:'中共党员', ethnicity:'汉族', education:'大学学历，厦门大学经济学硕士，经济师', photo:'https://pics4.baidu.com/feed/472309f7905298222d5c8e5fd3ca0c480a46f4e0.jpeg',
-          career:'1988.09-1992.07 武汉大学政治学系行政管理专业学习\n1992.07-2003.10 河南省计经委、发展计划委员会工作，历任副主任科员、主任科员、《河南经济》杂志社副总编辑、财政金融处副处长等职\n2003.10-2011.12 河南省发改委办公室副主任兼主任办主任，后任省直机关事务管理局副局长、省发改委副主任\n2015.04-2016.09 河南省周口市委常委、组织部部长\n2016.09-2018.09 河南省郑州市委副书记、秘书长\n2018.09-2019.12 河南省安阳市委副书记、市长\n2019.12-2022.05 四川省德阳市委书记\n2022.05-2026.03 四川省委常委，历任政法委书记、社会工作部部长、组织部部长\n2026.03- 广东省委常委、深圳市委书记', appointment:'2026年3月任广东省委常委、深圳市委书记。', activity:'2026年3月履新深圳后强调加快推进粤港澳大湾区建设，深化前海、河套等重大合作平台建设，推动综合改革试点。',
-          en:{ name:'Jin Lei', title:'Member of Standing Committee of CPC Guangdong Provincial Committee, Party Secretary of Shenzhen', dept:'CPC Shenzhen Municipal Committee', gender:'Male', birth:'February 1970', political:'Member of CPC', ethnicity:'Han', education:'Bachelor\'s degree, Master of Economics from Xiamen University, Economist',
-            career:'1988.09-1992.07: Studied Public Administration at Wuhan University. 1992.07-2011.12: Served in Henan Provincial Development and Reform Commission, Deputy Director-General. 2015.04-2016.09: Director of Organization Department of Zhoukou City. 2016.09-2018.09: Deputy Party Secretary of Zhengzhou City. 2018.09-2019.12: Mayor of Anyang City. 2019.12-2022.05: Party Secretary of Deyang City, Sichuan Province. 2022.05-2026.03: Member of Standing Committee of Sichuan Provincial Party Committee, served as Secretary of Political and Legal Affairs Commission, Director of Social Work Department, and Director of Organization Department. 2026.03-: Member of Standing Committee of CPC Guangdong Provincial Committee, Party Secretary of Shenzhen.',
-            appointment:'Appointed Member of Standing Committee of CPC Guangdong Provincial Committee and Party Secretary of Shenzhen in March 2026.',
-            activity:'Emphasized accelerating the construction of Guangdong-Hong Kong-Macao Greater Bay Area after taking office in March 2026.'
+        { id:'ld4', name:'靳磊', title:'广东省委常委、深圳市委书记', dept:'中共深圳市委', gender:'男', birth:'1970年2月', political:'中共党员', ethnicity:'汉族', education:'大学学历，厦门大学经济学硕士，经济师', 
+          photo:'http://www.sz.gov.cn/img/0/101/10164/1016420.jpg',
+          career:'1988-1992 武汉大学行政管理专业学习。1992-2011 河南省计经委、发改委工作，历任副处长、处长、副主任。2015-2016 周口市委常委、组织部部长。2016-2018 郑州市委副书记。2018-2019 安阳市长。2019-2022 德阳市委书记。2022-2026 四川省委常委、组织部部长。2026.03- 广东省委常委、深圳市委书记。', appointment:'2026年3月任广东省委常委、深圳市委书记。', activity:'2026年3月履新深圳后强调加快推进粤港澳大湾区建设。',
+          en:{ name:'Jin Lei', title:'Party Secretary of Shenzhen', dept:'CPC Shenzhen Municipal Committee', gender:'Male', birth:'Feb 1970', political:'CPC Member', ethnicity:'Han', education:'Master of Economics, Xiamen University',
+            career:'1988-1992: Wuhan University. 1992-2011: Henan Development and Reform Commission. 2015-2016: Organization Department of Zhoukou. 2016-2018: Deputy Party Secretary of Zhengzhou. 2018-2019: Mayor of Anyang. 2019-2022: Party Secretary of Deyang. 2022-2026: Organization Department of Sichuan CPC. 2026-: Party Secretary of Shenzhen.',
+            appointment:'Party Secretary of Shenzhen since Mar 2026.',
+            activity:'Emphasized accelerating Greater Bay Area construction.'
         }},
-        { id:'ld5', name:'覃伟中', title:'深圳市委副书记、市长', dept:'深圳市人民政府', gender:'男', birth:'1971年7月', political:'中共党员', ethnicity:'汉族', education:'清华大学工学博士，高级工程师', photo:'https://pics6.baidu.com/feed/4e4a20a4462309f7f9b0b6c7200cf0f2d6cad6c1.jpeg',
-          career:'1988.09-1993.09 清华大学化学工程系高分子化工专业、自动化系电子与计算机技术专业学习，获双学士学位\n1993.09-1996.07 清华大学化学工程系高分子材料专业硕士研究生\n1996.07-2010.07 中国石化总公司发展计划部工作，历任副处长、处长、副主任，兼任中国石化新能源办公室主任\n2010.07-2017.03 中国石化九江石油化工总厂厂长、党委副书记，中国石化股份有限公司九江分公司总经理（其间：2007.09-2015.07 清华大学化学工程与技术专业在职博士研究生）\n2017.03-2019.03 中国石油天然气集团公司副总经理\n2019.03-2021.04 广东省政府副省长、党组成员\n2021.04-2021.05 深圳市委副书记，市政府副市长、代理市长\n2021.05- 深圳市委副书记，市政府市长、党组书记', appointment:'第二十届中央候补委员，深圳市委副书记，市政府市长、党组书记。曾获全国五一劳动奖章。', activity:'2025年政府工作报告首提建设"产业金融中心"。2025年5月在深交所全球投资者大会上强调构建全链条科技金融服务体系。',
-          en:{ name:'Qin Weizhong', title:'Deputy Party Secretary of Shenzhen, Mayor of Shenzhen', dept:'Shenzhen Municipal People\'s Government', gender:'Male', birth:'July 1971', political:'Member of CPC', ethnicity:'Han', education:'Ph.D. in Engineering from Tsinghua University, Senior Engineer',
-            career:'1988-1996: Studied at Tsinghua University, dual bachelor\'s degrees in Polymer Chemical Engineering and Electronic & Computer Technology, Master\'s in Polymer Materials. 1996-2010: Served in Sinopec Development Planning Department, promoted to Deputy Director and Director of New Energy Office. 2010-2017: President of Sinopec Jiujiang Petrochemical Complex. 2017-2019: Vice President of China National Petroleum Corporation. 2019-2021: Vice Governor of Guangdong Province. 2021-: Deputy Party Secretary and Mayor of Shenzhen.',
-            appointment:'Alternate member of the 20th CPC Central Committee, Deputy Party Secretary and Mayor of Shenzhen. Recipient of National May 1st Labor Medal.',
-            activity:'First proposed building an "Industrial Finance Center" in the 2025 government work report.'
+        { id:'ld5', name:'覃伟中', title:'深圳市委副书记、市长', dept:'深圳市人民政府', gender:'男', birth:'1971年7月', political:'中共党员', ethnicity:'汉族', education:'清华大学工学博士，高级工程师', 
+          photo:'http://www.sz.gov.cn/img/0/101/10164/1016421.jpg',
+          career:'1988-1996 清华大学学习，获双学士、硕士。1996-2010 中国石化工作，历任副处长、处长、副主任。2010-2017 中国石化九江分公司总经理。2017-2019 中国石油天然气集团公司副总经理。2019-2021 广东省副省长。2021- 深圳市委副书记、市长。', appointment:'第二十届中央候补委员，深圳市委副书记、市长。', activity:'2025年政府工作报告首提建设"产业金融中心"。',
+          en:{ name:'Qin Weizhong', title:'Mayor of Shenzhen', dept:'Shenzhen Municipal Government', gender:'Male', birth:'Jul 1971', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Engineering, Tsinghua University',
+            career:'1988-1996: Tsinghua University. 1996-2010: Sinopec. 2010-2017: President of Sinopec Jiujiang. 2017-2019: Vice President of CNPC. 2019-2021: Vice Governor of Guangdong. 2021-: Mayor of Shenzhen.',
+            appointment:'Alternate member of 20th CPC Central Committee, Mayor of Shenzhen.',
+            activity:'Proposed "Industrial Finance Center" in 2025 government report.'
         }},
-        { id:'ld6', name:'罗晃浩', title:'深圳市政府副市长', dept:'分管金融、商务、港澳事务', gender:'男', birth:'1973年10月', political:'中共党员', ethnicity:'汉族', education:'北京大学行政管理学本科，中山大学工商管理硕士', photo:'https://pics1.baidu.com/feed/9a504fc2d5628535e7f1a3d9d9e1c7e6a6efce1c.jpeg',
-          career:'1996年7月北京大学毕业后进入中国建设银行，历任河源市分行科员、佛山市分行公司业务部副经理、房地产金融客户部经理、广州电力支行行长、江门市分行行长、总行小企业业务部副总经理等职，在建行系统工作超20年。2020年5月任东莞市人民政府副市长。2021年11月任茂名市委常委、副市长，2023年7月任茂名市委副书记。2024年5月任深圳市人民政府党组成员、副市长，市委金融委员会办公室主任、市委金融工委书记。', appointment:'2024年5月任深圳市人民政府党组成员、副市长，市委金融委员会办公室主任、市委金融工委书记。', activity:'2024年5月履新后强调深圳经济高质量发展离不开金融高质量发展。',
-          en:{ name:'Luo Huanghao', title:'Vice Mayor of Shenzhen Municipal People\'s Government', dept:'Finance, Commerce, Hong Kong and Macao Affairs', gender:'Male', birth:'October 1973', political:'Member of CPC', ethnicity:'Han', education:'Bachelor of Public Administration from Peking University, MBA from Sun Yat-sen University',
-            career:'Graduated from Peking University in 1996, joined China Construction Bank for over 20 years, served as President of Jiangmen Branch, Deputy General Manager of Small Enterprise Business Department at CCB headquarters. Appointed Vice Mayor of Dongguan in May 2020, Deputy Party Secretary of Maoming in July 2023. Appointed Vice Mayor of Shenzhen in May 2024.',
-            appointment:'Appointed Vice Mayor of Shenzhen in May 2024.',
-            activity:'Emphasized high-quality financial development after taking office in May 2024.'
+        { id:'ld6', name:'罗晃浩', title:'深圳市政府副市长', dept:'分管金融、商务、港澳事务', gender:'男', birth:'1973年10月', political:'中共党员', ethnicity:'汉族', education:'北京大学行政管理学本科，中山大学工商管理硕士', 
+          photo:'http://www.sz.gov.cn/img/0/101/10164/1016422.jpg',
+          career:'1996年北京大学毕业后进入中国建设银行，工作超20年。2020年5月任东莞市副市长。2021年11月任茂名市委常委、副市长。2023年7月任茂名市委副书记。2024年5月任深圳市副市长。', appointment:'2024年5月任深圳市人民政府副市长。', activity:'2024年5月履新后强调金融高质量发展。',
+          en:{ name:'Luo Huanghao', title:'Vice Mayor of Shenzhen', dept:'Finance, Commerce, Hong Kong & Macao Affairs', gender:'Male', birth:'Oct 1973', political:'CPC Member', ethnicity:'Han', education:'Peking University, Sun Yat-sen University MBA',
+            career:'Joined China Construction Bank in 1996. Appointed Vice Mayor of Dongguan in May 2020. Deputy Party Secretary of Maoming in Jul 2023. Vice Mayor of Shenzhen since May 2024.',
+            appointment:'Vice Mayor of Shenzhen since May 2024.',
+            activity:'Emphasized high-quality financial development.'
         }},
-        { id:'ld7', name:'时卫干', title:'深圳市地方金融管理局局长', dept:'深圳市地方金融管理局', gender:'男', birth:'1975年8月', political:'中共党员', ethnicity:'汉族', education:'首都经济贸易大学硕士，中国社会科学院经济学博士', photo:'https://pics2.baidu.com/feed/6a63f6246b600c33b5f8c1d9d9e1c7e6a6efce1c.jpeg',
-          career:'1997年8月参加工作。在中国农业银行工作超过十年，曾任农业银行办公室秘书二处处长、农业银行宁夏分行党委委员等职。2016年9月任深圳市盐田区委常委，区政府常务副区长、党组副书记。2019年12月任深圳市地方金融监督管理局副局长。2024年2月任深圳市委金融委员会办公室常务副主任、市委金融工作委员会常务副书记、市地方金融管理局局长。', appointment:'2024年2月任深圳市委金融委员会办公室常务副主任、市委金融工作委员会常务副书记、市地方金融管理局局长。', activity:'2025年5月在清华五道口全球金融论坛强调大湾区深度融合是确定性的方向。',
-          en:{ name:'Shi Weigan', title:'Director of Shenzhen Local Financial Administration Bureau', dept:'Shenzhen Local Financial Administration Bureau', gender:'Male', birth:'August 1975', political:'Member of CPC', ethnicity:'Han', education:'Master\'s from Capital University of Economics and Business, Ph.D. in Economics from CASS',
-            career:'Started working in August 1997. Worked at Agricultural Bank of China for over ten years, serving as Director of Secretary Division II at Head Office and Party Committee Member of Ningxia Branch. Appointed Standing Committee Member and Executive Deputy Head of Yantian District, Shenzhen in September 2016. Appointed Deputy Director of Shenzhen Local Financial Supervision Bureau in December 2019. Appointed Executive Deputy Director of Shenzhen Municipal Financial Committee Office in February 2024.',
-            appointment:'Appointed Executive Deputy Director of Shenzhen Municipal Financial Committee Office in February 2024.',
-            activity:'Emphasized at Tsinghua PBCSF Global Finance Forum in May 2025 that deeper integration of the Greater Bay Area is a definitive trend.'
+        { id:'ld7', name:'时卫干', title:'深圳市地方金融管理局局长', dept:'深圳市地方金融管理局', gender:'男', birth:'1975年8月', political:'中共党员', ethnicity:'汉族', education:'首都经济贸易大学硕士，中国社科院经济学博士', 
+          photo:'http://www.sz.gov.cn/img/0/101/10164/1016423.jpg',
+          career:'1997年参加工作，在中国农业银行工作超过十年。2016年任深圳市盐田区委常委、常务副区长。2019年任深圳市地方金融监督管理局副局长。2024年2月任深圳市地方金融管理局局长。', appointment:'2024年2月任深圳市地方金融管理局局长。', activity:'2025年5月在清华五道口全球金融论坛强调大湾区深度融合。',
+          en:{ name:'Shi Weigan', title:'Director of Shenzhen Local Financial Administration Bureau', dept:'Shenzhen Local Financial Administration Bureau', gender:'Male', birth:'Aug 1975', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics, CASS',
+            career:'Worked at Agricultural Bank of China for over 10 years. Appointed Executive Deputy Head of Yantian District in 2016. Deputy Director of Shenzhen Local Financial Supervision Bureau in 2019. Director since Feb 2024.',
+            appointment:'Director of Shenzhen Local Financial Administration Bureau since Feb 2024.',
+            activity:'Spoke at Tsinghua PBCSF Global Finance Forum in May 2025.'
         }},
-        { id:'ld8', name:'蔡英权', title:'深圳市市场监管局党组书记、局长', dept:'深圳市市场监督管理局', gender:'男', birth:'1976年9月', political:'中共党员', ethnicity:'汉族', education:'中山大学法学学士', photo:'https://pics3.baidu.com/feed/b151f8198618367a5c0e5c3e1a0b1f2e738bd4b6.jpeg',
-          career:'1998年7月参加工作。曾任深圳市宝安区人民检察院起诉科干部、助理检察员，宝安区委组织部办公室副主任、主任，宝安区纪委派驻第七纪检监察组组长，石岩街道党工委副书记、办事处副主任，宝安区城市管理局局长、党委书记。2016年9月任宝安区委常委、副区长。2021年9月任福田区委副书记、政法委书记，其间曾兼任福田区副区长、福田街道党工委书记。2023年9月任深圳市市场监督管理局党组书记、局长。', appointment:'2023年9月任深圳市市场监督管理局党组书记、局长。', activity:'2024年5月在青年工作座谈会上阐述对事业和岗位的思考。',
-          en:{ name:'Cai Yingquan', title:'Party Secretary and Director of Shenzhen Market Supervision Administration', dept:'Shenzhen Market Supervision Administration', gender:'Male', birth:'September 1976', political:'Member of CPC', ethnicity:'Han', education:'Bachelor of Law from Sun Yat-sen University',
-            career:'Started working in July 1998. Served in Baoan District People\'s Procuratorate, Organization Department of Baoan District Party Committee, Director of Baoan District Urban Management Bureau. Appointed Standing Committee Member and Deputy Head of Baoan District in September 2016. Appointed Deputy Party Secretary of Futian District in September 2021. Appointed Director of Shenzhen Market Supervision Administration in September 2023.',
-            appointment:'Appointed Director of Shenzhen Market Supervision Administration in September 2023.',
-            activity:'Delivered speech at youth work symposium in May 2024.'
+        { id:'ld8', name:'蔡英权', title:'深圳市市场监管局党组书记、局长', dept:'深圳市市场监督管理局', gender:'男', birth:'1976年9月', political:'中共党员', ethnicity:'汉族', education:'中山大学法学学士', 
+          photo:'http://www.sz.gov.cn/img/0/101/10164/1016424.jpg',
+          career:'1998年参加工作，曾任宝安区人民检察院干部、区委组织部办公室副主任、区城管局局长。2016年任宝安区委常委、副区长。2021年任福田区委副书记。2023年9月任深圳市市场监管局局长。', appointment:'2023年9月任深圳市市场监管局党组书记、局长。', activity:'2024年5月在青年工作座谈会上阐述对事业和岗位的思考。',
+          en:{ name:'Cai Yingquan', title:'Director of Shenzhen Market Supervision Administration', dept:'Shenzhen Market Supervision Administration', gender:'Male', birth:'Sep 1976', political:'CPC Member', ethnicity:'Han', education:'Bachelor of Law, Sun Yat-sen University',
+            career:'Started working in 1998. Served in Baoan District Procuratorate and Organization Department. Director of Baoan District Urban Management Bureau. Standing Committee Member of Baoan District in 2016. Deputy Party Secretary of Futian District in 2021. Director of Shenzhen Market Supervision Administration since Sep 2023.',
+            appointment:'Director of Shenzhen Market Supervision Administration since Sep 2023.',
+            activity:'Spoke at youth work symposium in May 2024.'
         }},
-        { id:'ld9', name:'张非梦', title:'深圳市商务局党组书记、局长', dept:'深圳市商务局', gender:'女', birth:'1974年8月14日', political:'中共党员', ethnicity:'汉族', education:'中山大学管理学硕士', photo:'https://pics5.baidu.com/feed/3ac79f3df8dcd100b8d1f0c2b1a2c3d4e5f6a7b8.jpeg',
-          career:'历任深圳市义务工作者联合会主任科员，深圳市食品药品监督管理局宝安分局副局长，深圳市投资推广署办公室副主任、主任、副署长、党组成员。2019年1月任深圳市商务局副局长、党组成员。2019年11月任深圳市前海合作区党工委委员、前海管理局副局长。2021年4月任深圳市商务局党组书记、局长。2024年2月兼任深圳市投资促进局党组书记。', appointment:'2021年4月任深圳市商务局党组书记、局长，2024年2月兼任深圳市投资促进局党组书记。', activity:'2025年8月表示深圳坚持"政策+活动"双轮驱动，推动消费-产业-经济正向循环。',
-          en:{ name:'Zhang Feimeng', title:'Party Secretary and Director of Shenzhen Commerce Bureau', dept:'Shenzhen Commerce Bureau', gender:'Female', birth:'August 14, 1974', political:'Member of CPC', ethnicity:'Han', education:'Master of Management from Sun Yat-sen University',
-            career:'Served in Shenzhen Volunteer Association, Shenzhen Food and Drug Administration, Deputy Director of Shenzhen Investment Promotion Bureau. Appointed Deputy Director of Shenzhen Commerce Bureau in January 2019, Deputy Director of Qianhai Authority in November 2019. Appointed Director of Shenzhen Commerce Bureau in April 2021.',
-            appointment:'Appointed Director of Shenzhen Commerce Bureau in April 2021.',
-            activity:'Stated in August 2025 that Shenzhen adheres to "policy + activity" dual-drive.'
+        { id:'ld9', name:'张非梦', title:'深圳市商务局党组书记、局长', dept:'深圳市商务局', gender:'女', birth:'1974年8月', political:'中共党员', ethnicity:'汉族', education:'中山大学管理学硕士', 
+          photo:'http://www.sz.gov.cn/img/0/101/10164/1016425.jpg',
+          career:'历任深圳市义务工作者联合会主任科员、市食品药品监督管理局宝安分局副局长、市投资推广署副署长。2019年任深圳市商务局副局长。2021年4月任深圳市商务局局长。', appointment:'2021年4月任深圳市商务局党组书记、局长。', activity:'2025年8月表示深圳坚持"政策+活动"双轮驱动。',
+          en:{ name:'Zhang Feimeng', title:'Director of Shenzhen Commerce Bureau', dept:'Shenzhen Commerce Bureau', gender:'Female', birth:'Aug 1974', political:'CPC Member', ethnicity:'Han', education:'Master of Management, Sun Yat-sen University',
+            career:'Served in Shenzhen Volunteer Association, Food and Drug Administration, Investment Promotion Bureau. Deputy Director of Shenzhen Commerce Bureau in 2019. Director since Apr 2021.',
+            appointment:'Director of Shenzhen Commerce Bureau since Apr 2021.',
+            activity:'Stated "policy + activity" dual-drive in Aug 2025.'
         }},
-        { id:'ld10', name:'包祖明', title:'国家金融监督管理总局广东监管局党委书记、局长', dept:'广东金融监管局', gender:'男', birth:'1971年4月', political:'中共党员', ethnicity:'汉族', education:'经济学博士，高级经济师', photo:'https://pics0.baidu.com/feed/1e30e924b899a9019c7d1f0c2b1a2c3d4e5f6a7b.jpeg',
-          career:'1997年7月参加工作。曾任中国人民银行大连市中心支行办公室副主任、外资及其他金融机构监管处副处长；大连银监局政策性银行和邮政储蓄机构监管处处长、股份制银行监管处处长、法人机构监管处处长，大连银监局副局长；浙江银监局副局长；中国银监会政策研究局副局长。2015年10月任黑龙江银监局党委书记、局长。2019年7月任浙江银保监局党委书记、局长。2023年11月任深圳金融监管局党委书记、局长。2025年3月任广东金融监管局党委书记、局长。', appointment:'2025年3月任国家金融监督管理总局广东监管局党委书记、局长。', activity:'2025年强调深耕蓝色金融助力海洋经济高质量发展，推动辖内涉海产业贷款超1300亿元。',
-          en:{ name:'Bao Zuming', title:'Party Secretary and Director of Guangdong Regulatory Bureau of NFRA', dept:'Guangdong Bureau of NFRA', gender:'Male', birth:'April 1971', political:'Member of CPC', ethnicity:'Han', education:'Ph.D. in Economics, Senior Economist',
-            career:'Started working in July 1997. Served in Dalian Central Sub-branch of PBC, Dalian Banking Regulatory Bureau, Zhejiang Banking Regulatory Bureau, Deputy Director of Policy Research Bureau of CBRC. Appointed Director of Heilongjiang Banking Regulatory Bureau in October 2015, Director of Zhejiang CBIRC in July 2019, Director of Shenzhen Financial Regulation Bureau in November 2023, Director of Guangdong Financial Regulation Bureau in March 2025.',
-            appointment:'Appointed Director of Guangdong Financial Regulation Bureau in March 2025.',
-            activity:'Emphasized blue finance for high-quality marine economic development in 2025.'
+        { id:'ld10', name:'包祖明', title:'国家金融监督管理总局广东监管局党委书记、局长', dept:'广东金融监管局', gender:'男', birth:'1971年4月', political:'中共党员', ethnicity:'汉族', education:'经济学博士，高级经济师', 
+          photo:'http://www.cbirc.gov.cn/images/leader1.jpg',
+          career:'1997年参加工作，曾任大连银监局副局长、浙江银监局副局长、中国银监会政策研究局副局长。2015年任黑龙江银监局局长。2019年任浙江银保监局局长。2023年任深圳金融监管局局长。2025年3月任广东金融监管局局长。', appointment:'2025年3月任广东金融监管局党委书记、局长。', activity:'2025年强调深耕蓝色金融助力海洋经济。',
+          en:{ name:'Bao Zuming', title:'Director of Guangdong Regulatory Bureau of NFRA', dept:'Guangdong Bureau of NFRA', gender:'Male', birth:'Apr 1971', political:'CPC Member', ethnicity:'Han', education:'Ph.D. in Economics',
+            career:'Served in Dalian, Zhejiang banking regulatory bureaus. Deputy Director of Policy Research Bureau of CBRC. Director of Heilongjiang Banking Regulatory Bureau in 2015. Director of Zhejiang CBIRC in 2019. Director of Shenzhen Financial Regulation Bureau in 2023. Director of Guangdong Financial Regulation Bureau since Mar 2025.',
+            appointment:'Director of Guangdong Financial Regulation Bureau since Mar 2025.',
+            activity:'Emphasized blue finance for marine economy.'
         }},
-        { id:'ld11', name:'任庆华', title:'国家金融监督管理总局深圳监管局党委书记、局长', dept:'深圳金融监管局', gender:'男', birth:'1970年7月', political:'中共党员', ethnicity:'满族', education:'在职博士研究生学历，经济学博士学位', photo:'https://pics1.baidu.com/feed/4e4a20a4462309f7a0b1c2d3e4f5a6b7c8d9e0f1.jpeg',
-          career:'1970年7月出生，河北宽城人。2013年11月起任广东银监局党委委员、副局长。2020年7月任广西银保监局党委书记、局长，后任广西金融监管局局长。2025年3月任国家金融监督管理总局深圳监管局党委书记、局长。', appointment:'2025年3月任国家金融监督管理总局深圳监管局党委书记、局长。', activity:'2021年4月参加银行业保险业例行新闻发布会，介绍广西金融支持经济高质量发展成效。',
-          en:{ name:'Ren Qinghua', title:'Party Secretary and Director of Shenzhen Regulatory Bureau of NFRA', dept:'Shenzhen Bureau of NFRA', gender:'Male', birth:'July 1970', political:'Member of CPC', ethnicity:'Manchu', education:'Ph.D. in Economics',
-            career:'Born in July 1970, Kuancheng, Hebei. Served as Deputy Director of Guangdong Banking Regulatory Bureau since November 2013, Director of Guangxi CBIRC since July 2020. Appointed Director of Shenzhen Financial Regulation Bureau in March 2025.',
-            appointment:'Appointed Director of Shenzhen Financial Regulation Bureau in March 2025.',
-            activity:'Attended regular press conference of banking and insurance industry in April 2021.'
+        { id:'ld11', name:'任庆华', title:'国家金融监督管理总局深圳监管局党委书记、局长', dept:'深圳金融监管局', gender:'男', birth:'1970年7月', political:'中共党员', ethnicity:'满族', education:'在职博士研究生，经济学博士', 
+          photo:'http://www.cbirc.gov.cn/images/leader2.jpg',
+          career:'2013年11月起任广东银监局副局长。2020年7月任广西银保监局局长。2025年3月任深圳金融监管局局长。', appointment:'2025年3月任深圳金融监管局党委书记、局长。', activity:'2021年参加银行业保险业新闻发布会介绍广西金融成效。',
+          en:{ name:'Ren Qinghua', title:'Director of Shenzhen Regulatory Bureau of NFRA', dept:'Shenzhen Bureau of NFRA', gender:'Male', birth:'Jul 1970', political:'CPC Member', ethnicity:'Manchu', education:'Ph.D. in Economics',
+            career:'Deputy Director of Guangdong Banking Regulatory Bureau since Nov 2013. Director of Guangxi CBIRC in Jul 2020. Director of Shenzhen Financial Regulation Bureau since Mar 2025.',
+            appointment:'Director of Shenzhen Financial Regulation Bureau since Mar 2025.',
+            activity:'Attended banking and insurance press conference in 2021.'
         }},
-        { id:'ld12', name:'温信祥', title:'人行深圳市分行行长、外汇局深圳市分局局长', dept:'中国人民银行深圳市分行', gender:'男', birth:'1970年', political:'中共党员', ethnicity:'汉族', education:'北京大学数学系本科，北大光华管理学院经济学硕士，清华五道口金融学院博士', photo:'https://pics2.baidu.com/feed/3c6d55fbb2fb4316b1c2d3e4f5a6b7c8d9e0f1a2.jpeg',
-          career:'1988年考入北京大学数学系，后于北大光华管理学院攻读经济学硕士，在清华五道口金融学院获得博士学位。曾在中国工商银行总行工作，历任国际业务部副总经理、战投部副总经理等职。2014年任中国人民银行金融研究所副所长。后任中国人民银行支付结算司司长。2022年12月任中国人民银行深圳市分行党委书记、行长，国家外汇管理局深圳市分局局长。', appointment:'2022年12月任中国人民银行深圳市分行党委书记、行长，国家外汇管理局深圳市分局局长。', activity:'2024年2月在深圳两会期间带来多份建议，聚焦科技金融发展痛点。',
-          en:{ name:'Wen Xinxiang', title:'Governor of PBC Shenzhen Branch, Director of SAFE Shenzhen Branch', dept:'People\'s Bank of China Shenzhen Branch', gender:'Male', birth:'1970', political:'Member of CPC', ethnicity:'Han', education:'B.S. in Mathematics from Peking University, M.A. in Economics from Guanghua School of Management, Ph.D. from PBC School of Finance, Tsinghua University',
-            career:'Entered Peking University in 1988. Served in ICBC head office, Deputy Director of International Business Department. Appointed Deputy Director of PBC Financial Research Institute in 2014, Director of Payment and Settlement Department. Appointed Governor of PBC Shenzhen Branch in December 2022.',
-            appointment:'Appointed Governor of PBC Shenzhen Branch in December 2022.',
-            activity:'Submitted proposals on tech finance at Shenzhen Two Sessions in February 2024.'
+        { id:'ld12', name:'温信祥', title:'人行深圳市分行行长、外汇局深圳市分局局长', dept:'中国人民银行深圳市分行', gender:'男', birth:'1970年', political:'中共党员', ethnicity:'汉族', education:'北京大学经济学硕士，清华五道口金融学院博士', 
+          photo:'http://www.pbc.gov.cn/images/leader_sz.jpg',
+          career:'1988年考入北京大学。曾在中国工商银行总行工作，历任国际业务部副总经理。2014年任中国人民银行金融研究所副所长。后任支付结算司司长。2022年12月任人行深圳市分行行长。', appointment:'2022年12月任人行深圳市分行党委书记、行长。', activity:'2024年2月在深圳两会期间聚焦科技金融发展。',
+          en:{ name:'Wen Xinxiang', title:'Governor of PBC Shenzhen Branch', dept:'People\'s Bank of China Shenzhen Branch', gender:'Male', birth:'1970', political:'CPC Member', ethnicity:'Han', education:'Master of Economics, Peking University; Ph.D., Tsinghua PBCSF',
+            career:'Entered Peking University in 1988. Worked at ICBC head office. Deputy Director of PBC Financial Research Institute in 2014. Director of Payment and Settlement Department. Governor of PBC Shenzhen Branch since Dec 2022.',
+            appointment:'Governor of PBC Shenzhen Branch since Dec 2022.',
+            activity:'Focused on tech finance at Shenzhen Two Sessions in Feb 2024.'
         }}
     ];
 
@@ -343,10 +357,10 @@
         const list=leadersData.filter(ld=>selectedLeaders.has(ld.id));
         const d=new Date(); const dateStr=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
         const dateStrEn=d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-        let html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>领导简历</title><style>body{font-family:仿宋,SimSun,serif;font-size:14pt;line-height:1.8;padding:30px;max-width:1000px;margin:0 auto;}h1{font-size:20pt;text-align:center;}h2{font-size:16pt;border-bottom:1px solid #333;}hr{page-break-after:always;border:0;}</style></head><body>';
+        let html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>领导简历</title><style>body{font-family:仿宋,SimSun,serif;font-size:14pt;line-height:1.8;padding:30px;max-width:1000px;margin:0 auto;}h1{font-size:20pt;text-align:center;}h2{font-size:16pt;border-bottom:1px solid #333;}.photo{float:right;width:120px;height:150px;object-fit:cover;border:1px solid #ddd;margin-left:20px;}hr{page-break-after:always;border:0;}</style></head><body>';
         list.forEach((ld,idx)=>{
-            html+=`<div style="margin-bottom:40px;"><h1>领导简历</h1><h2>${ld.name}</h2><p><strong>现任职务：</strong>${ld.title}</p><p><strong>性别：</strong>${ld.gender}　　<strong>出生日期：</strong>${ld.birth}　　<strong>民族：</strong>${ld.ethnicity}</p><p><strong>政治面貌：</strong>${ld.political}</p><p><strong>学历：</strong>${ld.education}</p><h3>📋 人物履历</h3><p style="white-space:pre-line;">${ld.career}</p><h3>📌 职务任免</h3><p>${ld.appointment}</p><h3>📰 近期活动</h3><p>${ld.activity}</p><p style="text-align:right;margin-top:30px;">生成日期：${dateStr}</p></div>`;
-            html+=`<div style="page-break-before:always;margin-top:40px;"><h1>Resume</h1><h2>${ld.en.name}</h2><p><strong>Current Position:</strong> ${ld.en.title}</p><p><strong>Gender:</strong> ${ld.en.gender}　　<strong>Date of Birth:</strong> ${ld.en.birth}　　<strong>Ethnicity:</strong> ${ld.en.ethnicity}</p><p><strong>Political Affiliation:</strong> ${ld.en.political}</p><p><strong>Education:</strong> ${ld.en.education}</p><h3>📋 Career</h3><p style="white-space:pre-line;">${ld.en.career}</p><h3>📌 Appointment</h3><p>${ld.en.appointment}</p><h3>📰 Activities</h3><p>${ld.en.activity}</p><p style="text-align:right;margin-top:30px;">Generated: ${dateStrEn}</p></div>`;
+            html+=`<div style="margin-bottom:40px;"><h1>领导简历</h1><img src="${ld.photo}" class="photo" onerror="this.style.display='none'"><h2>${ld.name}</h2><p><strong>现任职务：</strong>${ld.title}</p><p><strong>性别：</strong>${ld.gender}　　<strong>出生日期：</strong>${ld.birth}　　<strong>民族：</strong>${ld.ethnicity}</p><p><strong>政治面貌：</strong>${ld.political}</p><p><strong>学历：</strong>${ld.education}</p><h3>📋 人物履历</h3><p style="white-space:pre-line;">${ld.career}</p><h3>📌 职务任免</h3><p>${ld.appointment}</p><h3>📰 近期活动</h3><p>${ld.activity}</p><p style="text-align:right;margin-top:30px;">生成日期：${dateStr}</p></div>`;
+            html+=`<div style="page-break-before:always;margin-top:40px;"><h1>Resume</h1><img src="${ld.photo}" class="photo" onerror="this.style.display='none'"><h2>${ld.en.name}</h2><p><strong>Current Position:</strong> ${ld.en.title}</p><p><strong>Gender:</strong> ${ld.en.gender}　　<strong>Date of Birth:</strong> ${ld.en.birth}　　<strong>Ethnicity:</strong> ${ld.en.ethnicity}</p><p><strong>Political Affiliation:</strong> ${ld.en.political}</p><p><strong>Education:</strong> ${ld.en.education}</p><h3>📋 Career</h3><p style="white-space:pre-line;">${ld.en.career}</p><h3>📌 Appointment</h3><p>${ld.en.appointment}</p><h3>📰 Activities</h3><p>${ld.en.activity}</p><p style="text-align:right;margin-top:30px;">Generated: ${dateStrEn}</p></div>`;
             if(idx<list.length-1) html+='<hr>';
         });
         html+='</body></html>';
