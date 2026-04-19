@@ -53,7 +53,7 @@
         .leader-card { background:#fafcff; border-radius:16px; padding:16px 12px; border:1px solid #eef2f6; display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; transition:all 0.15s; position:relative; }
         .leader-card:hover { border-color:#1e4bd2; box-shadow:0 8px 16px rgba(0,0,0,0.06); }
         .leader-card.selected { border-color:#1e4bd2; background:#f0f4ff; }
-        .leader-checkbox { position:absolute; top:10px; left:10px; width:20px; height:20px; cursor:pointer; accent-color:#1e4bd2; }
+        .leader-checkbox { position:absolute; top:10px; left:10px; width:20px; height:20px; cursor:pointer; accent-color:#1e4bd2; z-index:2; }
         .leader-avatar { width:70px; height:70px; border-radius:50%; background:linear-gradient(145deg,#e9efff,#d0dfff); display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:#1e4bd2; font-weight:600; font-size:28px; overflow:hidden; }
         .leader-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
         .leader-card h4 { font-size:16px; font-weight:600; margin-bottom:4px; }
@@ -94,21 +94,9 @@
         .news-tag { background:#fff3e0; color:#ea580c; font-size:11px; padding:2px 6px; border-radius:12px; display:inline-block; margin-right:4px; }
         .footer-note { margin-top:24px; color:#94a3b8; font-size:12px; text-align:right; border-top:1px dashed #cbd5e1; padding-top:16px; }
         .hr-card { margin-top:20px; }
-        @media (max-width:1200px) {
-            .main-grid { grid-template-columns:1fr 1fr; }
-            .bottom-grid { grid-template-columns:1fr; }
-            .quick-links { grid-template-columns:repeat(4,1fr); }
-            .leaders-grid { grid-template-columns:repeat(2,1fr); }
-        }
-        @media (max-width:800px) {
-            .main-grid { grid-template-columns:1fr; }
-            .quick-links { grid-template-columns:repeat(3,1fr); }
-        }
-        @media (max-width:600px) {
-            .quick-links { grid-template-columns:repeat(2,1fr); }
-            .leaders-grid { grid-template-columns:1fr; }
-            .header { flex-direction:column; align-items:flex-start; gap:16px; }
-        }
+        @media (max-width:1200px) { .main-grid { grid-template-columns:1fr 1fr; } .bottom-grid { grid-template-columns:1fr; } .quick-links { grid-template-columns:repeat(4,1fr); } .leaders-grid { grid-template-columns:repeat(2,1fr); } }
+        @media (max-width:800px) { .main-grid { grid-template-columns:1fr; } .quick-links { grid-template-columns:repeat(3,1fr); } }
+        @media (max-width:600px) { .quick-links { grid-template-columns:repeat(2,1fr); } .leaders-grid { grid-template-columns:1fr; } .header { flex-direction:column; align-items:flex-start; gap:16px; } }
     </style>
 </head>
 <body>
@@ -118,7 +106,7 @@
             <h1><i class="fas fa-landmark"></i> 深银·政策月报工作台</h1>
             <div class="date-badge">
                 <i class="far fa-calendar-alt"></i> 2026年4月 · 第22期 
-                <span class="update-time" id="updateTime"><i class="far fa-clock"></i> 更新于 2026-04-19 07:09:24</span>
+                <span class="update-time" id="updateTime"><i class="far fa-clock"></i> 等待首次更新</span>
             </div>
         </div>
         <div class="header-actions">
@@ -139,17 +127,8 @@
     </div>
 
     <div class="main-grid">
-        <!-- 政府政策 (自动更新) -->
-        <div class="card">
-            <div class="card-header"><h2><i class="fas fa-gavel" style="color:#1e4bd2"></i> 政府政策·金融风向</h2><span class="tag">金融局·统计局</span></div>
-            <div class="policy-list" id="govPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 暂无数据，请稍后刷新</div></div></div>
-        </div>
-        <!-- 监管政策 (自动更新) -->
-        <div class="card">
-            <div class="card-header"><h2><i class="fas fa-shield-alt" style="color:#dc2626"></i> 监管政策·银行关切</h2><span class="tag">外管局·人行·金监</span></div>
-            <div class="policy-list" id="regulatoryPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 暂无数据，请稍后刷新</div></div></div>
-        </div>
-        <!-- 领导简介 -->
+        <div class="card"><div class="card-header"><h2><i class="fas fa-gavel" style="color:#1e4bd2"></i> 政府政策·金融风向</h2><span class="tag">金融局·统计局</span></div><div class="policy-list" id="govPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 等待数据更新...</div></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-shield-alt" style="color:#dc2626"></i> 监管政策·银行关切</h2><span class="tag">外管局·人行·金监</span></div><div class="policy-list" id="regulatoryPolicyList"><div class="empty-state"><i class="far fa-newspaper"></i> 等待数据更新...</div></div></div>
         <div class="card">
             <div class="card-header"><h2><i class="fas fa-user-circle" style="color:#1e4bd2;"></i> 领导简介</h2><span class="tag">勾选放入简历篮</span></div>
             <div class="leaders-grid" id="leadersGrid"></div>
@@ -157,48 +136,39 @@
         </div>
     </div>
 
-    <!-- 图表行 -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:24px;">
         <div class="chart-box"><h3><i class="fas fa-chart-bar" style="color:#1e4bd2;"></i> 深圳主要经济指标 (2026.1-2)</h3><canvas id="gdpChart"></canvas><div style="font-size:12px;color:#64748b;margin-top:10px;">数据来源：深圳市统计局</div></div>
         <div class="chart-box"><h3><i class="fas fa-coins"></i> 存贷款规模 (含外资)</h3><canvas id="financeChart"></canvas><div style="font-size:12px;color:#64748b;margin-top:10px;">存款154464.31亿↑10.3% · 贷款100709.91亿↑4.4%</div></div>
         <div class="chart-box" style="background:#fafdff;"><h3><i class="fas fa-globe"></i> 深圳进出口 & 社消零</h3><canvas id="tradeChart"></canvas><p style="font-size:12px;margin-top:8px;"><i class="fas fa-arrow-up" style="color:#0d9488;"></i> 进出口8242.34亿元，同比+37.3%</p></div>
     </div>
 
-    <!-- 规划 & 处罚行 -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
         <div class="card"><div class="card-header"><h2><i class="fas fa-rocket" style="color:#ea580c;"></i> 深圳十五五规划</h2><span class="tag" style="background:#fff3e0;color:#ea580c;">2026-2030</span></div><div style="padding:8px 0;"><div style="background:linear-gradient(135deg,#fff3e0,#fff8e1);padding:16px;border-radius:12px;margin-bottom:12px;"><div style="font-weight:600;color:#c2410c;margin-bottom:8px;"><i class="fas fa-bullseye"></i> 主要目标</div><p style="font-size:13px;line-height:1.7;color:#475569;">高质量发展迈上新台阶，地区生产总值<strong>超过5万亿元</strong>；全社会研发投入强度<strong>超7%</strong>；改革开放迈出新步伐，民生福祉取得新成效。</p></div><a href="https://sz.bendibao.com/news/2026224/998366.htm" target="_blank" style="display:inline-block;margin-top:8px;color:#1e4bd2;text-decoration:none;font-size:13px;"><i class="fas fa-external-link-alt"></i> 查看完整规划</a></div></div>
         <div class="card"><div class="card-header"><h2><i class="fas fa-gavel" style="color:#dc2626;"></i> 监管近期处罚</h2><span class="tag" style="background:#fee2e2;color:#dc2626;">人行·金监</span></div><div style="padding:8px 0;"><div style="border-left:4px solid #dc2626;padding:10px 14px;background:#fef2f2;border-radius:0 10px 10px 0;margin-bottom:10px;"><div style="font-weight:600;color:#991b1b;font-size:14px;margin-bottom:4px;"><i class="fas fa-building-columns"></i> 人行深圳分行</div><p style="font-size:12px;color:#475569;line-height:1.6;">重点处罚领域：支付结算违规、反洗钱不合规、金融统计虚报、征信管理违规等。</p></div><div style="border-left:4px solid #dc2626;padding:10px 14px;background:#fef2f2;border-radius:0 10px 10px 0;margin-bottom:10px;"><div style="font-weight:600;color:#991b1b;font-size:14px;margin-bottom:4px;"><i class="fas fa-shield-alt"></i> 深圳金融监管局</div><p style="font-size:12px;color:#475569;line-height:1.6;">重点处罚领域：贷款三查不尽职、理财销售违规、同业业务风险管理、公司治理缺陷等。</p></div></div></div>
     </div>
 
-    <!-- 人事人才卡片 -->
     <div class="card hr-card" style="margin-bottom:24px;">
         <div class="card-header"><h2><i class="fas fa-user-tie" style="color:#0d9488"></i> 人事人才·金融专题</h2><span class="tag">人社局·金融银行</span></div>
         <div class="policy-list" id="hrPolicyList"></div>
     </div>
 
-    <!-- 同业信息表格 -->
     <div class="card" style="margin-bottom:24px;">
         <div class="card-header"><h2><i class="fas fa-chart-simple" style="color:#1e4bd2;"></i> 同业比较·深圳外资银行</h2><span class="tag">39家机构 · 资产超4000亿</span></div>
         <div style="background:#f0f7ff;padding:12px 16px;border-radius:16px;margin-bottom:16px;"><i class="fas fa-info-circle" style="color:#1e4bd2;"></i> 深圳已集聚9个国家和地区35家银行设立的39家营业性机构。</div>
         <div class="peer-table-container">
             <table class="peer-table">
                 <thead><tr><th>银行</th><th>背景</th><th>在深网点</th><th>业务特色</th><th>最新动态</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>渣打银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>大湾区共4网点</td><td>优先私人理财中心</td><td><span class="news-tag">2026.01</span>大湾区首家优先私人理财中心在深圳湾开业</td></tr>
-                    <tr><td><strong>汇丰银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>深圳12个营业网点</td><td>财富管理旗舰网点</td><td><span class="news-tag">2025</span>在深圳、广州新设3家财富管理旗舰网点</td></tr>
-                </tbody>
+                <tbody><tr><td><strong>渣打银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>大湾区共4网点</td><td>优先私人理财中心</td><td><span class="news-tag">2026.01</span>大湾区首家优先私人理财中心在深圳湾开业</td></tr><tr><td><strong>汇丰银行</strong><span class="bank-badge">🇬🇧</span></td><td>英国</td><td>深圳12个营业网点</td><td>财富管理旗舰网点</td><td><span class="news-tag">2025</span>在深圳、广州新设3家财富管理旗舰网点</td></tr></tbody>
             </table>
         </div>
     </div>
 
-    <!-- 底部三个卡片 -->
     <div class="bottom-grid">
         <div class="card"><div class="card-header"><h2><i class="fas fa-table"></i> 经济数据 · 横向纵向对比</h2></div><table class="metric-table"><tr><th>指标</th><th>2026年1-2月</th><th>同比变化</th></tr><tr><td>规上工业增加值</td><td>+10.4%</td><td class="trend-up">↑ 加快5.0p.p</td></tr><tr><td>固定资产投资</td><td>+0.6%</td><td class="trend-up">↑ 上年末-21.7%</td></tr><tr><td>社会消费品零售总额</td><td>1705.64亿</td><td>+2.6%</td></tr><tr><td>进出口总额</td><td>8242.34亿</td><td class="trend-up">+37.3%</td></tr><tr><td>金融机构存款余额</td><td>154464.31亿</td><td>+10.3%</td></tr><tr><td>金融机构贷款余额</td><td>100709.91亿</td><td>+4.4%</td></tr></table></div>
         <div class="card sc-card"><div class="card-header"><h2><i class="fab fa-stripe-s"></i> 渣打集团 & 渣打中国</h2></div><div class="sc-news-item"><strong>渣打中国大湾区首家优先私人理财中心落地深圳</strong><p style="font-size:12px;opacity:0.9;">1月29日，渣打中国深圳湾支行优先私人理财中心正式开业。</p></div><div class="sc-links"><a href="https://www.sc.com/cn/" target="_blank" class="sc-link-btn">渣打中国</a></div></div>
         <div class="card" style="background:#f9fcff;"><div class="card-header"><h2><i class="fas fa-address-card"></i> 领导简历篮</h2><span class="tag" id="leaderBasketCount">0位</span></div><div class="leader-basket-panel"><div class="leader-basket-header"><span><i class="fas fa-info-circle"></i> 勾选领导后自动加入</span><button class="btn-outline" id="clearLeaderBasketBtn" style="padding:6px 16px;"><i class="fas fa-trash"></i> 清空</button></div><div class="leader-basket-list" id="leaderBasketListContainer"><div class="basket-empty">暂无选中领导</div></div><button class="generate-btn" id="confirmGenerateLeaderResumeBtn"><i class="fas fa-file-word"></i> 生成领导简历</button></div></div>
     </div>
 
-    <!-- 政策篮 -->
     <div class="card" style="margin-top:24px;background:#f9fcff;">
         <div class="card-header"><h2><i class="fas fa-basket-shopping"></i> 政策报告篮 · 已选政策</h2><span class="tag" id="policyBasketHeaderCount">0项</span></div>
         <div class="basket-panel"><div class="basket-header"><span><i class="fas fa-info-circle"></i> 勾选政策后自动加入</span><button class="btn-outline" id="clearPolicyBasketBtn" style="padding:6px 16px;"><i class="fas fa-trash"></i> 清空</button></div><div class="basket-list" id="policyBasketListContainer"><div class="basket-empty">暂无选中政策</div></div><button class="generate-btn" id="confirmGeneratePolicyReportBtn"><i class="fas fa-file-word"></i> 确认并生成Word报告</button></div>
@@ -209,43 +179,111 @@
 
 <script>
 (function(){"use strict";
+    // ========== 完整领导数据（基于百度百科整理） ==========
     const leadersData = [
-        { id:'ld1',name:'孟凡利',title:'广东省委副书记、省政府省长',dept:'广东省人民政府',gender:'男',birth:'1965年9月',political:'中共党员',ethnicity:'汉族',education:'经济学博士，教授',career:'1986年7月参加工作。曾任山东经济学院会计系教师...2025年10月当选广东省省长。',appointment:'现任第二十届中央委员，广东省委副书记，省政府省长。',activity:'2025年4月与中国银行行长会谈...' },
-        { id:'ld2',name:'李运',title:'广东省人民政府副省长',dept:'分管金融、人社、住建等领域',gender:'男',birth:'1973年9月',political:'中共党员',ethnicity:'汉族',education:'武汉大学经济学博士，正高级经济师',career:'长期在银行系统工作...2025年3月任广东省副省长。',appointment:'2025年3月任广东省人民政府副省长。',activity:'2025年8月出席全省金融系统党建工作会议...' },
-        { id:'ld3',name:'于海平',title:'省委金融办副主任、省地方金融管理局局长',dept:'广东省委金融委员会办公室',gender:'男',birth:'1972年4月',political:'中共党员',ethnicity:'汉族',education:'在职研究生学历，工商管理硕士',career:'历任中国进出口银行...2024年1月任省委金融办副主任。',appointment:'2024年1月任省委金融委员会办公室副主任。',activity:'2024年12月带队赴汕尾调研...' },
-        { id:'ld4',name:'靳磊',title:'广东省委常委、深圳市委书记',dept:'中共深圳市委',gender:'男',birth:'1970年2月',political:'中共党员',ethnicity:'汉族',education:'武汉大学行政管理专业毕业，厦门大学经济学硕士',career:'1992年7月参加工作...2026年3月任深圳市委书记。',appointment:'2026年3月任广东省委常委、深圳市委书记。',activity:'2026年3月履新深圳...' },
-        { id:'ld5',name:'覃伟中',title:'深圳市委副书记、市长',dept:'深圳市人民政府',gender:'男',birth:'1971年7月',political:'中共党员',ethnicity:'汉族',education:'清华大学工学博士，高级工程师',career:'1996年7月参加工作...2021年5月当选深圳市市长。',appointment:'2021年5月当选深圳市市长。',activity:'2025年政府工作报告首提建设"产业金融中心"...' },
-        { id:'ld6',name:'罗晃浩',title:'深圳市政府副市长',dept:'分管金融、商务、港澳事务',gender:'男',birth:'1973年10月',political:'中共党员',ethnicity:'汉族',education:'北京大学行政管理学本科，中山大学工商管理硕士',career:'长期在中国建设银行工作...2024年5月任深圳市副市长。',appointment:'2024年5月任深圳市副市长。',activity:'2024年5月履新...' },
-        { id:'ld7',name:'时卫干',title:'深圳市地方金融管理局局长',dept:'深圳市地方金融管理局',gender:'男',birth:'1975年8月',political:'中共党员',ethnicity:'汉族',education:'中国社会科学院研究生院经济学博士',career:'1997年8月参加工作...2024年2月任市地方金融管理局局长。',appointment:'2024年2月任深圳市地方金融管理局局长。',activity:'2024年9月表示将聚深圳金融之力...' },
-        { id:'ld8',name:'蔡英权',title:'深圳市市场监管局党组书记、局长',dept:'深圳市市场监督管理局',gender:'男',birth:'1976年9月',political:'中共党员',ethnicity:'汉族',education:'中山大学法学学士',career:'1998年7月参加工作...2023年9月任市市场监管局局长。',appointment:'2023年9月任深圳市市场监管局党组书记、局长。',activity:'2024年5月在青年工作座谈会上阐述思考...' },
-        { id:'ld9',name:'张非梦',title:'深圳市商务局党组书记、局长',dept:'深圳市商务局',gender:'女',birth:'1974年8月14日',political:'中共党员',ethnicity:'汉族',education:'中山大学管理学硕士',career:'历任深圳市义务工作者联合会主任科员...2021年4月任局长。',appointment:'2021年4月任深圳市商务局党组书记、局长。',activity:'2025年8月表示深圳坚持"政策+活动"双轮驱动...' },
-        { id:'ld10',name:'包祖明',title:'国家金融监督管理总局广东监管局党委书记、局长',dept:'广东金融监管局',gender:'男',birth:'1971年4月',political:'中共党员',ethnicity:'汉族',education:'经济学博士，高级经济师',career:'1997年7月参加工作...2025年3月任广东金融监管局局长。',appointment:'2025年3月任广东金融监管局局长。',activity:'2025年强调深耕蓝色金融...' },
-        { id:'ld11',name:'任庆华',title:'国家金融监督管理总局深圳监管局党委书记、局长',dept:'深圳金融监管局',gender:'男',birth:'1970年7月',political:'中共党员',ethnicity:'满族',education:'经济学博士',career:'2013年11月起任广东银监局副局长...2025年3月任深圳金融监管局局长。',appointment:'2025年3月任深圳金融监管局局长。',activity:'2021年4月参加银行业保险业例行新闻发布会...' },
-        { id:'ld12',name:'温信祥',title:'人行深圳市分行行长、外汇局深圳市分局局长',dept:'中国人民银行深圳市分行',gender:'男',birth:'1970年',political:'中共党员',ethnicity:'汉族',education:'北京大学经济学硕士，清华五道口金融学院博士',career:'1988年考入北京大学...2022年12月任人行深圳市分行行长。',appointment:'2022年12月任人行深圳市分行行长。',activity:'2024年2月在深圳两会期间带来多份建议...' }
+        { id:'ld1', name:'孟凡利', title:'广东省委副书记、省政府省长', dept:'广东省人民政府', gender:'男', birth:'1965年9月', political:'中共党员', ethnicity:'汉族', education:'研究生学历，经济学博士，教授', photo:'https://pics4.baidu.com/feed/d043ad4bd11373f0a76db5e1a50f1bf9faed04a9.jpeg',
+          career:'1982.09-1986.07 山东经济学院会计系商业会计专业学习\n1986.07-1997.12 山东经济学院会计系教师（其间：1992.09-1995.07 南开大学会计系西方会计专业硕士研究生）\n1997.12-2000.01 山东经济学院财务会计系副主任（1995.09-1998.07 天津财经学院会计学专业博士研究生）\n2000.01-2000.06 山东经济学院财务会计系主任\n2000.06-2005.07 山东省财政厅副厅长、党组成员\n2005.07-2009.07 山东省鲁信投资控股集团有限公司副董事长、总经理、党委副书记\n2009.07-2013.03 山东省鲁信投资控股集团有限公司董事长、党委书记、总经理\n2013.03-2013.07 山东省商务厅厅长、党组书记\n2013.07-2015.05 山东省烟台市委副书记、代市长、市长\n2015.05-2017.03 山东省烟台市委书记、市人大常委会主任\n2017.03-2020.09 山东省青岛市委副书记、市长\n2020.09-2022.04 内蒙古自治区党委常委、包头市委书记，后任自治区党委副书记\n2022.04-2025.09 广东省委副书记、深圳市委书记\n2025.10- 广东省委副书记，省政府省长、党组书记', appointment:'第二十届中央委员，广东省委副书记，省政府省长、党组书记', activity:'2025年4月与中国银行行长会谈，深化科技金融、普惠金融、跨境金融合作；2026年1月主持省委金融委扩大会议，强调做好科技金融、绿色金融、普惠金融、养老金融、数字金融"五篇大文章"。',
+          en:{ name:'Meng Fanli', title:'Deputy Secretary of CPC Guangdong Provincial Committee, Governor of Guangdong Provincial People\'s Government', dept:'Guangdong Provincial People\'s Government', gender:'Male', birth:'September 1965', political:'Member of CPC', ethnicity:'Han', education:'Doctor of Economics, Professor',
+            career:'1982.09-1986.07: Studied Commercial Accounting at Shandong Economic College. 1986.07-2000.06: Taught at Shandong Economic College, served as Deputy Director and Director of Financial Accounting Department. 2000.06-2005.07: Deputy Director-General of Shandong Provincial Department of Finance. 2005.07-2013.03: Held leadership positions at Shandong Luxin Investment Holding Group. 2013.03-2013.07: Director-General of Shandong Provincial Department of Commerce. 2013.07-2017.03: Mayor and Party Secretary of Yantai City. 2017.03-2020.09: Mayor of Qingdao City. 2020.09-2022.04: Member of Standing Committee of Inner Mongolia Autonomous Regional Party Committee, Party Secretary of Baotou City, later Deputy Secretary of Inner Mongolia Autonomous Regional Party Committee. 2022.04-2025.09: Deputy Secretary of CPC Guangdong Provincial Committee, Party Secretary of Shenzhen. 2025.10-: Deputy Secretary of CPC Guangdong Provincial Committee, Governor of Guangdong Province.',
+            appointment:'Member of the 20th CPC Central Committee, Deputy Secretary of CPC Guangdong Provincial Committee, Governor of Guangdong Province.',
+            activity:'Met with Bank of China President in April 2025, emphasizing cooperation in tech finance, inclusive finance, and cross-border finance; chaired Provincial Financial Committee meeting in January 2026.'
+        }},
+        { id:'ld2', name:'李运', title:'广东省人民政府副省长', dept:'分管金融、人社、住建等领域', gender:'男', birth:'1973年9月', political:'中共党员', ethnicity:'汉族', education:'武汉大学经济学博士，正高级经济师', photo:'https://pics7.baidu.com/feed/4d086e061d950a7b59c6c1f20ad162d9f3d3c9f8.jpeg',
+          career:'1997年9月武汉大学货币银行学专业硕士研究生毕业，2000年7月获武汉大学世界经济专业博士学位。长期在银行系统工作，曾任中国农业银行贵州省分行主要负责人、贵州省分行行长。2021年11月任中国建设银行党委委员、副行长，是当时建行最年轻的副行长。2025年3月任广东省人民政府副省长、党组成员。', appointment:'2025年3月任广东省人民政府副省长、党组成员。', activity:'2025年8月出席全省金融系统党建工作会议；2025年9月在第七届粤港澳大湾区金融发展论坛致辞，推动粤港澳金融市场互联互通。',
+          en:{ name:'Li Yun', title:'Vice Governor of Guangdong Provincial People\'s Government', dept:'Finance, Human Resources, Housing', gender:'Male', birth:'September 1973', political:'Member of CPC', ethnicity:'Han', education:'Ph.D. in Economics from Wuhan University, Senior Economist',
+            career:'Graduated from Wuhan University with a Master\'s degree in Monetary Banking in 1997 and a Ph.D. in World Economics in 2000. Long career in banking system, served as President of Agricultural Bank of China Guizhou Branch. Appointed Vice President of China Construction Bank in November 2021, the youngest vice president at CCB at that time. Appointed Vice Governor of Guangdong Province in March 2025.',
+            appointment:'Appointed Vice Governor of Guangdong Province in March 2025.',
+            activity:'Attended provincial financial system party building conference in August 2025; delivered speech at the 7th Guangdong-Hong Kong-Macao Greater Bay Area Financial Development Forum in September 2025.'
+        }},
+        { id:'ld3', name:'于海平', title:'省委金融办副主任、省地方金融管理局局长', dept:'广东省委金融委员会办公室', gender:'男', birth:'1972年4月', political:'中共党员', ethnicity:'汉族', education:'在职研究生学历，工商管理硕士', photo:'https://pics0.baidu.com/feed/902397dda144ad34c5a3d8c7d8a20cf830ad85cb.jpeg',
+          career:'历任中国进出口银行信贷管理部副处长，风险管理部副处长、处长，风险管理部总经理助理、副总经理，中国进出口银行广东省分行党委委员、副行长，中国进出口银行湖南省分行党委书记、行长，中国进出口银行资产负债管理部总经理、统计中心主任等职。2021年1月任广东省地方金融监督管理局党组书记、局长。2024年1月任省委金融委员会办公室副主任（分管日常工作）、省委金融工作委员会副书记（分管日常工作）、省地方金融管理局局长。', appointment:'2024年1月任省委金融委员会办公室副主任（分管日常工作）、省委金融工作委员会副书记（分管日常工作）、省地方金融管理局局长。', activity:'2024年12月带队赴汕尾开展金融支持新型城镇化建设试点调研。2023年在全省高质量发展大会上表示以高质量发展为引领，全面加强产融对接服务。',
+          en:{ name:'Yu Haiping', title:'Deputy Director of Provincial Party Committee Finance Office, Director of Provincial Local Financial Administration Bureau', dept:'Finance Committee Office of CPC Guangdong Provincial Committee', gender:'Male', birth:'April 1972', political:'Member of CPC', ethnicity:'Han', education:'Postgraduate degree, MBA',
+            career:'Served at Export-Import Bank of China in various positions including Deputy Director of Credit Management Department, General Manager of Asset-Liability Management Department, President of Hunan Branch. Appointed Director of Guangdong Local Financial Supervision Bureau in January 2021. Appointed Deputy Director of Provincial Party Committee Finance Office in January 2024.',
+            appointment:'Appointed Deputy Director of Provincial Party Committee Finance Office in January 2024.',
+            activity:'Led research team to Shanwei on financial support for new urbanization in December 2024.'
+        }},
+        { id:'ld4', name:'靳磊', title:'广东省委常委、深圳市委书记', dept:'中共深圳市委', gender:'男', birth:'1970年2月', political:'中共党员', ethnicity:'汉族', education:'大学学历，厦门大学经济学硕士，经济师', photo:'https://pics4.baidu.com/feed/472309f7905298222d5c8e5fd3ca0c480a46f4e0.jpeg',
+          career:'1988.09-1992.07 武汉大学政治学系行政管理专业学习\n1992.07-2003.10 河南省计经委、发展计划委员会工作，历任副主任科员、主任科员、《河南经济》杂志社副总编辑、财政金融处副处长等职\n2003.10-2011.12 河南省发改委办公室副主任兼主任办主任，后任省直机关事务管理局副局长、省发改委副主任\n2015.04-2016.09 河南省周口市委常委、组织部部长\n2016.09-2018.09 河南省郑州市委副书记、秘书长\n2018.09-2019.12 河南省安阳市委副书记、市长\n2019.12-2022.05 四川省德阳市委书记\n2022.05-2026.03 四川省委常委，历任政法委书记、社会工作部部长、组织部部长\n2026.03- 广东省委常委、深圳市委书记', appointment:'2026年3月任广东省委常委、深圳市委书记。', activity:'2026年3月履新深圳后强调加快推进粤港澳大湾区建设，深化前海、河套等重大合作平台建设，推动综合改革试点。',
+          en:{ name:'Jin Lei', title:'Member of Standing Committee of CPC Guangdong Provincial Committee, Party Secretary of Shenzhen', dept:'CPC Shenzhen Municipal Committee', gender:'Male', birth:'February 1970', political:'Member of CPC', ethnicity:'Han', education:'Bachelor\'s degree, Master of Economics from Xiamen University, Economist',
+            career:'1988.09-1992.07: Studied Public Administration at Wuhan University. 1992.07-2011.12: Served in Henan Provincial Development and Reform Commission, Deputy Director-General. 2015.04-2016.09: Director of Organization Department of Zhoukou City. 2016.09-2018.09: Deputy Party Secretary of Zhengzhou City. 2018.09-2019.12: Mayor of Anyang City. 2019.12-2022.05: Party Secretary of Deyang City, Sichuan Province. 2022.05-2026.03: Member of Standing Committee of Sichuan Provincial Party Committee, served as Secretary of Political and Legal Affairs Commission, Director of Social Work Department, and Director of Organization Department. 2026.03-: Member of Standing Committee of CPC Guangdong Provincial Committee, Party Secretary of Shenzhen.',
+            appointment:'Appointed Member of Standing Committee of CPC Guangdong Provincial Committee and Party Secretary of Shenzhen in March 2026.',
+            activity:'Emphasized accelerating the construction of Guangdong-Hong Kong-Macao Greater Bay Area after taking office in March 2026.'
+        }},
+        { id:'ld5', name:'覃伟中', title:'深圳市委副书记、市长', dept:'深圳市人民政府', gender:'男', birth:'1971年7月', political:'中共党员', ethnicity:'汉族', education:'清华大学工学博士，高级工程师', photo:'https://pics6.baidu.com/feed/4e4a20a4462309f7f9b0b6c7200cf0f2d6cad6c1.jpeg',
+          career:'1988.09-1993.09 清华大学化学工程系高分子化工专业、自动化系电子与计算机技术专业学习，获双学士学位\n1993.09-1996.07 清华大学化学工程系高分子材料专业硕士研究生\n1996.07-2010.07 中国石化总公司发展计划部工作，历任副处长、处长、副主任，兼任中国石化新能源办公室主任\n2010.07-2017.03 中国石化九江石油化工总厂厂长、党委副书记，中国石化股份有限公司九江分公司总经理（其间：2007.09-2015.07 清华大学化学工程与技术专业在职博士研究生）\n2017.03-2019.03 中国石油天然气集团公司副总经理\n2019.03-2021.04 广东省政府副省长、党组成员\n2021.04-2021.05 深圳市委副书记，市政府副市长、代理市长\n2021.05- 深圳市委副书记，市政府市长、党组书记', appointment:'第二十届中央候补委员，深圳市委副书记，市政府市长、党组书记。曾获全国五一劳动奖章。', activity:'2025年政府工作报告首提建设"产业金融中心"。2025年5月在深交所全球投资者大会上强调构建全链条科技金融服务体系。',
+          en:{ name:'Qin Weizhong', title:'Deputy Party Secretary of Shenzhen, Mayor of Shenzhen', dept:'Shenzhen Municipal People\'s Government', gender:'Male', birth:'July 1971', political:'Member of CPC', ethnicity:'Han', education:'Ph.D. in Engineering from Tsinghua University, Senior Engineer',
+            career:'1988-1996: Studied at Tsinghua University, dual bachelor\'s degrees in Polymer Chemical Engineering and Electronic & Computer Technology, Master\'s in Polymer Materials. 1996-2010: Served in Sinopec Development Planning Department, promoted to Deputy Director and Director of New Energy Office. 2010-2017: President of Sinopec Jiujiang Petrochemical Complex. 2017-2019: Vice President of China National Petroleum Corporation. 2019-2021: Vice Governor of Guangdong Province. 2021-: Deputy Party Secretary and Mayor of Shenzhen.',
+            appointment:'Alternate member of the 20th CPC Central Committee, Deputy Party Secretary and Mayor of Shenzhen. Recipient of National May 1st Labor Medal.',
+            activity:'First proposed building an "Industrial Finance Center" in the 2025 government work report.'
+        }},
+        { id:'ld6', name:'罗晃浩', title:'深圳市政府副市长', dept:'分管金融、商务、港澳事务', gender:'男', birth:'1973年10月', political:'中共党员', ethnicity:'汉族', education:'北京大学行政管理学本科，中山大学工商管理硕士', photo:'https://pics1.baidu.com/feed/9a504fc2d5628535e7f1a3d9d9e1c7e6a6efce1c.jpeg',
+          career:'1996年7月北京大学毕业后进入中国建设银行，历任河源市分行科员、佛山市分行公司业务部副经理、房地产金融客户部经理、广州电力支行行长、江门市分行行长、总行小企业业务部副总经理等职，在建行系统工作超20年。2020年5月任东莞市人民政府副市长。2021年11月任茂名市委常委、副市长，2023年7月任茂名市委副书记。2024年5月任深圳市人民政府党组成员、副市长，市委金融委员会办公室主任、市委金融工委书记。', appointment:'2024年5月任深圳市人民政府党组成员、副市长，市委金融委员会办公室主任、市委金融工委书记。', activity:'2024年5月履新后强调深圳经济高质量发展离不开金融高质量发展。',
+          en:{ name:'Luo Huanghao', title:'Vice Mayor of Shenzhen Municipal People\'s Government', dept:'Finance, Commerce, Hong Kong and Macao Affairs', gender:'Male', birth:'October 1973', political:'Member of CPC', ethnicity:'Han', education:'Bachelor of Public Administration from Peking University, MBA from Sun Yat-sen University',
+            career:'Graduated from Peking University in 1996, joined China Construction Bank for over 20 years, served as President of Jiangmen Branch, Deputy General Manager of Small Enterprise Business Department at CCB headquarters. Appointed Vice Mayor of Dongguan in May 2020, Deputy Party Secretary of Maoming in July 2023. Appointed Vice Mayor of Shenzhen in May 2024.',
+            appointment:'Appointed Vice Mayor of Shenzhen in May 2024.',
+            activity:'Emphasized high-quality financial development after taking office in May 2024.'
+        }},
+        { id:'ld7', name:'时卫干', title:'深圳市地方金融管理局局长', dept:'深圳市地方金融管理局', gender:'男', birth:'1975年8月', political:'中共党员', ethnicity:'汉族', education:'首都经济贸易大学硕士，中国社会科学院经济学博士', photo:'https://pics2.baidu.com/feed/6a63f6246b600c33b5f8c1d9d9e1c7e6a6efce1c.jpeg',
+          career:'1997年8月参加工作。在中国农业银行工作超过十年，曾任农业银行办公室秘书二处处长、农业银行宁夏分行党委委员等职。2016年9月任深圳市盐田区委常委，区政府常务副区长、党组副书记。2019年12月任深圳市地方金融监督管理局副局长。2024年2月任深圳市委金融委员会办公室常务副主任、市委金融工作委员会常务副书记、市地方金融管理局局长。', appointment:'2024年2月任深圳市委金融委员会办公室常务副主任、市委金融工作委员会常务副书记、市地方金融管理局局长。', activity:'2025年5月在清华五道口全球金融论坛强调大湾区深度融合是确定性的方向。',
+          en:{ name:'Shi Weigan', title:'Director of Shenzhen Local Financial Administration Bureau', dept:'Shenzhen Local Financial Administration Bureau', gender:'Male', birth:'August 1975', political:'Member of CPC', ethnicity:'Han', education:'Master\'s from Capital University of Economics and Business, Ph.D. in Economics from CASS',
+            career:'Started working in August 1997. Worked at Agricultural Bank of China for over ten years, serving as Director of Secretary Division II at Head Office and Party Committee Member of Ningxia Branch. Appointed Standing Committee Member and Executive Deputy Head of Yantian District, Shenzhen in September 2016. Appointed Deputy Director of Shenzhen Local Financial Supervision Bureau in December 2019. Appointed Executive Deputy Director of Shenzhen Municipal Financial Committee Office in February 2024.',
+            appointment:'Appointed Executive Deputy Director of Shenzhen Municipal Financial Committee Office in February 2024.',
+            activity:'Emphasized at Tsinghua PBCSF Global Finance Forum in May 2025 that deeper integration of the Greater Bay Area is a definitive trend.'
+        }},
+        { id:'ld8', name:'蔡英权', title:'深圳市市场监管局党组书记、局长', dept:'深圳市市场监督管理局', gender:'男', birth:'1976年9月', political:'中共党员', ethnicity:'汉族', education:'中山大学法学学士', photo:'https://pics3.baidu.com/feed/b151f8198618367a5c0e5c3e1a0b1f2e738bd4b6.jpeg',
+          career:'1998年7月参加工作。曾任深圳市宝安区人民检察院起诉科干部、助理检察员，宝安区委组织部办公室副主任、主任，宝安区纪委派驻第七纪检监察组组长，石岩街道党工委副书记、办事处副主任，宝安区城市管理局局长、党委书记。2016年9月任宝安区委常委、副区长。2021年9月任福田区委副书记、政法委书记，其间曾兼任福田区副区长、福田街道党工委书记。2023年9月任深圳市市场监督管理局党组书记、局长。', appointment:'2023年9月任深圳市市场监督管理局党组书记、局长。', activity:'2024年5月在青年工作座谈会上阐述对事业和岗位的思考。',
+          en:{ name:'Cai Yingquan', title:'Party Secretary and Director of Shenzhen Market Supervision Administration', dept:'Shenzhen Market Supervision Administration', gender:'Male', birth:'September 1976', political:'Member of CPC', ethnicity:'Han', education:'Bachelor of Law from Sun Yat-sen University',
+            career:'Started working in July 1998. Served in Baoan District People\'s Procuratorate, Organization Department of Baoan District Party Committee, Director of Baoan District Urban Management Bureau. Appointed Standing Committee Member and Deputy Head of Baoan District in September 2016. Appointed Deputy Party Secretary of Futian District in September 2021. Appointed Director of Shenzhen Market Supervision Administration in September 2023.',
+            appointment:'Appointed Director of Shenzhen Market Supervision Administration in September 2023.',
+            activity:'Delivered speech at youth work symposium in May 2024.'
+        }},
+        { id:'ld9', name:'张非梦', title:'深圳市商务局党组书记、局长', dept:'深圳市商务局', gender:'女', birth:'1974年8月14日', political:'中共党员', ethnicity:'汉族', education:'中山大学管理学硕士', photo:'https://pics5.baidu.com/feed/3ac79f3df8dcd100b8d1f0c2b1a2c3d4e5f6a7b8.jpeg',
+          career:'历任深圳市义务工作者联合会主任科员，深圳市食品药品监督管理局宝安分局副局长，深圳市投资推广署办公室副主任、主任、副署长、党组成员。2019年1月任深圳市商务局副局长、党组成员。2019年11月任深圳市前海合作区党工委委员、前海管理局副局长。2021年4月任深圳市商务局党组书记、局长。2024年2月兼任深圳市投资促进局党组书记。', appointment:'2021年4月任深圳市商务局党组书记、局长，2024年2月兼任深圳市投资促进局党组书记。', activity:'2025年8月表示深圳坚持"政策+活动"双轮驱动，推动消费-产业-经济正向循环。',
+          en:{ name:'Zhang Feimeng', title:'Party Secretary and Director of Shenzhen Commerce Bureau', dept:'Shenzhen Commerce Bureau', gender:'Female', birth:'August 14, 1974', political:'Member of CPC', ethnicity:'Han', education:'Master of Management from Sun Yat-sen University',
+            career:'Served in Shenzhen Volunteer Association, Shenzhen Food and Drug Administration, Deputy Director of Shenzhen Investment Promotion Bureau. Appointed Deputy Director of Shenzhen Commerce Bureau in January 2019, Deputy Director of Qianhai Authority in November 2019. Appointed Director of Shenzhen Commerce Bureau in April 2021.',
+            appointment:'Appointed Director of Shenzhen Commerce Bureau in April 2021.',
+            activity:'Stated in August 2025 that Shenzhen adheres to "policy + activity" dual-drive.'
+        }},
+        { id:'ld10', name:'包祖明', title:'国家金融监督管理总局广东监管局党委书记、局长', dept:'广东金融监管局', gender:'男', birth:'1971年4月', political:'中共党员', ethnicity:'汉族', education:'经济学博士，高级经济师', photo:'https://pics0.baidu.com/feed/1e30e924b899a9019c7d1f0c2b1a2c3d4e5f6a7b.jpeg',
+          career:'1997年7月参加工作。曾任中国人民银行大连市中心支行办公室副主任、外资及其他金融机构监管处副处长；大连银监局政策性银行和邮政储蓄机构监管处处长、股份制银行监管处处长、法人机构监管处处长，大连银监局副局长；浙江银监局副局长；中国银监会政策研究局副局长。2015年10月任黑龙江银监局党委书记、局长。2019年7月任浙江银保监局党委书记、局长。2023年11月任深圳金融监管局党委书记、局长。2025年3月任广东金融监管局党委书记、局长。', appointment:'2025年3月任国家金融监督管理总局广东监管局党委书记、局长。', activity:'2025年强调深耕蓝色金融助力海洋经济高质量发展，推动辖内涉海产业贷款超1300亿元。',
+          en:{ name:'Bao Zuming', title:'Party Secretary and Director of Guangdong Regulatory Bureau of NFRA', dept:'Guangdong Bureau of NFRA', gender:'Male', birth:'April 1971', political:'Member of CPC', ethnicity:'Han', education:'Ph.D. in Economics, Senior Economist',
+            career:'Started working in July 1997. Served in Dalian Central Sub-branch of PBC, Dalian Banking Regulatory Bureau, Zhejiang Banking Regulatory Bureau, Deputy Director of Policy Research Bureau of CBRC. Appointed Director of Heilongjiang Banking Regulatory Bureau in October 2015, Director of Zhejiang CBIRC in July 2019, Director of Shenzhen Financial Regulation Bureau in November 2023, Director of Guangdong Financial Regulation Bureau in March 2025.',
+            appointment:'Appointed Director of Guangdong Financial Regulation Bureau in March 2025.',
+            activity:'Emphasized blue finance for high-quality marine economic development in 2025.'
+        }},
+        { id:'ld11', name:'任庆华', title:'国家金融监督管理总局深圳监管局党委书记、局长', dept:'深圳金融监管局', gender:'男', birth:'1970年7月', political:'中共党员', ethnicity:'满族', education:'在职博士研究生学历，经济学博士学位', photo:'https://pics1.baidu.com/feed/4e4a20a4462309f7a0b1c2d3e4f5a6b7c8d9e0f1.jpeg',
+          career:'1970年7月出生，河北宽城人。2013年11月起任广东银监局党委委员、副局长。2020年7月任广西银保监局党委书记、局长，后任广西金融监管局局长。2025年3月任国家金融监督管理总局深圳监管局党委书记、局长。', appointment:'2025年3月任国家金融监督管理总局深圳监管局党委书记、局长。', activity:'2021年4月参加银行业保险业例行新闻发布会，介绍广西金融支持经济高质量发展成效。',
+          en:{ name:'Ren Qinghua', title:'Party Secretary and Director of Shenzhen Regulatory Bureau of NFRA', dept:'Shenzhen Bureau of NFRA', gender:'Male', birth:'July 1970', political:'Member of CPC', ethnicity:'Manchu', education:'Ph.D. in Economics',
+            career:'Born in July 1970, Kuancheng, Hebei. Served as Deputy Director of Guangdong Banking Regulatory Bureau since November 2013, Director of Guangxi CBIRC since July 2020. Appointed Director of Shenzhen Financial Regulation Bureau in March 2025.',
+            appointment:'Appointed Director of Shenzhen Financial Regulation Bureau in March 2025.',
+            activity:'Attended regular press conference of banking and insurance industry in April 2021.'
+        }},
+        { id:'ld12', name:'温信祥', title:'人行深圳市分行行长、外汇局深圳市分局局长', dept:'中国人民银行深圳市分行', gender:'男', birth:'1970年', political:'中共党员', ethnicity:'汉族', education:'北京大学数学系本科，北大光华管理学院经济学硕士，清华五道口金融学院博士', photo:'https://pics2.baidu.com/feed/3c6d55fbb2fb4316b1c2d3e4f5a6b7c8d9e0f1a2.jpeg',
+          career:'1988年考入北京大学数学系，后于北大光华管理学院攻读经济学硕士，在清华五道口金融学院获得博士学位。曾在中国工商银行总行工作，历任国际业务部副总经理、战投部副总经理等职。2014年任中国人民银行金融研究所副所长。后任中国人民银行支付结算司司长。2022年12月任中国人民银行深圳市分行党委书记、行长，国家外汇管理局深圳市分局局长。', appointment:'2022年12月任中国人民银行深圳市分行党委书记、行长，国家外汇管理局深圳市分局局长。', activity:'2024年2月在深圳两会期间带来多份建议，聚焦科技金融发展痛点。',
+          en:{ name:'Wen Xinxiang', title:'Governor of PBC Shenzhen Branch, Director of SAFE Shenzhen Branch', dept:'People\'s Bank of China Shenzhen Branch', gender:'Male', birth:'1970', political:'Member of CPC', ethnicity:'Han', education:'B.S. in Mathematics from Peking University, M.A. in Economics from Guanghua School of Management, Ph.D. from PBC School of Finance, Tsinghua University',
+            career:'Entered Peking University in 1988. Served in ICBC head office, Deputy Director of International Business Department. Appointed Deputy Director of PBC Financial Research Institute in 2014, Director of Payment and Settlement Department. Appointed Governor of PBC Shenzhen Branch in December 2022.',
+            appointment:'Appointed Governor of PBC Shenzhen Branch in December 2022.',
+            activity:'Submitted proposals on tech finance at Shenzhen Two Sessions in February 2024.'
+        }}
     ];
+
     const hrPolicyData = [
         { id:'hr1',badge:'青年人才',badgeClass:'green',title:'青年人才来深发展服务保障若干措施',link:'https://hrss.sz.gov.cn/gkmlpt/content/12/12551/post_12551351.html#25167',source:'深圳市人社局',date:'2025-12-16',summary:'年龄45岁以下首次来深就业创业可申请过渡性住房或安居补贴；博士入户补贴10万元、硕士最高5万元、本科最高3万元。' },
         { id:'hr2',badge:'职称考试',badgeClass:'blue',title:'2026年度高级经济专业技术资格考试通知',link:'https://hrss.sz.gov.cn/szksy/ztzl/zyjsks/zyjskslb/jjzy/zxksxx_89396/content/post_12702219.html',source:'深圳市人社局',date:'2026-03-26',summary:'银行业专业人员中级职业资格可对应中级经济专业技术资格；设金融等10个专业类别。' },
         { id:'hr3',badge:'稳岗贷款',badgeClass:'orange',title:'与中国银行深圳分行合作金融助企稳岗扩岗',link:'https://hrss.sz.gov.cn/gkmlpt/content/12/12199/post_12199614.html#1690',source:'深圳市人社局',date:'2025-05-28',summary:'小微企业稳岗扩岗贷款单户最高5000万元，利率最低2.9%；个人最高1000万元。' }
     ];
+
     let selectedLeaders = new Set();
     function renderLeadersGrid(){
-        const grid=document.getElementById('leadersGrid');
-        grid.innerHTML='';
+        const grid=document.getElementById('leadersGrid'); grid.innerHTML='';
         leadersData.forEach(ld=>{
             const card=document.createElement('div');
             card.className='leader-card'+(selectedLeaders.has(ld.id)?' selected':'');
-            const chk=document.createElement('input');
-            chk.type='checkbox'; chk.className='leader-checkbox'; chk.dataset.id=ld.id;
-            chk.checked=selectedLeaders.has(ld.id);
-            chk.addEventListener('change',e=>{
-                if(e.target.checked) selectedLeaders.add(ld.id); else selectedLeaders.delete(ld.id);
-                renderLeadersGrid(); updateLeaderBasketUI();
-            });
+            const chk=document.createElement('input'); chk.type='checkbox'; chk.className='leader-checkbox'; chk.dataset.id=ld.id; chk.checked=selectedLeaders.has(ld.id);
+            chk.addEventListener('change',e=>{ if(e.target.checked) selectedLeaders.add(ld.id); else selectedLeaders.delete(ld.id); renderLeadersGrid(); updateLeaderBasketUI(); });
             const avatar=document.createElement('div'); avatar.className='leader-avatar';
-            const ext=(ld.name==='孟凡利'||ld.name==='包祖明'||ld.name==='时卫干'||ld.name==='李运')?'png':'jpeg';
-            const img=document.createElement('img'); img.src=ld.name+'.'+ext; img.alt=ld.name;
-            img.onerror=()=>{ avatar.style.background='#1e4bd2'; avatar.textContent=ld.name.charAt(0); img.style.display='none'; };
+            const img=document.createElement('img'); img.src=ld.photo; img.alt=ld.name;
+            img.onerror=function(){ this.style.display='none'; avatar.style.background='#1e4bd2'; avatar.style.color='white'; avatar.textContent=ld.name.charAt(0); avatar.style.display='flex'; avatar.style.alignItems='center'; avatar.style.justifyContent='center'; };
             avatar.appendChild(img);
             const name=document.createElement('h4'); name.textContent=ld.name;
             const title=document.createElement('div'); title.className='leader-title'; title.textContent=ld.title;
@@ -255,6 +293,7 @@
         });
         document.getElementById('leaderCount').textContent=selectedLeaders.size;
     }
+
     function updateLeaderBasketUI(){
         const list=leadersData.filter(ld=>selectedLeaders.has(ld.id));
         document.getElementById('leaderBasketCount').textContent=list.length+'位';
@@ -263,29 +302,25 @@
         list.forEach(ld=>{ const div=document.createElement('div'); div.className='leader-basket-item';
             div.innerHTML=`<i class="fas fa-times-circle" data-id="${ld.id}" style="cursor:pointer;color:#dc2626;"></i><span><strong>${ld.name}</strong> — ${ld.title}</span>`;
             cont.appendChild(div); });
-        cont.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',e=>{
-            selectedLeaders.delete(e.target.dataset.id); renderLeadersGrid(); updateLeaderBasketUI();
-        }));
+        cont.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',e=>{ selectedLeaders.delete(e.target.dataset.id); renderLeadersGrid(); updateLeaderBasketUI(); }));
     }
+
     function renderHrList(){
         const cont=document.getElementById('hrPolicyList');
         hrPolicyData.forEach(p=>{
             const div=document.createElement('div'); div.className='policy-item';
-            div.innerHTML=`<input type="checkbox" class="policy-checkbox" id="chk-${p.id}" data-id="${p.id}">
-                <div class="policy-content"><span class="policy-badge ${p.badgeClass}">${p.badge}</span>
-                <div class="policy-title"><a href="${p.link}" target="_blank">${p.title}</a></div>
-                <div class="policy-meta"><span><i class="far fa-building"></i> ${p.source}</span><span><i class="far fa-calendar"></i> ${p.date}</span></div>
-                <p class="news-summary">${p.summary}</p></div>`;
+            div.innerHTML=`<input type="checkbox" class="policy-checkbox" id="chk-${p.id}" data-id="${p.id}"><div class="policy-content"><span class="policy-badge ${p.badgeClass}">${p.badge}</span><div class="policy-title"><a href="${p.link}" target="_blank">${p.title}</a></div><div class="policy-meta"><span><i class="far fa-building"></i> ${p.source}</span><span><i class="far fa-calendar"></i> ${p.date}</span></div><p class="news-summary">${p.summary}</p></div>`;
             cont.appendChild(div);
         });
     }
+
     function getAllPolicyItems(){
         const items=[]; document.querySelectorAll('.policy-item').forEach(el=>{
-            const chk=el.querySelector('input[type=checkbox]'); const a=el.querySelector('.policy-title a');
-            const src=el.querySelector('.policy-meta span:first-child');
+            const chk=el.querySelector('input[type=checkbox]'); const a=el.querySelector('.policy-title a'); const src=el.querySelector('.policy-meta span:first-child');
             if(chk&&a) items.push({ id:chk.dataset.id||chk.id, title:a.textContent.trim(), source:src?src.textContent.trim():'', checked:chk.checked });
         }); return items;
     }
+
     function updatePolicyBasketUI(){
         const items=getAllPolicyItems().filter(p=>p.checked);
         document.getElementById('basketCount').textContent=items.length;
@@ -300,16 +335,24 @@
             if(chk){ chk.checked=false; chk.dispatchEvent(new Event('change',{bubbles:true})); } updatePolicyBasketUI();
         }));
     }
+
     document.addEventListener('change',e=>{ if(e.target.classList.contains('policy-checkbox')) updatePolicyBasketUI(); });
+
     function generateResume(){
         if(selectedLeaders.size===0){ alert('请至少勾选一位领导'); return; }
         const list=leadersData.filter(ld=>selectedLeaders.has(ld.id));
         const d=new Date(); const dateStr=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
-        let html='<html><head><meta charset="UTF-8"><title>领导简历</title><style>body{font-family:仿宋;font-size:14pt;}</style></head><body>';
-        list.forEach(ld=>{ html+=`<h2>${ld.name}</h2><p><strong>职务：</strong>${ld.title}<br><strong>性别：</strong>${ld.gender} ${ld.birth}<br><strong>民族：</strong>${ld.ethnicity}<br><strong>学历：</strong>${ld.education}<br><strong>履历：</strong>${ld.career}<br><strong>活动：</strong>${ld.activity}</p><hr>`; });
-        html+=`<p>生成日期：${dateStr}</p></body></html>`;
+        const dateStrEn=d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        let html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>领导简历</title><style>body{font-family:仿宋,SimSun,serif;font-size:14pt;line-height:1.8;padding:30px;max-width:1000px;margin:0 auto;}h1{font-size:20pt;text-align:center;}h2{font-size:16pt;border-bottom:1px solid #333;}hr{page-break-after:always;border:0;}</style></head><body>';
+        list.forEach((ld,idx)=>{
+            html+=`<div style="margin-bottom:40px;"><h1>领导简历</h1><h2>${ld.name}</h2><p><strong>现任职务：</strong>${ld.title}</p><p><strong>性别：</strong>${ld.gender}　　<strong>出生日期：</strong>${ld.birth}　　<strong>民族：</strong>${ld.ethnicity}</p><p><strong>政治面貌：</strong>${ld.political}</p><p><strong>学历：</strong>${ld.education}</p><h3>📋 人物履历</h3><p style="white-space:pre-line;">${ld.career}</p><h3>📌 职务任免</h3><p>${ld.appointment}</p><h3>📰 近期活动</h3><p>${ld.activity}</p><p style="text-align:right;margin-top:30px;">生成日期：${dateStr}</p></div>`;
+            html+=`<div style="page-break-before:always;margin-top:40px;"><h1>Resume</h1><h2>${ld.en.name}</h2><p><strong>Current Position:</strong> ${ld.en.title}</p><p><strong>Gender:</strong> ${ld.en.gender}　　<strong>Date of Birth:</strong> ${ld.en.birth}　　<strong>Ethnicity:</strong> ${ld.en.ethnicity}</p><p><strong>Political Affiliation:</strong> ${ld.en.political}</p><p><strong>Education:</strong> ${ld.en.education}</p><h3>📋 Career</h3><p style="white-space:pre-line;">${ld.en.career}</p><h3>📌 Appointment</h3><p>${ld.en.appointment}</p><h3>📰 Activities</h3><p>${ld.en.activity}</p><p style="text-align:right;margin-top:30px;">Generated: ${dateStrEn}</p></div>`;
+            if(idx<list.length-1) html+='<hr>';
+        });
+        html+='</body></html>';
         const w=window.open(); w.document.write(html); w.document.close();
     }
+
     function generateReport(){
         const items=getAllPolicyItems().filter(p=>p.checked);
         if(items.length===0){ alert('请至少勾选一项政策'); return; }
@@ -317,9 +360,9 @@
         let content=`<html><head><meta charset="UTF-8"><title>分行月度行政报告</title><style>body{font-family:仿宋;font-size:14pt;}</style></head><body><h1>分行月度行政报告</h1><p>${dateStr}</p>`;
         items.forEach((p,i)=>{ content+=`<h3>${i+1}. ${p.title}</h3><p>${p.source} | ${p.summary||''}</p>`; });
         content+='<h2>十五五规划相关内容</h2><p>地区生产总值超过5万亿元...</p><h2>监管处罚信息</h2><p>支付结算违规、反洗钱不合规...</p><h2>经济数据</h2><p>存款154464.31亿...</p></body></html>';
-        const blob=new Blob([content],{type:'application/msword'});
-        const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`分行月度行政报告_${d.getFullYear()}年${d.getMonth()+1}月.doc`; a.click();
+        const blob=new Blob([content],{type:'application/msword'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`分行月度行政报告_${d.getFullYear()}年${d.getMonth()+1}月.doc`; a.click();
     }
+
     document.getElementById('generateResumeBtn').addEventListener('click',generateResume);
     document.getElementById('confirmGenerateLeaderResumeBtn').addEventListener('click',generateResume);
     document.getElementById('generateReportBtn').addEventListener('click',generateReport);
