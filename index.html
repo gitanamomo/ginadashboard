@@ -970,6 +970,10 @@
     let allPolicies = [];
 
     // 静态后备数据（当 fetch 失败时使用）
+        // ========== 政策数据管理（自动更新 + 静态后备） ==========
+    // 静态监管政策数据（后备）
+        // ========== 政策数据管理（自动更新 + 静态后备） ==========
+    // 静态监管政策数据（后备）
     const staticRegulatoryData = [
         { id: 'reg1', badge: '紧急·外汇局', badgeClass: '', title: '前海自贸试验区资本项目结汇及NRA账户退汇便利化', link: 'http://www.safe.gov.cn/shenzhen/2026/0410/2359.html', source: '国家外汇管理局深圳市分局', date: '2026-04-10', summary: '资本项目结汇资金可用于非关联企业借款；优化外汇NRA账户退汇流程。' },
         { id: 'reg2', badge: '前海·跨境', badgeClass: 'orange', title: '"前海港企贷"政策解读及跨境金融服务走进前海', link: 'https://qh.sz.gov.cn/gkmlpt/content/12/12688/post_12688768.html#2361', source: '前海管理局', date: '2026-03-17', summary: '外汇局深圳分局详解"前海港企贷"，解决港资小微企业境内融资堵点。' },
@@ -978,11 +982,108 @@
         { id: 'reg5', badge: '前海金融', badgeClass: '', title: '支持前海金融高质量发展行动方案（2025—2026年）', link: 'https://www.sz.gov.cn/cn/xxgk/zfxxgj/zcfg/content/post_12697108.html', source: '深圳市委金融办', date: '2025-03-03', summary: '允许境外金融机构在前海设立银行、证券、保险持牌机构；推进FT账户试点。' },
     ];
 
+    // 静态人事人才数据（后备）
     const staticHrData = [
         { id: 'hr1', badge: '青年人才', badgeClass: 'green', title: '青年人才来深发展服务保障若干措施', link: 'https://hrss.sz.gov.cn/gkmlpt/content/12/12551/post_12551351.html#25167', source: '深圳市人社局', date: '2025-12-16', summary: '年龄45岁以下首次来深就业创业可申请过渡性住房或安居补贴；博士入户补贴10万元、硕士最高5万元、本科最高3万元。' },
         { id: 'hr2', badge: '职称考试', badgeClass: 'blue', title: '2026年度高级经济专业技术资格考试通知', link: 'https://hrss.sz.gov.cn/szksy/ztzl/zyjsks/zyjskslb/jjzy/zxksxx_89396/content/post_12702219.html', source: '深圳市人社局', date: '2026-03-26', summary: '银行业专业人员中级职业资格可对应中级经济专业技术资格；设金融等10个专业类别。' },
         { id: 'hr3', badge: '稳岗贷款', badgeClass: 'orange', title: '与中国银行深圳分行合作金融助企稳岗扩岗', link: 'https://hrss.sz.gov.cn/gkmlpt/content/12/12199/post_12199614.html#1690', source: '深圳市人社局', date: '2025-05-28', summary: '小微企业稳岗扩岗贷款单户最高5000万元，利率最低2.9%；个人最高1000万元。' },
     ];
+
+    // 动态数据变量（初始化为静态后备）
+    let regulatoryPolicyData = [...staticRegulatoryData];
+    let hrPolicyData = [...staticHrData];
+    let allPolicies = [...regulatoryPolicyData, ...hrPolicyData];
+
+    // 从 data.json 加载最新监管数据并覆盖 regulatoryPolicyData
+    async function loadPolicyData() {
+        try {
+            const response = await fetch('./scripts/data.json');
+            if (!response.ok) throw new Error('数据文件不存在');
+            const data = await response.json();
+            
+            if (data.reg_policies && data.reg_policies.length > 0) {
+                regulatoryPolicyData = data.reg_policies.map((item, index) => ({
+                    id: `reg_auto_${index}`,
+                    badge: item.source.includes('外管') ? '外汇局' : (item.source.includes('人行') ? '人行' : '监管'),
+                    badgeClass: item.source.includes('外管') ? '' : (item.source.includes('人行') ? 'blue' : 'orange'),
+                    title: item.title,
+                    link: item.link,
+                    source: item.source,
+                    date: item.date || '',
+                    summary: item.summary || '点击标题查看详情'
+                }));
+            }
+            
+            // 更新时间戳
+            if (data.last_update) {
+                const updateSpan = document.querySelector('.date-badge');
+                if (updateSpan) {
+                    updateSpan.innerHTML = `<i class="far fa-calendar-alt"></i> 2026年4月 · 第22期 ｜ 更新于 ${data.last_update}`;
+                }
+            }
+        } catch (error) {
+            console.warn('自动更新失败，使用静态监管数据', error);
+            // 保持静态后备数据不变
+        } finally {
+            allPolicies = [...regulatoryPolicyData, ...hrPolicyData];
+            // 重新渲染政策列表
+            renderRegulatoryList();
+            renderHrList();
+            updatePolicyBasketUI();
+        }
+    }
+
+    // 动态数据变量（初始化为静态后备）
+    let regulatoryPolicyData = [...staticRegulatoryData];
+    let hrPolicyData = [...staticHrData];
+    let allPolicies = [...regulatoryPolicyData, ...hrPolicyData];
+
+    // 从 data.json 加载最新监管数据并覆盖 regulatoryPolicyData
+    async function loadPolicyData() {
+        try {
+            const response = await fetch('./scripts/data.json');
+            if (!response.ok) throw new Error('数据文件不存在');
+            const data = await response.json();
+            
+            if (data.reg_policies && data.reg_policies.length > 0) {
+                regulatoryPolicyData = data.reg_policies.map((item, index) => ({
+                    id: `reg_auto_${index}`,
+                    badge: item.source.includes('外管') ? '外汇局' : (item.source.includes('人行') ? '人行' : '监管'),
+                    badgeClass: item.source.includes('外管') ? '' : (item.source.includes('人行') ? 'blue' : 'orange'),
+                    title: item.title,
+                    link: item.link,
+                    source: item.source,
+                    date: item.date || '',
+                    summary: item.summary || '点击标题查看详情'
+                }));
+            }
+            
+            // 更新时间戳
+            if (data.last_update) {
+                const updateSpan = document.querySelector('.date-badge');
+                if (updateSpan) {
+                    updateSpan.innerHTML = `<i class="far fa-calendar-alt"></i> 2026年4月 · 第22期 ｜ 更新于 ${data.last_update}`;
+                }
+            }
+        } catch (error) {
+            console.warn('自动更新失败，使用静态监管数据', error);
+            // 保持静态后备数据不变
+        } finally {
+            allPolicies = [...regulatoryPolicyData, ...hrPolicyData];
+            // 重新渲染政策列表
+        // 先渲染领导网格（不依赖政策数据）
+        renderLeadersGrid();
+        updateLeaderBasketUI();
+        
+        // 渲染政策列表（初始显示静态后备数据）
+        renderRegulatoryList();
+        renderHrList();
+        updatePolicyBasketUI();
+        
+        // 启动自动更新（成功后会覆盖监管数据并重新渲染）
+        loadPolicyData();
+        }
+    }
 
     // 从 data.json 加载最新数据
     async function loadPolicyData() {
@@ -1021,9 +1122,14 @@
             allPolicies = [...regulatoryPolicyData, ...hrPolicyData];
             
             // 数据加载完成后渲染页面
-            renderRegulatoryList();
-            renderHrList();
-            updatePolicyBasketUI();
+        renderLeadersGrid();
+        updateLeaderBasketUI();
+        renderRegulatoryList();
+        renderHrList();
+        updatePolicyBasketUI();
+        
+        // 启动自动更新（成功后会覆盖监管数据并重新渲染）
+        loadPolicyData();
         }
     }      
         const leadersData = [
