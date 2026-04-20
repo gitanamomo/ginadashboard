@@ -4,438 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>深银·政策月报工作台 · 行政版</title>
-    <!-- Font Awesome (稳定CDN，加载后样式不会变动) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome 稳定CDN（国内备用） -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        /* 全局重置，防止浏览器默认样式干扰 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #f5f7fb;
-            color: #1e293b;
-            padding: 20px;
-            line-height: 1.5;
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-        .dashboard {
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        /* header */
-        .header {
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .header h1 {
-            font-size: 28px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .header h1 i {
-            color: #1e4bd2;
-            background: #e9efff;
-            padding: 10px;
-            border-radius: 12px;
-        }
-        .date-badge {
-            color: #64748b;
-            background: white;
-            display: inline-block;
-            padding: 6px 20px;
-            border-radius: 40px;
-            font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .header-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-        .btn-primary {
-            background: #1e4bd2;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(30,75,210,0.2);
-            transition: all 0.15s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-primary:hover {
-            background: #0f3bb5;
-            transform: translateY(-1px);
-        }
-        .btn-outline {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 12px 20px;
-            border-radius: 40px;
-            font-size: 14px;
-            color: #1e293b;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.15s;
-        }
-        .btn-outline:hover {
-            border-color: #1e4bd2;
-            background: #f8fafc;
-        }
-        .basket-badge {
-            background: #dc2626;
-            color: white;
-            border-radius: 40px;
-            padding: 2px 10px;
-            font-size: 13px;
-            margin-left: 6px;
-        }
-
-        /* 快速入口 */
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .link-card {
-            background: white;
-            padding: 14px 6px;
-            border-radius: 18px;
-            text-align: center;
-            text-decoration: none;
-            color: #0f172a;
-            font-weight: 500;
-            font-size: 13px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
-            border: 1px solid #eef2f6;
-            transition: all 0.15s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        .link-card i {
-            font-size: 24px;
-            color: #1e4bd2;
-            background: #f0f4ff;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-        }
-        .link-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 20px -8px rgba(0,35,110,0.12);
-            border-color: #cddfff;
-        }
-
-        /* 三栏主网格 */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 20px 22px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
-            border: 1px solid #eef2f6;
-        }
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-        }
-        .card-header h2 {
-            font-size: 20px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .tag {
-            background: #f1f5f9;
-            padding: 4px 10px;
-            border-radius: 40px;
-            font-size: 12px;
-            color: #334155;
-        }
-
-        .policy-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            max-height: 600px;
-            overflow-y: auto;
-            padding-right: 8px;
-        }
-        .policy-item {
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .policy-checkbox {
-            margin-top: 4px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #1e4bd2;
-            flex-shrink: 0;
-        }
-        .policy-content {
-            flex: 1;
-        }
-        .policy-badge {
-            display: inline-block;
-            background: #dc2626;
-            color: white;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 10px;
-            border-radius: 30px;
-            margin-right: 8px;
-        }
-        .policy-badge.orange { background: #ea580c; }
-        .policy-badge.blue { background: #1e4bd2; }
-        .policy-badge.green { background: #0d9488; }
-        .policy-title {
-            font-weight: 650;
-            font-size: 16px;
-            margin: 4px 0;
-        }
-        .policy-meta {
-            font-size: 12px;
-            color: #64748b;
-            display: flex;
-            gap: 16px;
-            margin: 6px 0;
-        }
-
-        .chart-box {
-            background: white;
-            border-radius: 24px;
-            padding: 18px;
-            margin-bottom: 20px;
-            border: 1px solid #eef2f6;
-        }
-        canvas {
-            width: 100% !important;
-            max-height: 200px;
-        }
-
-        .leaders-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            max-height: 520px;
-            overflow-y: auto;
-        }
-        .leader-card {
-            background: #fafcff;
-            border-radius: 16px;
-            padding: 16px 12px;
-            border: 1px solid #eef2f6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.15s;
-        }
-        .leader-card.selected {
-            border-color: #1e4bd2;
-            background: #f0f4ff;
-        }
-        .leader-checkbox {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 20px;
-            height: 20px;
-            accent-color: #1e4bd2;
-            z-index: 2;
-            cursor: pointer;
-        }
-        .leader-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #e9efff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            color: #1e4bd2;
-            font-size: 28px;
-            font-weight: 600;
-        }
-        .leader-card h4 {
-            font-size: 16px;
-            font-weight: 600;
-        }
-        .leader-title {
-            font-size: 12px;
-            color: #64748b;
-        }
-        .leader-dept {
-            font-size: 11px;
-            color: #94a3b8;
-        }
-
-        .bottom-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-        .metric-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-        .metric-table th {
-            text-align: left;
-            padding: 10px 6px 6px 0;
-            color: #475569;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .metric-table td {
-            padding: 10px 6px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .trend-up { color: #0d9488; }
-
-        .sc-card {
-            background: linear-gradient(145deg, #0a1a2f, #112b4f);
-            color: white;
-        }
-        .sc-card .card-header h2 { color: white; }
-        .sc-news-item {
-            border-bottom: 1px solid #2a4a6a;
-            padding: 12px 0;
-        }
-        .sc-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        .sc-link-btn {
-            background: #2a5f9e;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-        .leader-basket-panel {
-            background: #f0f7ff;
-            border-radius: 20px;
-            padding: 18px;
-        }
-        .leader-basket-list {
-            max-height: 240px;
-            overflow-y: auto;
-            background: white;
-            border-radius: 16px;
-            padding: 8px;
-        }
-        .leader-basket-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            border-bottom: 1px solid #eef2f6;
-            font-size: 13px;
-        }
-        .generate-btn {
-            background: #0d9488;
-            color: white;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 16px;
-        }
-
-        .peer-table-container {
-            overflow-x: auto;
-            margin: 16px 0;
-        }
-        .peer-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            min-width: 800px;
-        }
-        .peer-table th {
-            background: #1e4bd2;
-            color: white;
-            padding: 12px 10px;
-        }
-        .peer-table td {
-            padding: 12px 10px;
-            border-bottom: 1px solid #eef2f6;
-        }
-        .bank-badge {
-            background: #e9efff;
-            color: #1e4bd2;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-left: 6px;
-        }
-
-        .footer-note {
-            margin-top: 24px;
-            color: #94a3b8;
-            font-size: 12px;
-            text-align: right;
-            border-top: 1px dashed #cbd5e1;
-            padding-top: 16px;
-        }
-
-        /* 响应式保持 */
-        @media (max-width: 1200px) {
-            .main-grid, .bottom-grid { grid-template-columns: 1fr 1fr; }
-            .quick-links { grid-template-columns: repeat(4, 1fr); }
-        }
-        @media (max-width: 800px) {
-            .main-grid { grid-template-columns: 1fr; }
-            .quick-links { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .quick-links { grid-template-columns: repeat(2, 1fr); }
-            .header { flex-direction: column; align-items: flex-start; }
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:#f5f7fb; color:#1e293b; padding:20px; line-height:1.5; font-family:'Inter',system-ui,sans-serif; }
+        .dashboard { max-width:1600px; margin:0 auto; }
+        .header { margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+        .header h1 { font-size:28px; font-weight:600; display:flex; align-items:center; gap:8px; }
+        .header h1 i { color:#1e4bd2; background:#e9efff; padding:10px; border-radius:12px; }
+        .date-badge { color:#64748b; background:white; padding:6px 20px; border-radius:40px; font-size:14px; }
+        .header-actions { display:flex; gap:12px; align-items:center; }
+        .btn-primary { background:#1e4bd2; color:white; border:none; padding:12px 24px; border-radius:40px; font-weight:500; font-size:14px; cursor:pointer; box-shadow:0 4px 10px rgba(30,75,210,0.2); display:flex; align-items:center; gap:8px; }
+        .btn-outline { background:white; border:1px solid #cbd5e1; padding:12px 20px; border-radius:40px; font-size:14px; color:#1e293b; cursor:pointer; display:flex; align-items:center; gap:8px; }
+        .basket-badge { background:#dc2626; color:white; border-radius:40px; padding:2px 10px; font-size:13px; margin-left:6px; }
+        .quick-links { display:grid; grid-template-columns:repeat(7,1fr); gap:12px; margin-bottom:24px; }
+        .link-card { background:white; padding:14px 6px; border-radius:18px; text-align:center; text-decoration:none; color:#0f172a; font-weight:500; font-size:13px; box-shadow:0 4px 8px rgba(0,0,0,0.02); border:1px solid #eef2f6; display:flex; flex-direction:column; align-items:center; gap:8px; }
+        .link-card i { font-size:24px; color:#1e4bd2; background:#f0f4ff; width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:16px; }
+        .main-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:24px; }
+        .card { background:white; border-radius:24px; padding:20px 22px; box-shadow:0 8px 20px rgba(0,0,0,0.02); border:1px solid #eef2f6; }
+        .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+        .card-header h2 { font-size:20px; font-weight:600; display:flex; align-items:center; gap:8px; }
+        .tag { background:#f1f5f9; padding:4px 10px; border-radius:40px; font-size:12px; color:#334155; }
+        .policy-list { display:flex; flex-direction:column; gap:14px; max-height:380px; overflow-y:auto; padding-right:8px; }
+        .policy-item { border-bottom:1px solid #f1f5f9; padding-bottom:12px; display:flex; align-items:flex-start; gap:10px; }
+        .policy-checkbox { margin-top:4px; width:18px; height:18px; accent-color:#1e4bd2; flex-shrink:0; }
+        .policy-content { flex:1; }
+        .policy-badge { display:inline-block; background:#dc2626; color:white; font-size:11px; font-weight:600; padding:2px 10px; border-radius:30px; margin-right:8px; }
+        .policy-badge.orange { background:#ea580c; } .policy-badge.blue { background:#1e4bd2; } .policy-badge.green { background:#0d9488; }
+        .policy-title { font-weight:650; font-size:16px; margin:4px 0; }
+        .policy-meta { font-size:12px; color:#64748b; display:flex; gap:16px; margin:6px 0; }
+        .chart-box { background:white; border-radius:24px; padding:18px; margin-bottom:20px; border:1px solid #eef2f6; height:260px; }
+        canvas { width:100% !important; height:180px !important; }
+        .leaders-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-height:380px; overflow-y:auto; }
+        .leader-card { background:#fafcff; border-radius:16px; padding:16px 12px; border:1px solid #eef2f6; display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; position:relative; }
+        .leader-card.selected { border-color:#1e4bd2; background:#f0f4ff; }
+        .leader-checkbox { position:absolute; top:10px; left:10px; width:20px; height:20px; accent-color:#1e4bd2; z-index:2; }
+        .leader-avatar { width:70px; height:70px; border-radius:50%; background:#e9efff; display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:#1e4bd2; font-size:28px; font-weight:600; }
+        .leader-card h4 { font-size:16px; font-weight:600; }
+        .leader-title { font-size:12px; color:#64748b; }
+        .leader-dept { font-size:11px; color:#94a3b8; }
+        .bottom-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:24px; }
+        .metric-table { width:100%; border-collapse:collapse; font-size:14px; }
+        .metric-table th { text-align:left; padding:10px 6px 6px 0; color:#475569; border-bottom:1px solid #e2e8f0; }
+        .metric-table td { padding:10px 6px; border-bottom:1px solid #f1f5f9; }
+        .trend-up { color:#0d9488; }
+        .sc-card { background:linear-gradient(145deg,#0a1a2f,#112b4f); color:white; }
+        .sc-card .card-header h2 { color:white; }
+        .sc-news-item { border-bottom:1px solid #2a4a6a; padding:12px 0; }
+        .sc-links { display:flex; gap:12px; margin-top:12px; }
+        .sc-link-btn { background:#2a5f9e; color:white; padding:8px 16px; border-radius:40px; text-decoration:none; font-size:13px; }
+        .leader-basket-panel { background:#f0f7ff; border-radius:20px; padding:18px; }
+        .leader-basket-list { max-height:200px; overflow-y:auto; background:white; border-radius:16px; padding:8px; }
+        .leader-basket-item { display:flex; align-items:center; padding:8px 12px; border-bottom:1px solid #eef2f6; font-size:13px; }
+        .generate-btn { background:#0d9488; color:white; border:none; padding:14px 20px; border-radius:40px; font-weight:600; font-size:16px; cursor:pointer; width:100%; margin-top:16px; }
+        .peer-table-container { overflow-x:auto; margin:16px 0; }
+        .peer-table { width:100%; border-collapse:collapse; font-size:13px; min-width:800px; }
+        .peer-table th { background:#1e4bd2; color:white; padding:12px 10px; }
+        .peer-table td { padding:12px 10px; border-bottom:1px solid #eef2f6; }
+        .bank-badge { background:#e9efff; color:#1e4bd2; font-size:11px; padding:2px 8px; border-radius:20px; margin-left:6px; }
+        .footer-note { margin-top:24px; color:#94a3b8; font-size:12px; text-align:right; border-top:1px dashed #cbd5e1; padding-top:16px; }
+        @media (max-width:1200px){ .main-grid,.bottom-grid{grid-template-columns:1fr 1fr;} .quick-links{grid-template-columns:repeat(4,1fr);} }
+        @media (max-width:800px){ .main-grid{grid-template-columns:1fr;} .quick-links{grid-template-columns:repeat(3,1fr);} }
+        @media (max-width:600px){ .quick-links{grid-template-columns:repeat(2,1fr);} .header{flex-direction:column;align-items:flex-start;} }
     </style>
 </head>
 <body>
@@ -443,7 +76,7 @@
     <div class="header">
         <div>
             <h1><i class="fas fa-landmark"></i>深银·政策月报工作台</h1>
-            <div class="date-badge"><i class="far fa-calendar-alt"></i> 2026年4月 · 第27期 ｜ 数据截至2026.03</div>
+            <div class="date-badge"><i class="far fa-calendar-alt"></i> 2026年4月 · 第28期 ｜ 数据截至2026.03</div>
         </div>
         <div class="header-actions">
             <button class="btn-outline" id="viewBasketBtn"><i class="fas fa-basket-shopping"></i> 政策篮 <span id="basketCount" class="basket-badge">0</span></button>
@@ -455,90 +88,14 @@
         <a href="https://tjj.sz.gov.cn" target="_blank" class="link-card"><i class="fas fa-chart-line"></i><span>深圳统计局</span></a>
         <a href="https://www.nfra.gov.cn/branch/shenzhen/view/pages/index/index.html" target="_blank" class="link-card"><i class="fas fa-shield-alt"></i><span>深圳金融监管局</span></a>
         <a href="https://www.safe.gov.cn/shenzhen/" target="_blank" class="link-card"><i class="fas fa-exchange-alt"></i><span>外管局深圳分局</span></a>
-        <!-- 人行图标修正为银行建筑 -->
         <a href="https://shenzhen.pbc.gov.cn" target="_blank" class="link-card"><i class="fas fa-university"></i><span>人行深圳分行</span></a>
         <a href="https://amr.sz.gov.cn" target="_blank" class="link-card"><i class="fas fa-scale-balanced"></i><span>市市场监管局</span></a>
         <a href="https://opendata.sz.gov.cn/?sign=1" target="_blank" class="link-card"><i class="fas fa-database"></i><span>深圳开放数据</span></a>
         <a href="https://hrss.sz.gov.cn" target="_blank" class="link-card"><i class="fas fa-users"></i><span>市人社局</span></a>
     </div>
     <div class="main-grid">
-        <div class="card"><div class="card-header"><h2><i class="fas fa-newspaper" style="color:#1e4bd2"></i> 监管政策·银行关切</h2><span class="tag">勾选放入报告篮</span></div><div class="policy-list" id="regulatoryPolicyList">
-        <div class="news-item" data-id="reg-0">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-0" data-id="reg-0">
-            <div class="policy-content">
-                <span class="policy-badge orange">监管政策</span>
-                <div class="policy-title">
-                    <a href="http://www.safe.gov.cn/shenzhen/2026/0410/2359.html" target="_blank">前海自贸区资本项目结汇及NRA账户退汇便利化</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 外管局深圳分局</span>
-                    <span><i class="far fa-calendar"></i> 2026-04-10</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-1">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-1" data-id="reg-1">
-            <div class="policy-content">
-                <span class="policy-badge blue">监管政策</span>
-                <div class="policy-title">
-                    <a href="https://shenzhen.pbc.gov.cn/shenzhen/122807/2026040215412774749/index.html" target="_blank">深圳推出&quot;科薪通&quot;跨境薪酬用汇便利化试点</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 人行深圳分行</span>
-                    <span><i class="far fa-calendar"></i> 2026-04-02</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-2">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-2" data-id="reg-2">
-            <div class="policy-content">
-                <span class="policy-badge">监管政策</span>
-                <div class="policy-title">
-                    <a href="https://www.pbc.gov.cn/tiaofasi/144941/3581332/2026041715444050196/index.html" target="_blank">中国人民银行公告〔2026〕第10号</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 中国人民银行</span>
-                    <span><i class="far fa-calendar"></i> 2026-04-17</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-3">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-3" data-id="reg-3">
-            <div class="policy-content">
-                <span class="policy-badge orange">监管政策</span>
-                <div class="policy-title">
-                    <a href="http://www.safe.gov.cn/shenzhen/2026/0313/2348.html" target="_blank">本外币一体化资金池&quot;深圳经验&quot;</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 外管局深圳分局</span>
-                    <span><i class="far fa-calendar"></i> 2026-03-13</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        
-        <div class="news-item" data-id="reg-4">
-            <input type="checkbox" class="policy-checkbox" id="chk-reg-4" data-id="reg-4">
-            <div class="policy-content">
-                <span class="policy-badge">监管政策</span>
-                <div class="policy-title">
-                    <a href="#" target="_blank">跨境理财通收付达585.2亿元</a>
-                </div>
-                <div class="policy-meta">
-                    <span><i class="far fa-building"></i> 深圳金融监管局</span>
-                    <span><i class="far fa-calendar"></i> 2026-03-09</span>
-                </div>
-                <p class="news-summary">点击标题查看详情</p>
-            </div>
-        </div>
-        </div></div>
-        <div class="card"><div class="card-header"><h2><i class="fas fa-user-tie" style="color:#0d9488"></i> 人事人才·金融专题</h2><span class="tag">人社局·金融银行</span></div><div class="policy-list" id="hrPolicyList"></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-newspaper" style="color:#1e4bd2"></i> 监管政策·银行关切</h2><span class="tag">最新5条</span></div><div class="policy-list" id="regulatoryPolicyList"></div></div>
+        <div class="card"><div class="card-header"><h2><i class="fas fa-user-tie" style="color:#0d9488"></i> 人事人才·金融专题</h2><span class="tag">最新5条</span></div><div class="policy-list" id="hrPolicyList"></div></div>
         <div class="card"><div class="card-header"><h2><i class="fas fa-user-circle" style="color:#1e4bd2;"></i> 领导简介</h2><span class="tag">勾选放入简历篮</span></div><div class="leaders-grid" id="leadersGrid"></div><div style="margin-top:12px;"><span style="background:#e9efff;color:#1e4bd2;padding:6px 12px;border-radius:30px;"><i class="fas fa-user-check"></i> 已勾选 <span id="leaderCount">0</span> 位</span></div></div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:24px;">
@@ -564,24 +121,37 @@
 </div>
 <script>
 (function(){
+    // 领导人数据（只保留必要条目）
     const leadersData = [
-        { id:'ld1', name:'孟凡利', title:'广东省委副书记、省长', dept:'广东省政府', gender:'男', birth:'1965.09', political:'中共党员', ethnicity:'汉族', education:'经济学博士', career:'曾任深圳市市长、市委书记，2025年10月当选广东省省长。', appointment:'现任第二十届中央委员，广东省委副书记，省政府省长。', activity:'2026年1月主持省委金融委扩大会议，强调做好金融“五篇大文章”。' },
-        { id:'ld2', name:'靳磊', title:'广东省委常委、深圳市委书记', dept:'深圳市委', gender:'男', birth:'1970.02', political:'中共党员', ethnicity:'汉族', education:'武汉大学行政管理', career:'2026年3月任深圳市委书记，此前任四川省委常委、组织部部长。', appointment:'2026年3月任广东省委常委、深圳市委书记。', activity:'履新后强调加快推进粤港澳大湾区建设。' },
-        { id:'ld3', name:'覃伟中', title:'深圳市委副书记、市长', dept:'深圳市政府', gender:'男', birth:'1971.07', political:'中共党员', ethnicity:'汉族', education:'清华大学博士', career:'2021年任深圳市市长。', appointment:'深圳市委副书记，市政府市长、党组书记。', activity:'2025年政府工作报告首提建设“产业金融中心”。' },
-        { id:'ld4', name:'罗晃浩', title:'深圳市政府副市长', dept:'分管金融', gender:'男', birth:'1973.10', political:'中共党员', ethnicity:'汉族', education:'北京大学/中山大学硕士', career:'长期在建行工作，2024年5月任深圳市副市长。', appointment:'深圳市副市长、市委金融办主任。', activity:'强调金融高质量发展。' },
+        { id:'ld1', name:'孟凡利', title:'广东省委副书记、省长', dept:'广东省政府', gender:'男', birth:'1965.09', political:'中共党员', ethnicity:'汉族', education:'经济学博士', career:'曾任深圳市市长、市委书记，2025年10月当选广东省省长。', appointment:'现任第二十届中央委员，广东省委副书记，省政府省长。', activity:'2026年1月主持省委金融委扩大会议。' },
+        { id:'ld2', name:'靳磊', title:'广东省委常委、深圳市委书记', dept:'深圳市委', gender:'男', birth:'1970.02', political:'中共党员', ethnicity:'汉族', education:'武汉大学行政管理', career:'2026年3月任深圳市委书记。', appointment:'2026年3月任广东省委常委、深圳市委书记。', activity:'加快推进粤港澳大湾区建设。' },
+        { id:'ld3', name:'覃伟中', title:'深圳市委副书记、市长', dept:'深圳市政府', gender:'男', birth:'1971.07', political:'中共党员', ethnicity:'汉族', education:'清华大学博士', career:'2021年任深圳市市长。', appointment:'深圳市委副书记，市政府市长、党组书记。', activity:'首提建设“产业金融中心”。' },
+        { id:'ld4', name:'罗晃浩', title:'深圳市政府副市长', dept:'分管金融', gender:'男', birth:'1973.10', political:'中共党员', ethnicity:'汉族', education:'北京大学/中山大学硕士', career:'2024年5月任深圳市副市长。', appointment:'深圳市副市长、市委金融办主任。', activity:'强调金融高质量发展。' },
         { id:'ld5', name:'时卫干', title:'市地方金融管理局局长', dept:'金融局', gender:'男', birth:'1975.08', political:'中共党员', ethnicity:'汉族', education:'经济学博士', career:'2024年2月任现职。', appointment:'市委金融办常务副主任。', activity:'推动大湾区金融深度融合。' },
-        { id:'ld6', name:'温信祥', title:'人行深圳市分行行长', dept:'人行深圳分行', gender:'男', birth:'1970', political:'中共党员', ethnicity:'汉族', education:'北大硕士', career:'曾任支付结算司司长，2022年底任现职。', appointment:'人行深圳市分行行长、外汇局深圳市分局局长。', activity:'2025年发文论述跨境资金池优化投融资新格局。' },
+        { id:'ld6', name:'温信祥', title:'人行深圳市分行行长', dept:'人行深圳分行', gender:'男', birth:'1970', political:'中共党员', ethnicity:'汉族', education:'北大硕士', career:'曾任支付结算司司长。', appointment:'人行深圳市分行行长。', activity:'论述跨境资金池优化。' },
     ];
-    const regulatoryData = [
+    // 政策数据：全部数据，但只渲染前5条
+    const allRegulatory = [
         { id:'r1', badge:'外汇局', title:'前海资本项目结汇便利化', link:'#', source:'外汇局深圳分局', date:'2026-04-10', summary:'优化NRA退汇流程。' },
         { id:'r2', badge:'前海', title:'“前海港企贷”政策', link:'#', source:'前海管理局', date:'2026-03-17', summary:'解决港资小微企业融资堵点。' },
         { id:'r3', badge:'外债', title:'外资银行2026外债申报', link:'#', source:'市发改委', date:'2026-02-05', summary:'在深外资银行可申报中长期外债。' },
+        { id:'r4', badge:'营商环境', title:'深圳市2026优化营商环境方案', link:'#', source:'市商务局', date:'2026-03-23', summary:'支持外资金融机构参与跨境理财通。' },
+        { id:'r5', badge:'前海金融', title:'前海金融高质量发展方案', link:'#', source:'市委金融办', date:'2025-03-03', summary:'允许境外金融机构在前海设立持牌机构。' },
+        { id:'r6', badge:'APEC', title:'抢抓APEC机遇优化营商环境', link:'#', source:'市商务局', date:'2026-03-25', summary:'推进本外币一体化资金池试点。' },
     ];
-    const hrData = [
+    const allHr = [
         { id:'h1', badge:'青年人才', title:'青年人才来深保障措施', link:'#', source:'市人社局', date:'2025-12-16', summary:'安居补贴、入户补贴。' },
         { id:'h2', badge:'职称', title:'高级经济师考试通知', link:'#', source:'市人社局', date:'2026-03-26', summary:'银行业中级可对应。' },
+        { id:'h3', badge:'稳岗贷款', title:'金融助企稳岗扩岗', link:'#', source:'市人社局', date:'2025-05-28', summary:'小微企业最高5000万贷款。' },
+        { id:'h4', badge:'引才伯乐', title:'引才伯乐奖申报', link:'#', source:'市人社局', date:'2025-10-20', summary:'引进博士硕士可申请奖励。' },
+        { id:'h5', badge:'博士后', title:'博士后设站单位名单', link:'#', source:'市人社局', date:'2025-07-15', summary:'含多家金融机构及深交所。' },
+        { id:'h6', badge:'金融人才', title:'金融领域全球人才汇聚', link:'#', source:'广东省政策服务', date:'2025-09-28', summary:'分三级引进高水平金融人才。' },
     ];
+    // 取前5条用于渲染
+    const regulatoryData = allRegulatory.slice(0,5);
+    const hrData = allHr.slice(0,5);
     const allPolicies = [...regulatoryData, ...hrData];
+    
     let selectedPolicies = new Set(), selectedLeaders = new Set();
     const policyBasketCount = document.getElementById('basketCount'), policyBasketHeader = document.getElementById('policyBasketHeaderCount'), policyBasketList = document.getElementById('policyBasketListContainer');
     const leaderCountSpan = document.getElementById('leaderCount'), leaderBasketCount = document.getElementById('leaderBasketCount'), leaderBasketList = document.getElementById('leaderBasketListContainer');
@@ -668,8 +238,8 @@
         const list = leadersData.filter(ld=>selectedLeaders.has(ld.id));
         if(!list.length) { alert('请至少勾选一位领导'); return; }
         const d = new Date(), dateStr = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
-        let html = `<html><head><meta charset="UTF-8"><title>领导简历</title><style>@page{size:A4;margin:1in 0.5in;}body{font-family:'仿宋','FangSong','宋体',SimSun;font-size:14pt;line-height:1.6;text-align:justify;}h1{font-size:20pt;font-weight:bold;text-align:center;font-family:'黑体';}.resume-card h2{font-size:20pt;font-weight:bold;font-family:'仿宋';margin:0 0 10px;}.section-title{font-weight:bold;margin:15px 0 8px;font-family:'黑体';}.info-row{margin:6px 0;}</style></head><body><h1>简历</h1><p style="text-align:center;">生成日期：${dateStr}</p>`;
-        list.forEach(ld=>{ html+=`<div class="resume-card"><h2>${ld.name}</h2><div class="info-row"><strong>职务：</strong>${ld.title}</div><div class="info-row"><strong>性别：</strong>${ld.gender}　　<strong>出生日期：</strong>${ld.birth}　　<strong>民族：</strong>${ld.ethnicity}</div><div class="info-row"><strong>政治面貌：</strong>${ld.political}</div><div class="info-row"><strong>学历：</strong>${ld.education}</div><div class="section-title">履历</div><div>${ld.career}</div><div class="section-title">职务任免</div><div>${ld.appointment}</div><div class="section-title">人物活动</div><div>${ld.activity}</div></div><hr>`; });
+        let html = `<html><head><meta charset="UTF-8"><title>领导简历</title><style>@page{size:A4;margin:1in 0.5in;}body{font-family:'仿宋';font-size:14pt;line-height:1.6;text-align:justify;}h1{font-size:20pt;font-weight:bold;text-align:center;}.resume-card h2{font-size:20pt;font-weight:bold;margin:0 0 10px;}.section-title{font-weight:bold;margin:15px 0 8px;}</style></head><body><h1>简历</h1><p style="text-align:center;">生成日期：${dateStr}</p>`;
+        list.forEach(ld=>{ html+=`<div class="resume-card"><h2>${ld.name}</h2><div><strong>职务：</strong>${ld.title}</div><div><strong>性别：</strong>${ld.gender}　<strong>出生日期：</strong>${ld.birth}　<strong>民族：</strong>${ld.ethnicity}</div><div><strong>政治面貌：</strong>${ld.political}</div><div><strong>学历：</strong>${ld.education}</div><div class="section-title">履历</div><div>${ld.career}</div><div class="section-title">职务任免</div><div>${ld.appointment}</div><div class="section-title">人物活动</div><div>${ld.activity}</div></div><hr>`; });
         html += `<div style="margin-top:40px;text-align:right;"><p>生成日期：${dateStr}</p><p>撰写人：_______________</p></div></body></html>`;
         const blob = new Blob([html], { type: 'application/msword' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `领导简历_${d.getFullYear()}${d.getMonth()+1}.doc`; a.click();
     }
@@ -678,7 +248,7 @@
         const list = allPolicies.filter(p=>selectedPolicies.has(p.id));
         if(!list.length) { alert('请勾选政策'); return; }
         const d = new Date(), dateStr = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
-        let html = `<html><head><meta charset="UTF-8"><style>@page{size:A4;margin:1in 0.5in;}body{font-family:'仿宋';font-size:12pt;text-align:justify;}</style></head><body><h1>【分行月度行政报告-${d.getMonth()+1}月】</h1><p>${dateStr}</p><h2>重点政策</h2>`;
+        let html = `<html><head><meta charset="UTF-8"><style>@page{size:A4;margin:1in 0.5in;}body{font-family:'仿宋';font-size:12pt;}</style></head><body><h1>【分行月度行政报告-${d.getMonth()+1}月】</h1><p>${dateStr}</p><h2>重点政策</h2>`;
         list.forEach((p,i)=>html+=`<div><h3>${i+1}. ${p.title}</h3><p>${p.source} | ${p.date}</p><p>${p.summary}</p></div>`);
         html+=`<h2>经济数据</h2><p>规上工业+10.4%，进出口+37.3%</p><div style="margin-top:40px;text-align:right;">撰写人：_______</div>`;
         const blob = new Blob([html], { type: 'application/msword' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `行政报告_${d.getMonth()+1}月.doc`; a.click();
