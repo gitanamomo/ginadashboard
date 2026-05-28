@@ -1,0 +1,182 @@
+[
+  {
+    "id": "pen-1",
+    "institution": "渣打银行（中国）深圳分行",
+    "institutionType": "外资银行",
+    "penaltyType": "行政处罚",
+    "amount": 3200000,
+    "date": "2026-03-05",
+    "reason": "违反反洗钱管理规定，未按规定履行客户身份识别义务",
+    "region": "深圳",
+    "source": "国家金融监督管理总局深圳监管局",
+    "sourceUrl": "https://www.nfra.gov.cn",
+    "riskLevel": "high",
+    "tags": [
+      "反洗钱",
+      "外资银行",
+      "客户身份识别"
+    ]
+  },
+  {
+    "id": "pen-2",
+    "institution": "深圳前海微众银行",
+    "institutionType": "民营银行",
+    "penaltyType": "行政处罚",
+    "amount": 1500000,
+    "date": "2026-02-20",
+    "reason": "互联网贷款管理不审慎，贷前调查、贷后管理不到位",
+    "region": "深圳",
+    "source": "国家金融监督管理总局深圳监管局",
+    "sourceUrl": "https://www.nfra.gov.cn",
+    "riskLevel": "medium",
+    "tags": [
+      "互联网贷款",
+      "贷后管理",
+      "民营银行"
+    ]
+  },
+  {
+    "id": "pen-3",
+    "institution": "招商银行深圳分行",
+    "institutionType": "股份制银行",
+    "penaltyType": "行政处罚",
+    "amount": 800000,
+    "date": "2026-03-12",
+    "reason": "理财产品销售过程中未充分揭示风险，销售行为不规范",
+    "region": "深圳",
+    "source": "国家金融监督管理总局深圳监管局",
+    "sourceUrl": "https://www.nfra.gov.cn",
+    "riskLevel": "medium",
+    "tags": [
+      "理财销售",
+      "风险揭示",
+      "股份制银行"
+    ]
+  },
+  {
+    "id": "pen-4",
+    "institution": "平安银行",
+    "institutionType": "股份制银行",
+    "penaltyType": "行政处罚",
+    "amount": 5200000,
+    "date": "2026-01-15",
+    "reason": "信贷资金违规流入房地产市场，贷后管理存在重大缺陷",
+    "region": "全国",
+    "source": "国家金融监督管理总局",
+    "sourceUrl": "https://www.nfra.gov.cn",
+    "riskLevel": "critical",
+    "tags": [
+      "信贷违规",
+      "房地产",
+      "贷后管理"
+    ]
+  },
+  {
+    "id": "pen-5",
+    "institution": "华泰证券深圳分公司",
+    "institutionType": "证券公司",
+    "penaltyType": "行政监管措施",
+    "amount": 600000,
+    "date": "2026-02-28",
+    "reason": "投行业务尽职调查不到位，信息披露不充分",
+    "region": "深圳",
+    "source": "证监会深圳监管局",
+    "sourceUrl": "https://www.csrc.gov.cn",
+    "riskLevel": "medium",
+    "tags": [
+      "投行",
+      "尽职调查",
+      "信息披露"
+    ]
+  },
+  {
+    "id": "pen-6",
+    "institution": "深圳农村商业银行",
+    "institutionType": "农商行",
+    "penaltyType": "行政处罚",
+    "amount": 1200000,
+    "date": "2026-04-01",
+    "reason": "关联交易管理不规范，未按规定审批重大关联交易",
+    "region": "深圳",
+    "source": "国家金融监督管理总局深圳监管局",
+    "sourceUrl": "https://www.nfra.gov.cn",
+    "riskLevel": "high",
+    "tags": [
+      "关联交易",
+      "农商行",
+      "公司治理"
+    ]
+  },
+  {
+    "id": "pen-7",
+    "institution": "中信银行深圳分行",
+    "institutionType": "股份制银行",
+    "penaltyType": "行政处罚",
+    "amount": 2000000,
+    "date": "2026-03-20",
+    "reason": "违反支付结算管理规定，未按规定办理跨境收付业务",
+    "region": "深圳",
+    "source": "中国人民银行深圳市分行",
+    "sourceUrl": "https://www.pbc.gov.cn",
+    "riskLevel": "high",
+    "tags": [
+      "支付结算",
+      "跨境",
+      "外汇管理"
+    ]
+  },
+  {
+    "id": "pen-8",
+    "institution": "汇丰银行（中国）深圳分行",
+    "institutionType": "外资银行",
+    "penaltyType": "行政处罚",
+    "amount": 900000,
+    "date": "2026-01-08",
+    "reason": "未按规定报送大额交易报告和可疑交易报告",
+    "region": "深圳",
+    "source": "国家金融监督管理总局深圳监管局",
+    "sourceUrl": "https://www.nfra.gov.cn",
+    "riskLevel": "medium",
+    "tags": [
+      "反洗钱",
+      "交易报告",
+      "外资银行"
+    ]
+  },
+  {
+    "id": "pen-9",
+    "institution": "某国有银行深圳分行",
+    "institutionType": "国有银行",
+    "penaltyType": "行政监管措施",
+    "amount": 4300000,
+    "date": "2025-12-15",
+    "reason": "信贷管理严重违反审慎经营规则，同业业务风险管理不到位",
+    "region": "深圳",
+    "source": "国家金融监督管理总局深圳监管局",
+    "sourceUrl": "https://www.nfra.gov.cn",
+    "riskLevel": "critical",
+    "tags": [
+      "信贷管理",
+      "同业业务",
+      "审慎经营"
+    ]
+  },
+  {
+    "id": "pen-10",
+    "institution": "星展银行（中国）深圳分行",
+    "institutionType": "外资银行",
+    "penaltyType": "行政处罚",
+    "amount": 500000,
+    "date": "2026-04-05",
+    "reason": "外汇业务违反规定，未按规定审核贸易背景真实性",
+    "region": "深圳",
+    "source": "外管局深圳分局",
+    "sourceUrl": "https://www.safe.gov.cn/shenzhen/",
+    "riskLevel": "medium",
+    "tags": [
+      "外汇",
+      "贸易背景",
+      "外资银行"
+    ]
+  }
+]

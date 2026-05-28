@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0e14;
+  color: #c8d6e5;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+:root {
+  --accent: #00d4aa;
+  --accent2: #00aaff;
+  --danger: #ff4757;
+  --warning: #ffa502;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2a3a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3a4a;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-terminal-card border border-terminal-border rounded-2xl backdrop-blur-xl;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  }
+  .glass-card-hover {
+    @apply transition-all duration-300 cursor-pointer;
+  }
+  .glass-card-hover:hover {
+    @apply border-terminal-accent/40;
+    box-shadow: 0 4px 32px rgba(0, 212, 170, 0.1);
+    transform: translateY(-2px);
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-terminal-accent to-terminal-accent2 bg-clip-text text-transparent;
+  }
+  .glow-border {
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.3), inset 0 0 20px rgba(0, 212, 170, 0.05);
+  }
+  .btn-primary {
+    @apply px-6 py-2.5 rounded-xl bg-gradient-to-r from-terminal-accent to-terminal-accent2
+           text-black font-semibold text-sm transition-all duration-300
+           hover:shadow-lg hover:shadow-terminal-accent/20 active:scale-95;
+  }
+  .btn-outline {
+    @apply px-6 py-2.5 rounded-xl border border-terminal-border text-terminal-text
+           font-medium text-sm transition-all duration-300
+           hover:border-terminal-accent/50 hover:text-terminal-accent;
+  }
+  .stat-value {
+    @apply text-3xl font-bold font-mono gradient-text;
+  }
+  .stat-label {
+    @apply text-xs text-terminal-muted uppercase tracking-wider;
+  }
+}
