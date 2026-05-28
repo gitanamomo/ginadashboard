@@ -1,32 +1,26 @@
 import { create } from 'zustand'
+import type { Policy } from '@/types'
 
 interface AppState {
-  selectedLeaders: string[]
   selectedPolicies: string[]
-  toggleLeader: (id: string) => void
+  policyData: Policy[]
   togglePolicy: (id: string) => void
-  clearLeaders: () => void
+  setPolicyData: (data: Policy[]) => void
   clearPolicies: () => void
   searchQuery: string
   setSearchQuery: (q: string) => void
 }
 
 export const useAppStore = create<AppState>((set) => ({
-  selectedLeaders: [],
   selectedPolicies: [],
-  toggleLeader: (id) =>
-    set((state) => ({
-      selectedLeaders: state.selectedLeaders.includes(id)
-        ? state.selectedLeaders.filter((l) => l !== id)
-        : [...state.selectedLeaders, id],
-    })),
+  policyData: [],
   togglePolicy: (id) =>
     set((state) => ({
       selectedPolicies: state.selectedPolicies.includes(id)
         ? state.selectedPolicies.filter((p) => p !== id)
         : [...state.selectedPolicies, id],
     })),
-  clearLeaders: () => set({ selectedLeaders: [] }),
+  setPolicyData: (data) => set({ policyData: data }),
   clearPolicies: () => set({ selectedPolicies: [] }),
   searchQuery: '',
   setSearchQuery: (q) => set({ searchQuery: q }),
