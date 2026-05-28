@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gina Dashboard - 404</title>
+  <title>华南外资银行监管情报平台</title>
   <script>
-    sessionStorage.redirect = location.href;
+    // GitHub Pages SPA redirect: store the attempted path then redirect to root
+    var path = location.pathname.replace(/\/ginadashboard/, '') || '/';
+    sessionStorage.setItem('spa-redirect', path);
+    location.replace('/ginadashboard/');
   </script>
-  <meta http-equiv="refresh" content="0;URL='/ginadashboard/'">
 </head>
-<body>
-  <p>Redirecting to Gina Dashboard...</p>
-</body>
+<body></body>
 </html>

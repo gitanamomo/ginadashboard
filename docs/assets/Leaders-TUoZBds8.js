@@ -1,4 +1,4 @@
-import{c as e,l as t}from"./api-Dh-ZIAEW.js";import{n,t as r}from"./search-yvSmX0Qj.js";import{a as i,i as a,n as o,r as s}from"./useLeaders-Dp28Rzq4.js";import{t as c}from"./external-link-C_atJjof.js";import{t as l}from"./x-jcWabhTo.js";import{N as u,P as d,h as f,i as p,o as m,r as h,t as g}from"./index-CNLmuuft.js";var _=d(u(),1),v=f();function y({leader:e,lang:t,onClose:n}){let r=e.organization,i=e.name,a=`基本信息
+import{c as e,l as t}from"./api-DzXqwY8d.js";import{n,t as r}from"./search-C-Mx_4bj.js";import{a as i,i as a,n as o,r as s}from"./useLeaders-ILbflJRe.js";import{t as c}from"./external-link-BqrmWfqL.js";import{t as l}from"./x-II6VCtFC.js";import{N as u,P as d,h as f,i as p,o as m,r as h,t as g}from"./index-DPeGoBIe.js";var _=d(u(),1),v=f();function y({leader:e,lang:t,onClose:n}){let r=e.organization,i=e.name,a=`基本信息
 姓名：${i}
 职务：${e.title}
 机构：${r}

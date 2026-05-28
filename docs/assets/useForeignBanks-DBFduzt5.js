@@ -1,1 +1,0 @@
-import{d as e,n as t,r as n}from"./api-Dh-ZIAEW.js";function r(){return e({queryKey:[`foreignBanks`],queryFn:n,staleTime:1800*1e3})}function i(n){return e({queryKey:[`foreignBank`,n],queryFn:()=>t(n),enabled:!!n})}export{r as n,i as t};
