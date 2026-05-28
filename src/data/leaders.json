@@ -1,329 +1,240 @@
 [
   {
-    "id": "leader-1",
-    "name": "孟凡利",
-    "title": "广东省委副书记、深圳市委书记",
-    "organization": "深圳市委",
-    "bio": "孟凡利，男，汉族，现任广东省委副书记、深圳市委书记。长期从事经济管理工作，曾在山东省、广东省担任重要领导职务。",
-    "career": [
-      {
-        "year": "2024-",
-        "event": "广东省委副书记、深圳市委书记",
-        "organization": "广东省委"
-      },
-      {
-        "year": "2023-2024",
-        "event": "广东省委常委、深圳市委书记",
-        "organization": "广东省委"
-      },
-      {
-        "year": "2020-2023",
-        "event": "山东省副省长",
-        "organization": "山东省政府"
-      },
-      {
-        "year": "此前",
-        "event": "历任烟台市委书记等职",
-        "organization": "山东省"
-      }
-    ],
-    "tags": [
-      "深圳市",
-      "市委书记",
-      "经济管理"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/孟凡利",
-    "updatedAt": "2026-04-15"
+    "id": "ldr-pboc-9a2c155c",
+    "name": "关于我们",
+    "title": "关于我们",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/rmyh/105226/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
   },
   {
-    "id": "leader-2",
-    "name": "覃伟中",
-    "title": "深圳市委副书记、市长",
-    "organization": "深圳市政府",
-    "bio": "覃伟中，男，汉族，现任深圳市委副书记、深圳市人民政府市长。具有丰富的企业管理和行政领导经验。",
-    "career": [
-      {
-        "year": "2024-",
-        "event": "深圳市委副书记、市长",
-        "organization": "深圳市政府"
-      },
-      {
-        "year": "2023-2024",
-        "event": "深圳市委副书记、代市长",
-        "organization": "深圳市政府"
-      },
-      {
-        "year": "此前",
-        "event": "历任广东省直机关重要领导职务",
-        "organization": "广东省"
-      }
-    ],
-    "tags": [
-      "深圳市",
-      "市长",
-      "行政管理"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/覃伟中",
-    "updatedAt": "2026-04-15"
+    "id": "ldr-pboc-97852f28",
+    "name": "机构设置",
+    "title": "机构设置",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/rmyh/105226/105442/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
   },
   {
-    "id": "leader-3",
-    "name": "张非梦",
-    "title": "深圳市地方金融监督管理局局长",
+    "id": "ldr-pboc-5f6bad4d",
+    "name": "中国人民银行副行长宣昌能会见...",
+    "title": "中国人民银行副行长宣昌能会见...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/4675683/4675694/2026052618572898257/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-942e6cac",
+    "name": "中国人民银行行长潘功胜会见法...",
+    "title": "中国人民银行行长潘功胜会见法...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/128734/128874/2026052521380718669/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-daefeada",
+    "name": "中国人民银行行长潘功胜会见维...",
+    "title": "中国人民银行行长潘功胜会见维...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/128734/128874/2026051815045032380/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-1f974ba3",
+    "name": "中国人民银行行长潘功胜会见美...",
+    "title": "中国人民银行行长潘功胜会见美...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/128734/128874/2026042419393025998/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-6b8b41d6",
+    "name": "中国人民银行副行长宣昌能出席...",
+    "title": "中国人民银行副行长宣昌能出席...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/4675683/4675694/2026042219374383163/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-4f70fc66",
+    "name": "中国人民银行行长潘功胜会见国...",
+    "title": "中国人民银行行长潘功胜会见国...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/128734/128874/2026042021193246481/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-55b79525",
+    "name": "中国人民银行行长潘功胜会见相...",
+    "title": "中国人民银行行长潘功胜会见相...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/128734/128874/2026042021193149437/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-01fe7269",
+    "name": "中国人民银行行长潘功胜出席二...",
+    "title": "中国人民银行行长潘功胜出席二...",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/hanglingdao/128697/128734/128874/2026041710561423938/index.html",
+    "updated_at": "2026-05-28T13:08:11Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-f844a107",
+    "name": "历史沿革",
+    "title": "历史沿革",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/rmyh/105226/105433/index.html",
+    "updated_at": "2026-05-28T13:08:25Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-0864155a",
+    "name": "职能",
+    "title": "职能",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/rmyh/105226/105436/index.html",
+    "updated_at": "2026-05-28T13:08:25Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-pboc-e9939a29",
+    "name": "历任行长",
+    "title": "历任行长",
+    "organization": "中国人民银行",
+    "resume": "",
+    "appointment_history": [],
+    "source": "中国人民银行官网",
+    "source_url": "http://www.pbc.gov.cn/rmyh/105226/105439/index.html",
+    "updated_at": "2026-05-28T13:08:25Z",
+    "data_source": "pbc.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "仅包含官网公开列出的职务信息"
+  },
+  {
+    "id": "ldr-sz-f789b39d",
+    "name": "省外融资担保机构在广东省内设立分支机构审批",
+    "title": "省外融资担保机构在广东省内设立分支机构审批",
     "organization": "深圳市地方金融监督管理局",
-    "bio": "张非梦，深圳市地方金融监督管理局局长，负责深圳金融监管、金融改革与风险防控等工作。",
-    "career": [
-      {
-        "year": "2023-",
-        "event": "深圳市地方金融监督管理局局长",
-        "organization": "深圳金融局"
-      },
-      {
-        "year": "此前",
-        "event": "在深圳金融系统担任多个重要职务",
-        "organization": "深圳金融系统"
-      }
-    ],
-    "tags": [
-      "深圳金融局",
-      "局长",
-      "金融监管"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/张非梦",
-    "updatedAt": "2026-04-15"
+    "resume": "",
+    "appointment_history": [],
+    "source": "深圳市地方金融监督管理局",
+    "source_url": "http://www.gdzwfw.gov.cn/portal/guide/11440300007546153D3440179001001",
+    "updated_at": "2026-05-28T13:08:48Z",
+    "data_source": "jr.sz.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "从官网公开页面提取的信息"
   },
   {
-    "id": "leader-4",
-    "name": "时卫干",
-    "title": "深圳市地方金融监督管理局副局长",
+    "id": "ldr-sz-55055cda",
+    "name": "关于部分第三方财富管理机构涉嫌非法从事金融投资理财业务的风险提示",
+    "title": "关于部分第三方财富管理机构涉嫌非法从事金融投资理财业务的风险提示",
     "organization": "深圳市地方金融监督管理局",
-    "bio": "时卫干，深圳市地方金融监督管理局副局长，分管金融稳定、风险处置等重要工作。",
-    "career": [
-      {
-        "year": "2022-",
-        "event": "深圳市地方金融监督管理局副局长",
-        "organization": "深圳金融局"
-      },
-      {
-        "year": "此前",
-        "event": "历任金融监管部门多个重要岗位",
-        "organization": "金融系统"
-      }
-    ],
-    "tags": [
-      "深圳金融局",
-      "副局长",
-      "金融稳定"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/时卫干",
-    "updatedAt": "2026-04-15"
+    "resume": "",
+    "appointment_history": [],
+    "source": "深圳市地方金融监督管理局",
+    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_11485858.html",
+    "updated_at": "2026-05-28T13:08:48Z",
+    "data_source": "jr.sz.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "从官网公开页面提取的信息"
   },
   {
-    "id": "leader-5",
-    "name": "罗晃浩",
-    "title": "深圳市地方金融监督管理局副局长",
+    "id": "ldr-sz-ab124b16",
+    "name": "局长信箱",
+    "title": "局长信箱",
     "organization": "深圳市地方金融监督管理局",
-    "bio": "罗晃浩，深圳市地方金融监督管理局副局长，分管金融科技、普惠金融等创新业务。",
-    "career": [
-      {
-        "year": "2023-",
-        "event": "深圳市地方金融监督管理局副局长",
-        "organization": "深圳金融局"
-      },
-      {
-        "year": "此前",
-        "event": "在金融科技领域有丰富经验",
-        "organization": "金融机构"
-      }
-    ],
-    "tags": [
-      "深圳金融局",
-      "副局长",
-      "金融科技"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/罗晃浩",
-    "updatedAt": "2026-04-15"
+    "resume": "",
+    "appointment_history": [],
+    "source": "深圳市地方金融监督管理局",
+    "source_url": "https://jr.sz.gov.cn/hdjlpt/ldxx",
+    "updated_at": "2026-05-28T13:08:48Z",
+    "data_source": "jr.sz.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "从官网公开页面提取的信息"
   },
   {
-    "id": "leader-6",
-    "name": "温信祥",
-    "title": "中国人民银行深圳市分行行长",
-    "organization": "中国人民银行深圳市分行",
-    "bio": "温信祥，中国人民银行深圳市分行行长，负责深圳辖区货币政策传导及金融管理。",
-    "career": [
-      {
-        "year": "2023-",
-        "event": "中国人民银行深圳市分行行长",
-        "organization": "人行深圳分行"
-      },
-      {
-        "year": "此前",
-        "event": "历任人民银行总行及分支机构重要职务",
-        "organization": "中国人民银行"
-      }
-    ],
-    "tags": [
-      "人行",
-      "深圳分行",
-      "行长"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/温信祥",
-    "updatedAt": "2026-04-15"
-  },
-  {
-    "id": "leader-7",
-    "name": "于海平",
-    "title": "国家金融监督管理总局深圳监管局局长",
-    "organization": "国家金融监督管理总局深圳监管局",
-    "bio": "于海平，国家金融监督管理总局深圳监管局局长，负责深圳辖区银行保险业监管。",
-    "career": [
-      {
-        "year": "2023-",
-        "event": "国家金融监督管理总局深圳监管局局长",
-        "organization": "金融监管总局深圳局"
-      },
-      {
-        "year": "此前",
-        "event": "历任银保监会及金融监管系统重要岗位",
-        "organization": "金融监管系统"
-      }
-    ],
-    "tags": [
-      "金融监管总局",
-      "深圳局",
-      "局长"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/于海平",
-    "updatedAt": "2026-04-15"
-  },
-  {
-    "id": "leader-8",
-    "name": "任庆华",
-    "title": "国家金融监督管理总局深圳监管局副局长",
-    "organization": "国家金融监督管理总局深圳监管局",
-    "bio": "任庆华，国家金融监督管理总局深圳监管局副局长，分管银行机构监管及风险处置。",
-    "career": [
-      {
-        "year": "2023-",
-        "event": "国家金融监督管理总局深圳监管局副局长",
-        "organization": "金融监管总局深圳局"
-      },
-      {
-        "year": "此前",
-        "event": "在银行业监管领域有丰富经验",
-        "organization": "监管系统"
-      }
-    ],
-    "tags": [
-      "金融监管总局",
-      "深圳局",
-      "副局长"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/任庆华",
-    "updatedAt": "2026-04-15"
-  },
-  {
-    "id": "leader-9",
-    "name": "李运",
-    "title": "中国建设银行广东省分行行长",
-    "organization": "建设银行广东省分行",
-    "bio": "李运，中国建设银行广东省分行行长，负责建行在广东省（含深圳）的业务经营管理。",
-    "career": [
-      {
-        "year": "2024-",
-        "event": "建设银行广东省分行行长",
-        "organization": "建设银行"
-      },
-      {
-        "year": "此前",
-        "event": "历任建设银行系统多个分行领导职务",
-        "organization": "建设银行"
-      }
-    ],
-    "tags": [
-      "建设银行",
-      "广东省",
-      "行长"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/李运",
-    "updatedAt": "2026-04-15"
-  },
-  {
-    "id": "leader-10",
-    "name": "包祖明",
-    "title": "国家金融监督管理总局深圳监管局（原深圳银保监局局长）",
-    "organization": "国家金融监督管理总局",
-    "bio": "包祖明，曾在国家金融监督管理总局深圳监管局（原深圳银保监局）担任局长，在银行业风险监管和金融改革领域具有丰富经验。",
-    "career": [
-      {
-        "year": "2020-2023",
-        "event": "深圳银保监局局长",
-        "organization": "深圳银保监局"
-      },
-      {
-        "year": "此前",
-        "event": "历任浙江银监局等多个监管岗位",
-        "organization": "银监系统"
-      }
-    ],
-    "tags": [
-      "金融监管",
-      "深圳银保监局",
-      "银行监管"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/包祖明",
-    "updatedAt": "2026-04-15"
-  },
-  {
-    "id": "leader-11",
-    "name": "靳磊",
-    "title": "中国证监会深圳监管局局长",
-    "organization": "中国证监会深圳监管局",
-    "bio": "靳磊，中国证券监督管理委员会深圳监管局局长，负责深圳辖区资本市场监管。",
-    "career": [
-      {
-        "year": "2023-",
-        "event": "中国证监会深圳监管局局长",
-        "organization": "证监会深圳局"
-      },
-      {
-        "year": "此前",
-        "event": "在证券监管领域有丰富工作经历",
-        "organization": "证监会系统"
-      }
-    ],
-    "tags": [
-      "证监会",
-      "深圳局",
-      "局长"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/靳磊",
-    "updatedAt": "2026-04-15"
-  },
-  {
-    "id": "leader-12",
-    "name": "蔡英权",
-    "title": "深圳市南山区委常委、常务副区长",
-    "organization": "深圳市南山区政府",
-    "bio": "蔡英权，深圳市南山区委常委、常务副区长，负责南山区域经济和金融工作协调。",
-    "career": [
-      {
-        "year": "2023-",
-        "event": "南山区委常委、常务副区长",
-        "organization": "南山区政府"
-      },
-      {
-        "year": "此前",
-        "event": "在深圳基层政府多个岗位任职",
-        "organization": "深圳市政府"
-      }
-    ],
-    "tags": [
-      "南山区",
-      "副区长",
-      "经济金融"
-    ],
-    "sourceUrl": "https://baike.baidu.com/item/蔡英权",
-    "updatedAt": "2026-04-15"
+    "id": "ldr-sz-86c62325",
+    "name": "主要职能",
+    "title": "主要职能",
+    "organization": "深圳市地方金融监督管理局",
+    "resume": "",
+    "appointment_history": [],
+    "source": "深圳市地方金融监督管理局",
+    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/jgjj/zyzn/",
+    "updated_at": "2026-05-28T13:08:48Z",
+    "data_source": "jr.sz.gov.cn",
+    "data_quality": "official_listing_only",
+    "notes": "从官网公开页面提取的信息"
   }
 ]
