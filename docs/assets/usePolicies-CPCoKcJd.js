@@ -1,0 +1,1 @@
+import{d as e,s as t}from"./api-Dh-ZIAEW.js";function n(){return e({queryKey:[`policies`],queryFn:t})}export{n as t};

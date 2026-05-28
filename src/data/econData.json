@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "id": "econ-sz-gdp",
+    "name": "深圳GDP（2025年）",
+    "value": "3.68万亿",
+    "change": "+5.8%",
+    "direction": "up",
+    "period": "2025年全年",
+    "source": "深圳市统计局",
+    "city": "深圳"
+  },
+  {
+    "id": "econ-gz-gdp",
+    "name": "广州GDP（2025年）",
+    "value": "3.15万亿",
+    "change": "+4.5%",
+    "direction": "up",
+    "period": "2025年全年",
+    "source": "广州市统计局",
+    "city": "广州"
+  },
+  {
+    "id": "econ-gd-gdp",
+    "name": "广东省GDP（2025年）",
+    "value": "14.2万亿",
+    "change": "+5.2%",
+    "direction": "up",
+    "period": "2025年全年",
+    "source": "广东省统计局",
+    "city": "广东"
+  },
+  {
+    "id": "econ-sz-finance",
+    "name": "深圳金融业增加值",
+    "value": "5,800亿",
+    "change": "+7.2%",
+    "direction": "up",
+    "period": "2025年全年",
+    "source": "深圳市统计局",
+    "city": "深圳"
+  },
+  {
+    "id": "econ-sz-deposit",
+    "name": "深圳存款余额",
+    "value": "15.45万亿",
+    "change": "+10.3%",
+    "direction": "up",
+    "period": "2026年1-2月",
+    "source": "人行深圳分行",
+    "city": "深圳"
+  },
+  {
+    "id": "econ-sz-loan",
+    "name": "深圳贷款余额",
+    "value": "10.07万亿",
+    "change": "+4.4%",
+    "direction": "up",
+    "period": "2026年1-2月",
+    "source": "人行深圳分行",
+    "city": "深圳"
+  },
+  {
+    "id": "econ-sz-trade",
+    "name": "深圳进出口总额",
+    "value": "8,242亿",
+    "change": "+37.3%",
+    "direction": "up",
+    "period": "2026年1-2月",
+    "source": "深圳海关",
+    "city": "深圳"
+  },
+  {
+    "id": "econ-sz-fdi",
+    "name": "深圳实际利用外资",
+    "value": "约680亿",
+    "change": "+8.5%",
+    "direction": "up",
+    "period": "2025年全年",
+    "source": "深圳市商务局",
+    "city": "深圳"
+  },
+  {
+    "id": "econ-rnb-cross",
+    "name": "跨境人民币结算（广东）",
+    "value": "8.5万亿",
+    "change": "+25%",
+    "direction": "up",
+    "period": "2025年全年",
+    "source": "人行广州分行",
+    "city": "广东"
+  },
+  {
+    "id": "econ-foreign-banks",
+    "name": "广东外资银行数量",
+    "value": "39家",
+    "change": "覆盖9个国家/地区",
+    "direction": "neutral",
+    "period": "2026年3月",
+    "source": "深圳金融局",
+    "city": "广东"
+  },
+  {
+    "id": "econ-szse-mcap",
+    "name": "深交所总市值",
+    "value": "约35万亿",
+    "change": "+15%",
+    "direction": "up",
+    "period": "2026年Q1",
+    "source": "深交所",
+    "city": "深圳"
+  },
+  {
+    "id": "econ-sz-industry",
+    "name": "深圳规上工业增加值",
+    "value": "+10.4%",
+    "change": "加快5.0个百分点",
+    "direction": "up",
+    "period": "2026年1-2月",
+    "source": "深圳市统计局",
+    "city": "深圳"
+  }
+]

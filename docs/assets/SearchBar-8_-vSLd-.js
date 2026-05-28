@@ -1,4 +1,0 @@
-import{n as e,t}from"./x-DkxBMLVG.js";import{h as n}from"./index-CzvjxL9N.js";var r=n();function i({value:n,onChange:i,placeholder:a=`搜索...`}){return(0,r.jsxs)(`div`,{className:`relative`,children:[(0,r.jsx)(e,{className:`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-terminal-muted`}),(0,r.jsx)(`input`,{type:`text`,value:n,onChange:e=>i(e.target.value),placeholder:a,className:`w-full pl-10 pr-10 py-2.5 bg-terminal-bg border border-terminal-border rounded-xl
-                   text-sm text-terminal-text placeholder-terminal-muted
-                   focus:outline-none focus:border-terminal-accent/50 focus:ring-1 focus:ring-terminal-accent/20
-                   transition-all duration-200`}),n&&(0,r.jsx)(`button`,{onClick:()=>i(``),className:`absolute right-3 top-1/2 -translate-y-1/2 text-terminal-muted hover:text-terminal-text`,children:(0,r.jsx)(t,{className:`w-4 h-4`})})]})}export{i as t};

@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { BarChart3, Users, FileText, AlertTriangle, TrendingUp } from 'lucide-react'
+import { BarChart3, Users, FileText, Building2, TrendingUp } from 'lucide-react'
 
 const navItems = [
-  { path: '/', label: '仪表盘', icon: BarChart3 },
-  { path: '/leaders', label: '领导人物库', icon: Users },
+  { path: '/', label: '情报中心', icon: BarChart3 },
+  { path: '/banks', label: '外资银行', icon: Building2 },
   { path: '/policies', label: '政策库', icon: FileText },
-  { path: '/penalties', label: '处罚监控', icon: AlertTriangle },
+  { path: '/leaders', label: '领导人物', icon: Users },
 ]
 
 export default function Header() {
@@ -21,8 +21,8 @@ export default function Header() {
               <TrendingUp className="w-5 h-5 text-black" />
             </div>
             <div>
-              <span className="text-lg font-bold gradient-text">Gina Dashboard</span>
-              <span className="hidden sm:inline text-xs text-terminal-muted ml-2">AI金融监管情报平台</span>
+              <span className="text-lg font-bold gradient-text">华南外资银行监管情报</span>
+              <span className="hidden sm:inline text-xs text-terminal-muted ml-2">金融开放 · 大湾区 · Bloomberg Terminal</span>
             </div>
           </Link>
 

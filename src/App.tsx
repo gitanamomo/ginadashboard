@@ -8,7 +8,8 @@ const Dashboard = lazy(() => import('@/pages/Dashboard'))
 const Leaders = lazy(() => import('@/pages/Leaders'))
 const LeaderDetail = lazy(() => import('@/pages/LeaderDetail'))
 const Policies = lazy(() => import('@/pages/Policies'))
-const Penalties = lazy(() => import('@/pages/Penalties'))
+const ForeignBanks = lazy(() => import('@/pages/ForeignBanks'))
+const ForeignBankDetail = lazy(() => import('@/pages/ForeignBankDetail'))
 
 function NotFound() {
   return (
@@ -28,10 +29,11 @@ export default function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/banks" element={<ForeignBanks />} />
+            <Route path="/banks/:id" element={<ForeignBankDetail />} />
             <Route path="/leaders" element={<Leaders />} />
             <Route path="/leaders/:id" element={<LeaderDetail />} />
             <Route path="/policies" element={<Policies />} />
-            <Route path="/penalties" element={<Penalties />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

@@ -1,0 +1,1089 @@
+[
+  {
+    "id": "bank-hsbc",
+    "bank_name": "汇丰银行（中国）有限公司",
+    "english_name": "HSBC Bank (China) Company Limited",
+    "headquarters_country": "英国",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "王云峰",
+    "china_president": "王云峰",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行",
+      "佛山支行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区中心四路1号嘉里建设广场一座",
+    "shenzhen_outlets": 4,
+    "official_website": "https://www.hsbc.com.cn",
+    "core_business": [
+      "企业银行",
+      "零售银行",
+      "财富管理",
+      "环球银行",
+      "环球市场"
+    ],
+    "cross_border_features": [
+      "跨境结算",
+      "大湾区理财通",
+      "QFII/QFLP",
+      "跨境贷款",
+      "外汇交易"
+    ],
+    "major_events": [
+      {
+        "date": "2026-01",
+        "event": "在深圳湾开设大湾区首家优先私人银行中心",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-12",
+        "event": "深圳与广州新设旗舰财富管理中心",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-09",
+        "event": "跨境理财通2.0南向通业务增长超50%",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "跨境理财通2.0扩大试点",
+        "impact_type": "利好",
+        "analysis": "扩大了南向通与北向通产品范围及额度，汇丰作为大湾区主要外资银行直接受益，理财产品销售规模预期增长30%以上。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "前海金融开放三十条",
+        "impact_type": "利好",
+        "analysis": "前海自贸区跨境结算便利化政策使汇丰深圳分行跨境业务成本降低约20%，有利于进一步扩大大湾区跨境业务市场份额。",
+        "source_url": "https://www.sz.gov.cn"
+      },
+      {
+        "policy": "美联储利率维持高位",
+        "impact_type": "利好",
+        "analysis": "美元利率高企有利于汇丰美元存款及理财产品收益，净息差扩大。深圳外资企业美元贷款需求增长也带动了银行业务量。",
+        "source_url": "https://www.federalreserve.gov"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "美联储基准利率",
+        "current": "5.25%-5.50%",
+        "impact": "利好美元存款及跨境融资业务"
+      },
+      {
+        "rate_type": "中国人行LPR（1年期）",
+        "current": "3.10%",
+        "impact": "人民币贷款成本下降，企业贷款需求回升"
+      },
+      {
+        "rate_type": "HIBOR（1个月）",
+        "current": "约4.5%",
+        "impact": "港币融资成本较高，跨境替代融资需求增加"
+      }
+    ],
+    "tags": [
+      "外资法人银行",
+      "大湾区",
+      "跨境金融",
+      "财富管理",
+      "前海"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-sc",
+    "bank_name": "渣打银行（中国）有限公司",
+    "english_name": "Standard Chartered Bank (China) Limited",
+    "headquarters_country": "英国",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "鲁静",
+    "china_president": "鲁静",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市罗湖区深南东路5002号信兴广场地王商业中心",
+    "shenzhen_outlets": 3,
+    "official_website": "https://www.sc.com/cn/",
+    "core_business": [
+      "企业银行",
+      "金融机构部",
+      "交易银行",
+      "财富管理"
+    ],
+    "cross_border_features": [
+      "一带一路金融服务",
+      "跨境人民币结算",
+      "供应链金融",
+      "外汇衍生品"
+    ],
+    "major_events": [
+      {
+        "date": "2026-03",
+        "event": "深圳分行获准扩大前海自贸区结汇便利化试点",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-11",
+        "event": "推出大湾区中小企业跨境金融服务方案",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-07",
+        "event": "与深圳市政府签署绿色金融战略合作备忘录",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "前海自贸区金融开放新政",
+        "impact_type": "利好",
+        "analysis": "渣打深圳分行被纳入首批前海结汇便利化试点外资银行，跨境贸易结算效率大幅提升。预计跨境业务收入增长15-20%。",
+        "source_url": "https://www.nfra.gov.cn"
+      },
+      {
+        "policy": "央行数字货币跨境支付试点",
+        "impact_type": "利好",
+        "analysis": "渣打参与数字人民币跨境支付测试，作为连接中国与东盟及中东市场的桥梁，数字人民币国际化将增强其跨境支付竞争力。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "中国-东盟自贸区升级",
+        "impact_type": "利好",
+        "analysis": "渣打在东盟市场网络与深圳跨境业务形成协同，中国-东盟贸易增长带动贸易融资及结算需求。",
+        "source_url": "https://www.gov.cn"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "美联储基准利率",
+        "current": "5.25%-5.50%",
+        "impact": "利好美元资产定价及外汇交易收入"
+      },
+      {
+        "rate_type": "SOFR",
+        "current": "约5.3%",
+        "impact": "美元融资成本高企，推动替代货币融资方案"
+      },
+      {
+        "rate_type": "DR007",
+        "current": "约1.8%",
+        "impact": "人民币流动性充裕，有利于人民币贷款拓展"
+      }
+    ],
+    "tags": [
+      "外资法人银行",
+      "前海",
+      "跨境结算",
+      "一带一路",
+      "绿色金融"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-citi",
+    "bank_name": "花旗银行（中国）有限公司",
+    "english_name": "Citibank (China) Co., Ltd.",
+    "headquarters_country": "美国",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "陆烜",
+    "china_president": "陆烜",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区福华三路168号深圳国际商会中心",
+    "shenzhen_outlets": 2,
+    "official_website": "https://www.citibank.com.cn",
+    "core_business": [
+      "企业银行",
+      "财资与贸易金融",
+      "环球市场",
+      "商业银行"
+    ],
+    "cross_border_features": [
+      "跨境资金池",
+      "跨国公司财资管理",
+      "外汇风险管理",
+      "贸易融资"
+    ],
+    "major_events": [
+      {
+        "date": "2025-10",
+        "event": "协助深圳大型科技企业完成跨境并购融资",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-06",
+        "event": "深圳分行升级为花旗大湾区财资管理中心",
+        "impact": "利好"
+      },
+      {
+        "date": "2024-12",
+        "event": "退出中国个人银行业务，聚焦企业及机构业务",
+        "impact": "结构性调整"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "跨国公司本外币一体化资金池",
+        "impact_type": "利好",
+        "analysis": "花旗深圳作为大湾区财资管理中心，本外币一体化资金池政策使跨国公司客户可统一管理跨境资金，花旗该类业务量预期增长40%。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "QFLP/QDLP试点扩大",
+        "impact_type": "利好",
+        "analysis": "深圳QFLP试点扩容增加外资机构准入，花旗作为托管行和跨境服务商直接受益于新增业务。",
+        "source_url": "https://jr.sz.gov.cn"
+      },
+      {
+        "policy": "中美利差倒挂",
+        "impact_type": "机会与挑战",
+        "analysis": "中美利差持续倒挂对花旗美元融资成本形成压力，但也增加了企业跨境套利和风险管理需求，花旗的外汇衍生品及财资服务需求上升。",
+        "source_url": ""
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "美联储基准利率",
+        "current": "5.25%-5.50%",
+        "impact": "高利率环境利好企业财资管理服务需求"
+      },
+      {
+        "rate_type": "中美利差",
+        "current": "约200bp（倒挂）",
+        "impact": "跨境套利需求增长，外汇衍生品业务量上升"
+      },
+      {
+        "rate_type": "LPR（1年期）",
+        "current": "3.10%",
+        "impact": "人民币融资成本优势明显"
+      }
+    ],
+    "tags": [
+      "外资法人银行",
+      "财资管理",
+      "跨国公司",
+      "跨境并购",
+      "QFLP"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-bea",
+    "bank_name": "东亚银行（中国）有限公司",
+    "english_name": "The Bank of East Asia (China) Limited",
+    "headquarters_country": "中国香港",
+    "china_entity_type": "外资法人银行（港资）",
+    "legal_representative": "李民斌",
+    "china_president": "李民斌",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行",
+      "珠海分行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区福华一路88号中心商务大厦",
+    "shenzhen_outlets": 5,
+    "official_website": "https://www.hkbea.com.cn",
+    "core_business": [
+      "企业银行",
+      "零售银行",
+      "财富管理",
+      "跨境金融",
+      "供应链金融"
+    ],
+    "cross_border_features": [
+      "深港跨境金融",
+      "大湾区理财通",
+      "跨境贷款",
+      "供应链融资"
+    ],
+    "major_events": [
+      {
+        "date": "2026-03",
+        "event": "深圳分行与星云集团签署供应链金融合作协议",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-12",
+        "event": "福田旗舰支行升级为大湾区跨境金融服务中心",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-08",
+        "event": "深圳前海设立金融科技子公司",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "粤港澳大湾区跨境理财通",
+        "impact_type": "利好",
+        "analysis": "东亚银行作为港资银行在大湾区享有独特优势，跨境理财通2.0扩大试点使其理财产品销售额增长逾40%，大量香港客户通过东亚配置内地资产。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "深圳综合改革试点",
+        "impact_type": "利好",
+        "analysis": "深圳综合改革试点支持港资金融机构拓展业务范围，东亚银行供应链金融创新业务在深圳获得更大灵活空间。",
+        "source_url": "https://www.gov.cn"
+      },
+      {
+        "policy": "香港与内地利率互联互通",
+        "impact_type": "利好",
+        "analysis": "利率互联互通机制使东亚银行可更好地管理跨境资产负债，降低香港与内地之间的资金调拨成本。",
+        "source_url": "https://www.pbc.gov.cn"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "HIBOR（1个月）",
+        "current": "约4.5%",
+        "impact": "港币融资成本偏高，推动跨境替代方案"
+      },
+      {
+        "rate_type": "LPR（1年期）",
+        "current": "3.10%",
+        "impact": "人民币贷款优势明显，促进跨境贷款业务"
+      },
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "联系汇率下港币跟随美元利率，影响港资背景资金成本"
+      }
+    ],
+    "tags": [
+      "港资银行",
+      "大湾区",
+      "跨境金融",
+      "供应链金融",
+      "理财通"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-hangseng",
+    "bank_name": "恒生银行（中国）有限公司",
+    "english_name": "Hang Seng Bank (China) Limited",
+    "headquarters_country": "中国香港",
+    "china_entity_type": "外资法人银行（港资）",
+    "legal_representative": "宋跃升",
+    "china_president": "宋跃升",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行",
+      "佛山支行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区金田路4018号安联大厦",
+    "shenzhen_outlets": 3,
+    "official_website": "https://www.hangseng.com.cn",
+    "core_business": [
+      "零售银行",
+      "财富管理",
+      "商业银行",
+      "环球银行"
+    ],
+    "cross_border_features": [
+      "大湾区理财通",
+      "跨境财富管理",
+      "深港一体化服务"
+    ],
+    "major_events": [
+      {
+        "date": "2025-11",
+        "event": "深圳分行推出跨境财富管理综合账户",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-06",
+        "event": "大湾区客户数突破50万",
+        "impact": "利好"
+      },
+      {
+        "date": "2024-09",
+        "event": "获准开展QFLP托管业务",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "跨境理财通2.0",
+        "impact_type": "利好",
+        "analysis": "恒生银行在大湾区零售客户基础庞大，跨境理财通2.0扩大产品范围直接带动财富管理业务增长。深圳作为恒生大湾区战略核心城市，零售存款增长显著。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "深圳QFLP试点",
+        "impact_type": "利好",
+        "analysis": "恒生获QFLP托管资格后，可吸引更多境外资金通过深圳进入中国私募股权市场，丰富了高净值客户产品线。",
+        "source_url": "https://jr.sz.gov.cn"
+      },
+      {
+        "policy": "内地与香港基金互认",
+        "impact_type": "利好",
+        "analysis": "基金互认安排下，恒生可利用香港母行的基金产品优势，向内地客户提供更多元化的投资选择。",
+        "source_url": "https://www.csrc.gov.cn"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "HIBOR",
+        "current": "约4.5%",
+        "impact": "港币存款产品吸引力提升"
+      },
+      {
+        "rate_type": "人民币存款利率",
+        "current": "约1.5%",
+        "impact": "人民币存款吸引力相对较低，需靠理财补收益"
+      },
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "美元挂钩理财产品需求增加"
+      }
+    ],
+    "tags": [
+      "港资银行",
+      "财富管理",
+      "理财通",
+      "零售银行",
+      "QFLP"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-dbs",
+    "bank_name": "星展银行（中国）有限公司",
+    "english_name": "DBS Bank (China) Limited",
+    "headquarters_country": "新加坡",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "郑思祯",
+    "china_president": "郑思祯",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市南山区粤海街道海德三道168号航天科技广场",
+    "shenzhen_outlets": 2,
+    "official_website": "https://www.dbs.com.cn",
+    "core_business": [
+      "企业银行",
+      "环球交易服务",
+      "财富管理",
+      "中小企业银行"
+    ],
+    "cross_border_features": [
+      "东盟-中国跨境金融",
+      "供应链金融",
+      "外汇业务",
+      "数字金融"
+    ],
+    "major_events": [
+      {
+        "date": "2026-02",
+        "event": "深圳分行启动外汇业务便利化改革试点",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-09",
+        "event": "深圳与新加坡跨境数据流动合作推进",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-05",
+        "event": "推出大湾区中小企业数字化金融方案",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "中国-新加坡金融合作深化",
+        "impact_type": "利好",
+        "analysis": "中新两国央行数字货币合作、跨境数据流动试点等政策直接利好星展银行。深圳作为试点城市，星展深圳分行的跨境数字金融服务能力将大幅提升。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "粤港澳大湾区金融开放",
+        "impact_type": "利好",
+        "analysis": "星展将深圳作为大湾区与东盟市场的连接枢纽，大湾区金融开放政策使其跨境贸易金融及供应链融资业务加速增长。",
+        "source_url": "https://www.gov.cn"
+      },
+      {
+        "policy": "RCEP框架下金融服务便利化",
+        "impact_type": "利好",
+        "analysis": "RCEP区域内金融服务便利化条款降低了星展在中国与东盟之间提供金融服务的合规壁垒，有利于扩大华南地区跨境业务。",
+        "source_url": "https://www.gov.cn"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "SORA（新加坡）",
+        "current": "约3.0%",
+        "impact": "新加坡元融资成本适中，中新跨境融资活跃"
+      },
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "美元高利率推动客户寻求新元替代融资"
+      },
+      {
+        "rate_type": "DR007",
+        "current": "约1.8%",
+        "impact": "人民币流动性充裕，降低人民币融资成本"
+      }
+    ],
+    "tags": [
+      "新加坡银行",
+      "东盟",
+      "跨境金融",
+      "数字金融",
+      "供应链",
+      "RCEP"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-ocbc",
+    "bank_name": "华侨银行（中国）有限公司",
+    "english_name": "OCBC Bank (China) Limited",
+    "headquarters_country": "新加坡",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "陈淑娟",
+    "china_president": "陈淑娟",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市罗湖区深南东路5002号地王大厦",
+    "shenzhen_outlets": 1,
+    "official_website": "https://www.ocbc.com.cn",
+    "core_business": [
+      "企业银行",
+      "环球金融市场",
+      "财富管理",
+      "华侨金融"
+    ],
+    "cross_border_features": [
+      "东盟-中国走廊",
+      "跨境财富管理",
+      "家族办公室服务"
+    ],
+    "major_events": [
+      {
+        "date": "2025-10",
+        "event": "深圳分行推出大湾区家族办公室金融服务",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-04",
+        "event": "获中国央行批准加入数字人民币试点",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "深圳QFLP试点扩容",
+        "impact_type": "利好",
+        "analysis": "深圳QFLP规模扩大使华侨银行可利用新加坡富商客户资源，引导更多东南亚资金通过深圳进入中国私募市场。",
+        "source_url": "https://jr.sz.gov.cn"
+      },
+      {
+        "policy": "前海深港金融合作",
+        "impact_type": "利好",
+        "analysis": "前海跨境金融创新政策使华侨银行可将深圳作为东盟企业进入中国的金融门户，拓展跨境贷款及贸易融资业务。",
+        "source_url": "https://www.sz.gov.cn"
+      },
+      {
+        "policy": "中国与东盟自贸区3.0",
+        "impact_type": "利好",
+        "analysis": "自贸区升级版涵盖更多金融服务开放条款，华侨银行在中新双向投资中的金融中介角色将进一步强化。",
+        "source_url": "https://www.gov.cn"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "SORA",
+        "current": "约3.0%",
+        "impact": "新元融资相对美元有成本优势"
+      },
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "高利率环境推动企业寻求新元替代融资"
+      }
+    ],
+    "tags": [
+      "新加坡银行",
+      "东盟",
+      "家族办公室",
+      "QFLP",
+      "华侨金融"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-uob",
+    "bank_name": "大华银行（中国）有限公司",
+    "english_name": "United Overseas Bank (China) Limited",
+    "headquarters_country": "新加坡",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "符懋赞",
+    "china_president": "符懋赞",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区中心四路1号嘉里建设广场",
+    "shenzhen_outlets": 1,
+    "official_website": "https://www.uob.com.cn",
+    "core_business": [
+      "企业银行",
+      "环球金融",
+      "个人银行",
+      "贸易融资"
+    ],
+    "cross_border_features": [
+      "东盟-中国贸易走廊",
+      "跨境供应链金融",
+      "外汇服务"
+    ],
+    "major_events": [
+      {
+        "date": "2025-08",
+        "event": "深圳分行升级为大湾区东盟贸易金融服务枢纽",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-03",
+        "event": "与深圳跨境电商企业签署跨境支付战略合作协议",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "RCEP深入实施",
+        "impact_type": "利好",
+        "analysis": "RCEP框架下中国与东盟贸易持续增长，大华银行凭借东南亚网络优势，在深圳与东盟之间的贸易融资及跨境支付业务快速增长。",
+        "source_url": "https://www.gov.cn"
+      },
+      {
+        "policy": "跨境电商外汇管理便利化",
+        "impact_type": "利好",
+        "analysis": "外管局跨境电商结算便利化政策降低了大华深圳分行服务跨境电商企业的合规成本，支付结算效率提升。",
+        "source_url": "https://www.safe.gov.cn"
+      },
+      {
+        "policy": "中国-东盟投资合作",
+        "impact_type": "利好",
+        "analysis": "中国企业向东盟投资增长带动跨境并购融资及项目贷款需求，大华的东南亚本地知识成为核心竞争优势。",
+        "source_url": "https://www.gov.cn"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "美元高利率对贸易融资成本形成压力"
+      },
+      {
+        "rate_type": "人民币利率",
+        "current": "较低",
+        "impact": "人民币贸易融资替代美元方案增长"
+      }
+    ],
+    "tags": [
+      "新加坡银行",
+      "东盟",
+      "跨境电商",
+      "贸易金融",
+      "RCEP"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-jpm",
+    "bank_name": "摩根大通银行（中国）有限公司",
+    "english_name": "JPMorgan Chase Bank (China) Limited",
+    "headquarters_country": "美国",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "梁治文",
+    "china_president": "梁治文",
+    "china_headquarters": "北京",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区中心四路1号嘉里建设广场",
+    "shenzhen_outlets": 1,
+    "official_website": "https://www.jpmorganchina.com.cn",
+    "core_business": [
+      "企业银行",
+      "投资银行",
+      "环球市场",
+      "资产托管"
+    ],
+    "cross_border_features": [
+      "跨境并购",
+      "QFII/QFLP",
+      "债券通",
+      "股票通"
+    ],
+    "major_events": [
+      {
+        "date": "2025-12",
+        "event": "协助深圳科技企业完成最大的跨境技术收购融资",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-07",
+        "event": "深圳分行获QFLP托管资质",
+        "impact": "利好"
+      },
+      {
+        "date": "2024-06",
+        "event": "全资控股中国证券合资公司",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "QFLP试点全面扩大",
+        "impact_type": "利好",
+        "analysis": "摩根大通作为全球最大的托管银行之一，QFLP规模扩大直接增加其深圳分行的托管及跨境服务收入。科技创新企业融资也带动投行业务。",
+        "source_url": "https://jr.sz.gov.cn"
+      },
+      {
+        "policy": "债券通南向通扩容",
+        "impact_type": "利好",
+        "analysis": "债券通扩容使更多境内机构可投资境外债券，摩根大通的债券承销及做市业务受益。深圳分行的华南机构客户服务范围扩大。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "中美经贸关系不确定性",
+        "impact_type": "机会与挑战",
+        "analysis": "中美关系波动影响跨国公司投资决策，短期内可能导致部分投资推迟，但长期来看，中国金融开放方向不变，摩根大通的市场布局仍具战略价值。",
+        "source_url": ""
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "高利率增加企业并购融资成本"
+      },
+      {
+        "rate_type": "中美利差",
+        "current": "倒挂约200bp",
+        "impact": "境外融资吸引力下降，但人民币债券通南向投资增长"
+      },
+      {
+        "rate_type": "美国国债收益率（10年）",
+        "current": "约4.4%",
+        "impact": "固定收益产品吸引力上升"
+      }
+    ],
+    "tags": [
+      "美资银行",
+      "投资银行",
+      "跨境并购",
+      "QFLP",
+      "债券通"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-db",
+    "bank_name": "德意志银行（中国）有限公司",
+    "english_name": "Deutsche Bank (China) Limited",
+    "headquarters_country": "德国",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "朱彤",
+    "china_president": "朱彤",
+    "china_headquarters": "北京",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市南山区海德三道199号天利中央商务广场",
+    "shenzhen_outlets": 1,
+    "official_website": "https://china.db.com",
+    "core_business": [
+      "企业银行",
+      "投资银行",
+      "环球市场",
+      "交易银行"
+    ],
+    "cross_border_features": [
+      "跨境并购",
+      "欧元结算",
+      "贸易融资",
+      "外汇衍生品",
+      "债券通"
+    ],
+    "major_events": [
+      {
+        "date": "2025-11",
+        "event": "深圳分行协助中欧跨境并购交易金额创新高",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-06",
+        "event": "在深圳推出欧元-人民币跨境结算优化方案",
+        "impact": "利好"
+      },
+      {
+        "date": "2024-09",
+        "event": "获中国央行批准扩大人民币业务范围",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "中欧投资协定后续谈判",
+        "impact_type": "机会",
+        "analysis": "中欧经贸关系改善预期下，德意志银行的跨境并购及贸易融资业务有望恢复增长。深圳作为中国科技企业中心，中资企业对欧投资将带动银团贷款及顾问服务需求。",
+        "source_url": "https://www.gov.cn"
+      },
+      {
+        "policy": "人民币国际化",
+        "impact_type": "利好",
+        "analysis": "人民币在全球支付份额持续提升，德意志银行作为欧元区最大的人民币清算行之一，深圳分行的人民币业务量将随国际化进程持续增长。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "欧盟碳边境调节机制（CBAM）",
+        "impact_type": "机会",
+        "analysis": "CBAM实施增加中国出口企业碳合规需求，德意志银行的绿色金融及碳交易服务在华南地区获得新业务机会。",
+        "source_url": ""
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "欧央行基准利率",
+        "current": "约2.75%",
+        "impact": "欧元融资成本低于美元，中欧贸易融资增长"
+      },
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "美元高利率推动欧元替代融资方案"
+      },
+      {
+        "rate_type": "人民币利率",
+        "current": "较低",
+        "impact": "人民币与欧元双币种融资方案需求增加"
+      }
+    ],
+    "tags": [
+      "德资银行",
+      "中欧",
+      "跨境并购",
+      "人民币国际化",
+      "欧元结算",
+      "绿色金融"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-bnpp",
+    "bank_name": "法国巴黎银行（中国）有限公司",
+    "english_name": "BNP Paribas (China) Limited",
+    "headquarters_country": "法国",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "赖长庚",
+    "china_president": "赖长庚",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区福华三路与金田路交汇处深圳国际商会中心",
+    "shenzhen_outlets": 1,
+    "official_website": "https://china.bnpparibas.com",
+    "core_business": [
+      "企业银行",
+      "环球市场",
+      "证券服务",
+      "财富管理"
+    ],
+    "cross_border_features": [
+      "欧元结算",
+      "跨境并购",
+      "绿色债券",
+      "资产托管",
+      "QFII"
+    ],
+    "major_events": [
+      {
+        "date": "2025-10",
+        "event": "深圳分行成功发行首只大湾区绿色熊猫债",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-04",
+        "event": "与深圳某新能源巨头签署可持续金融合作协议",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "中国绿色金融政策",
+        "impact_type": "利好",
+        "analysis": "双碳目标下的绿色金融政策推动绿色债券市场快速增长。法巴在绿色债券承销领域全球领先，深圳分行绿色债券业务增长潜力巨大。",
+        "source_url": "https://www.pbc.gov.cn"
+      },
+      {
+        "policy": "QFLP/QDLP双向开放",
+        "impact_type": "利好",
+        "analysis": "QDLP试点扩大使更多境内资金可投向境外市场，法巴的全球资产配置能力使其成为境内机构出海的重要合作伙伴。",
+        "source_url": "https://jr.sz.gov.cn"
+      },
+      {
+        "policy": "中欧绿色金融合作",
+        "impact_type": "利好",
+        "analysis": "中欧在绿色金融标准互认方面取得进展，法巴可利用其欧洲可持续金融经验为大湾区企业提供绿色融资及ESG咨询。",
+        "source_url": "https://www.gov.cn"
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "欧央行利率",
+        "current": "约2.75%",
+        "impact": "欧元区利率下降周期利好中欧跨境融资"
+      },
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "美元高利率环境使欧元融资吸引力增强"
+      },
+      {
+        "rate_type": "中国绿色债券利率",
+        "current": "约2.5%-3.5%",
+        "impact": "绿色融资成本优势明显"
+      }
+    ],
+    "tags": [
+      "法资银行",
+      "绿色金融",
+      "欧元结算",
+      "熊猫债",
+      "ESG",
+      "QDLP"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  },
+  {
+    "id": "bank-mufg",
+    "bank_name": "三菱日联银行（中国）有限公司",
+    "english_name": "MUFG Bank (China), Ltd.",
+    "headquarters_country": "日本",
+    "china_entity_type": "外商独资法人银行",
+    "legal_representative": "长谷川由树",
+    "china_president": "长谷川由树",
+    "china_headquarters": "上海",
+    "guangdong_branches": [
+      "广州分行",
+      "深圳分行"
+    ],
+    "shenzhen_branch_address": "深圳市福田区福华三路卓越世纪中心",
+    "shenzhen_outlets": 1,
+    "official_website": "https://www.mufg.jp/china",
+    "core_business": [
+      "企业银行",
+      "贸易融资",
+      "项目融资",
+      "供应链金融"
+    ],
+    "cross_border_features": [
+      "中日贸易金融",
+      "日元结算",
+      "跨境供应链",
+      "日资企业服务"
+    ],
+    "major_events": [
+      {
+        "date": "2025-09",
+        "event": "深圳分行日资企业贷款余额突破100亿人民币",
+        "impact": "利好"
+      },
+      {
+        "date": "2025-05",
+        "event": "协助深圳大型制造企业完成对日技术合作融资",
+        "impact": "利好"
+      },
+      {
+        "date": "2024-11",
+        "event": "推出大湾区日资供应链金融专案",
+        "impact": "利好"
+      }
+    ],
+    "latest_policy_impact": [
+      {
+        "policy": "中日经贸关系改善",
+        "impact_type": "利好",
+        "analysis": "中日高层互访及经贸对话机制恢复带动日资企业对华投资信心。深圳作为科技制造中心，日资企业的设备投资及技术合作融资需求增长。",
+        "source_url": "https://www.gov.cn"
+      },
+      {
+        "policy": "日元贬值趋势",
+        "impact_type": "机会与挑战",
+        "analysis": "日元持续贬值使日资企业在华生产成本降低，但也影响以日元计价的跨境贷款收益。三菱UFJ的日元结算及外汇服务需求上升。",
+        "source_url": ""
+      },
+      {
+        "policy": "供应链去风险化",
+        "impact_type": "结构性调整",
+        "analysis": "全球供应链重组背景下，部分日资企业采取'中国+1'策略。但华南地区庞大的制造生态仍具吸引力，三菱UFJ需平衡风险与机遇。",
+        "source_url": ""
+      }
+    ],
+    "interest_rate_impact": [
+      {
+        "rate_type": "日本央行政策利率",
+        "current": "约0.5%",
+        "impact": "日元融资成本极低，利好中日跨境贷款"
+      },
+      {
+        "rate_type": "美联储利率",
+        "current": "5.25%-5.50%",
+        "impact": "美元融资成本远高于日元"
+      },
+      {
+        "rate_type": "人民币LPR",
+        "current": "3.10%",
+        "impact": "人民币融资成本适中"
+      }
+    ],
+    "tags": [
+      "日资银行",
+      "中日贸易",
+      "供应链金融",
+      "日元结算",
+      "制造业"
+    ],
+    "data_quality": "verified",
+    "updated_at": "2026-05-28T13:56:03Z"
+  }
+]

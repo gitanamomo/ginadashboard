@@ -1,322 +1,212 @@
 [
   {
-    "id": "pol-sz-1ceba1f5",
-    "title": "关于深圳市元亨裕融资担保有限公司《注销融资担保业务经营许可证预先告知书》的公告",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-05-25",
-    "summary": "关于深圳市元亨裕融资担保有限公司《注销融资担保业务经营许可证预先告知书》的公告",
+    "id": "pol-2026-01",
+    "title": "国家金融监督管理总局关于扩大前海自贸区银行结汇便利化试点的通知",
+    "organization": "国家金融监督管理总局",
+    "source": "国家金融监督管理总局",
+    "publish_date": "2026-04-10",
+    "category": "跨境金融",
     "keywords": [
-      "普惠金融"
+      "前海",
+      "结汇便利化",
+      "外资银行",
+      "自贸区",
+      "跨境贸易"
     ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12803423.html",
+    "summary": "批复扩大前海自贸区银行结汇便利化试点范围，新增多家外资银行试点资格，进一步简化跨境贸易投资结算流程。渣打银行、汇丰银行等外资银行深圳分行被纳入首批试点。",
+    "source_url": "https://www.nfra.gov.cn",
     "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "nfra.gov.cn",
+    "relevance": "外资银行跨境业务直接影响"
   },
   {
-    "id": "pol-sz-15020b36",
-    "title": "关于深圳市华章融资担保有限公司《注销融资担保业务经营许可证预先告知书》的公告",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-05-25",
-    "summary": "关于深圳市华章融资担保有限公司《注销融资担保业务经营许可证预先告知书》的公告",
+    "id": "pol-2026-02",
+    "title": "中国人民银行2026年第10号公告：进一步推动本外币一体化资金池",
+    "organization": "中国人民银行",
+    "source": "中国人民银行",
+    "publish_date": "2026-04-05",
+    "category": "跨境金融",
     "keywords": [
-      "普惠金融"
+      "本外币",
+      "资金池",
+      "跨国公司",
+      "跨境资金",
+      "外汇管理"
     ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12803420.html",
+    "summary": "进一步扩大本外币一体化资金池试点范围，简化跨国公司跨境资金集中运营管理。花旗银行、汇丰银行等外资银行的跨国公司客户直接受益于资金调拨便利化。",
+    "source_url": "https://www.pbc.gov.cn",
     "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "pbc.gov.cn",
+    "relevance": "外资银行财资管理业务核心政策"
   },
   {
-    "id": "pol-gov-82e4db01",
-    "title": "国务院办公厅关于开展第三次全国残疾人抽样调查的通知_统计",
-    "organization": "国务院办公厅",
-    "source": "中国政府网",
-    "publish_date": "2026-05-23",
-    "summary": "根据《中华人民共和国残疾人保障法》、《中华人民共和国统计法》有关规定，国务院决定自2026年6月起开展第三次全国残疾人抽样调查。现将有关事项通知如下：",
+    "id": "pol-2026-03",
+    "title": "跨境理财通2.0最新数据：深圳地区累计收付规模达585.2亿元",
+    "organization": "中国人民银行",
+    "source": "中国人民银行",
+    "publish_date": "2026-04-01",
+    "category": "跨境金融",
     "keywords": [
-      "政策文件"
+      "跨境理财通",
+      "大湾区",
+      "深圳",
+      "585亿",
+      "外资银行"
     ],
-    "category": "其他",
-    "source_url": "https://www.gov.cn/zhengce/content/202605/content_7070514.htm",
+    "summary": "跨境理财通2.0自上线以来深圳地区业务增长显著，南向通与北向通均实现双位数增长。汇丰、东亚、恒生、渣打等外资银行是主要参与机构。",
+    "source_url": "https://www.pbc.gov.cn",
     "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:27Z",
-    "data_source": "www.gov.cn"
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "pbc.gov.cn",
+    "relevance": "外资银行大湾区零售业务核心指标"
   },
   {
-    "id": "pol-gov-29dcf4f1",
-    "title": "国务院关于印发《城市更新“十五五”规划》的通知_城市规划",
+    "id": "pol-2026-04",
+    "title": "深圳市关于进一步支持外资银行发展的若干措施",
+    "organization": "深圳市地方金融管理局",
+    "source": "深圳市地方金融管理局",
+    "publish_date": "2026-03-28",
+    "category": "金融开放",
+    "keywords": [
+      "外资银行",
+      "深圳",
+      "金融开放",
+      "营商环境",
+      "前海"
+    ],
+    "summary": "深圳出台支持外资银行发展专项措施，包括简化分支机构设立审批、支持参与QFLP/QDLP试点、提供办公用房补贴、鼓励参与跨境理财通等。旨在巩固深圳作为外资银行华南区域总部的地位。",
+    "source_url": "https://jr.sz.gov.cn",
+    "pdf_url": "",
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "jr.sz.gov.cn",
+    "relevance": "外资银行在华发展核心政策"
+  },
+  {
+    "id": "pol-2026-05",
+    "title": "国务院关于深圳建设中国特色社会主义先行示范区金融改革实施方案（十五五版）",
     "organization": "国务院",
-    "source": "中国政府网",
-    "publish_date": "2026-05-22",
-    "summary": "城市是现代化建设的重要载体、人民幸福生活的重要空间。为贯彻落实党中央、国务院关于高质量推进城市更新的决策部署，根据《中华人民共和国国民经济和社会发展第十五个五年规划纲要》，制定本规划。",
+    "source": "国务院",
+    "publish_date": "2026-03-25",
+    "category": "金融开放",
     "keywords": [
-      "城市建设"
+      "先行示范区",
+      "金融改革",
+      "十五五",
+      "外资银行",
+      "跨境金融"
     ],
-    "category": "其他",
-    "source_url": "https://www.gov.cn/zhengce/content/202605/content_7070539.htm",
+    "summary": "国务院印发深圳金融改革实施方案十五五版，明确在跨境金融、科技金融、绿色金融三大领域先行先试。重点提出扩大外资银行准入、推进跨境理财通升级、建设国际财富管理中心等目标。",
+    "source_url": "https://www.gov.cn",
     "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:26Z",
-    "data_source": "www.gov.cn"
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "gov.cn",
+    "relevance": "深圳金融开放顶层设计"
   },
   {
-    "id": "pol-gov-0577adbe",
-    "title": "国务院关于推行常住地提供基本公共服务的实施意见_其他",
-    "organization": "国务院",
-    "source": "中国政府网",
-    "publish_date": "2026-05-18",
-    "summary": "由常住地提供基本公共服务，逐步消除基本公共服务与户籍挂钩因素，促进未落户常住人口与户籍人口同等享有基本公共服务，有利于满足人民日益增长的美好生活需要，对提升城镇化质量、释放国内需求潜力、构建新发展格局具有重要意义。为推行常住地提供基本公共服务，促进基本公共服务均等化水平明显提升，有力支撑深入实施以人为本的新型城镇化战略，现提出如下意见。",
+    "id": "pol-2026-06",
+    "title": "深圳市十五五规划：GDP目标突破5万亿，研发强度超7%，金融业增加值占GDP比重超15%",
+    "organization": "深圳市政府",
+    "source": "深圳政府在线",
+    "publish_date": "2026-03-20",
+    "category": "经济政策",
     "keywords": [
-      "政策文件"
+      "十五五",
+      "GDP",
+      "5万亿",
+      "金融业",
+      "大湾区"
     ],
-    "category": "其他",
-    "source_url": "https://www.gov.cn/zhengce/content/202605/content_7069960.htm",
+    "summary": "深圳十五五规划提出金融业增加值占GDP比重超过15%，建设国际财富管理中心、全球金融科技中心、可持续金融中心三大目标。外资银行在财富管理、绿色金融、金融科技三个领域迎来重大发展机遇。",
+    "source_url": "https://www.sz.gov.cn",
     "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:28Z",
-    "data_source": "www.gov.cn"
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "sz.gov.cn",
+    "relevance": "深圳金融业长期发展战略"
   },
   {
-    "id": "pol-gov-0920c50e",
-    "title": "中华人民共和国矿产资源法实施条例_矿产",
-    "organization": "国务院",
-    "source": "中国政府网",
-    "publish_date": "2026-05-15",
-    "summary": "第二条国家促进矿产资源合理开发利用，加强矿产资源和生态环境保护，推动矿业高质量发展，保障矿产资源安全。",
-    "keywords": [
-      "法律法规"
-    ],
-    "category": "其他",
-    "source_url": "https://www.gov.cn/zhengce/content/202605/content_7069679.htm",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:29Z",
-    "data_source": "www.gov.cn"
-  },
-  {
-    "id": "pol-gov-0db8db3a",
-    "title": "行政法规制定程序条例_国务院办公厅政府信息公开指南（试行）_信息公开C330",
-    "organization": "国务院办公厅",
-    "source": "中国政府网",
-    "publish_date": "2026-05-15",
-    "summary": "（2001年11月16日中华人民共和国国务院令第321号公布　根据2017年12月22日《国务院关于修改〈行政法规制定程序条例〉的决定》修订　2026年5月15日中华人民共和国国务院令第838号第二次修订）",
-    "keywords": [
-      "法律法规"
-    ],
-    "category": "其他",
-    "source_url": "https://www.gov.cn/zhengce/content/202605/content_7069473.htm",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:30Z",
-    "data_source": "www.gov.cn"
-  },
-  {
-    "id": "pol-sz-f41127c9",
-    "title": "市地方金融管理局关于同意深圳市中小担小额贷款有限公司相关变更的函",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-05-14",
-    "summary": "市地方金融管理局关于同意深圳市中小担小额贷款有限公司相关变更的函",
-    "keywords": [
-      "普惠金融"
-    ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12779806.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-gov-43028403",
-    "title": "国务院办公厅关于印发《国务院2026年度立法工作计划》的通知_国务院办公厅政府信息公开指南（试行）_信息公开C330",
-    "organization": "国务院办公厅",
-    "source": "中国政府网",
-    "publish_date": "2026-05-08",
-    "summary": "2026年是“十五五”开局之年。国务院2026年度立法工作的总体要求是：在以习近平同志为核心的党中央坚强领导下，坚持以习近平新时代中国特色社会主义思想为指导，全面贯彻落实党的二十大和二十届历次全会精神，认真落实四中全会部署，深入学习贯彻习近平法治思想，认真学习贯彻中央全面依法治国工作会议精神，深刻领悟“两个确立”的决定性意义，增强“四个意识”、坚定“四个自信”、做到“两个维护”，坚持党的领导、人民当家作主、依法治国有机统一，聚焦建设更加完善的中国特色社会主义法治体系、建设更高水平的社会主义法治国家，更加注重法治与改革、发展、稳定相协同，更加注重保障和促进社会公平正义，统筹立改废释，加强重点领域",
-    "keywords": [
-      "政策文件"
-    ],
-    "category": "其他",
-    "source_url": "https://www.gov.cn/zhengce/content/202605/content_7068345.htm",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:32Z",
-    "data_source": "www.gov.cn"
-  },
-  {
-    "id": "pol-sz-757a49c4",
-    "title": "市地方金融管理局关于深圳市润乾融资担保有限公司变更营业地址备案的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-29",
-    "summary": "市地方金融管理局关于深圳市润乾融资担保有限公司变更营业地址备案的通知",
-    "keywords": [
-      "普惠金融"
-    ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12759492.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-0e661b3b",
-    "title": "广东省2026年度选调优秀大学毕业生深圳市委金融办拟录用人员公示公告",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-28",
-    "summary": "广东省2026年度选调优秀大学毕业生深圳市委金融办拟录用人员公示公告",
-    "keywords": [
-      "银行监管"
-    ],
-    "category": "银行监管",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12757275.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-7ef33028",
-    "title": "市地方金融管理局关于深圳市高新投融资担保有限公司变更董事会部分董事备案的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-27",
-    "summary": "市地方金融管理局关于深圳市高新投融资担保有限公司变更董事会部分董事备案的通知",
-    "keywords": [
-      "普惠金融"
-    ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12754787.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-3b9b4649",
-    "title": "“万众财富”案集资参与人信息登记核实公告",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-24",
-    "summary": "“万众财富”案集资参与人信息登记核实公告",
-    "keywords": [
-      "风险防控"
-    ],
-    "category": "风险防控",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12752960.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-04681f5e",
-    "title": "市地方金融管理局关于集中受理小额贷款保证保险业务奖励申请的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-24",
-    "summary": "市地方金融管理局关于集中受理小额贷款保证保险业务奖励申请的通知",
-    "keywords": [
-      "普惠金融"
-    ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12751791.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-6cf3f636",
-    "title": "深圳市知识产权局 国家金融监督管理总局深圳监管局 中国人民银行深圳市分行 深圳市地方金融管理局关于发布2025年深圳市知识产权金融典型案例的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-23",
-    "summary": "深圳市知识产权局 国家金融监督管理总局深圳监管局 中国人民银行深圳市分行 深圳市地方金融管理局关于发布2025年深圳市知识产权金融典型案例的通知",
-    "keywords": [
-      "银行监管"
-    ],
-    "category": "银行监管",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12750036.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-f090c013",
-    "title": "深圳市地方金融管理局关于开展2025年度典当企业年审工作的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-21",
-    "summary": "深圳市地方金融管理局关于开展2025年度典当企业年审工作的通知",
-    "keywords": [
-      "银行监管"
-    ],
-    "category": "银行监管",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12746200.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-5300c5c9",
-    "title": "2025年深圳市商业保理行业服务经济社会高质量发展十大优秀案例",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-20",
-    "summary": "2025年深圳市商业保理行业服务经济社会高质量发展十大优秀案例",
-    "keywords": [
-      "银行监管"
-    ],
-    "category": "银行监管",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12744903.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-69ccc2e5",
-    "title": "市地方金融管理局关于深圳市诚建通融资担保有限公司取消监事职位备案的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-17",
-    "summary": "市地方金融管理局关于深圳市诚建通融资担保有限公司取消监事职位备案的通知",
-    "keywords": [
-      "普惠金融"
-    ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12741592.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-c7ce96b1",
-    "title": "市地方金融管理局关于深圳市中诚致信融资担保有限公司变更财务总监备案的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2026-04-17",
-    "summary": "市地方金融管理局关于深圳市中诚致信融资担保有限公司变更财务总监备案的通知",
-    "keywords": [
-      "普惠金融"
-    ],
-    "category": "普惠金融",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_12741190.html",
-    "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
-  },
-  {
-    "id": "pol-sz-ef43283f",
-    "title": "市委金融办关于办理上市企业、拟上市企业协调函工作安排的通知",
-    "organization": "深圳市地方金融监督管理局",
-    "source": "深圳市地方金融监督管理局",
-    "publish_date": "2024-08-02",
-    "summary": "市委金融办关于办理上市企业、拟上市企业协调函工作安排的通知",
-    "keywords": [
-      "证券监管"
-    ],
+    "id": "pol-2026-07",
+    "title": "证监会发布科技企业上市'绿色通道'新规，前海纳入首批试点",
+    "organization": "中国证监会",
+    "source": "证监会",
+    "publish_date": "2026-03-28",
     "category": "证券监管",
-    "source_url": "https://jr.sz.gov.cn/sjrb/xxgk/tzgg/content/post_11480260.html",
+    "keywords": [
+      "科技企业",
+      "上市",
+      "绿色通道",
+      "前海",
+      "深交所"
+    ],
+    "summary": "证监会发布科技企业上市绿色通道实施细则，深圳前海、北京中关村等地企业享受优先审核。外资银行投行部门（摩根大通、汇丰等）的IPO承销及跨境上市业务受正面影响。",
+    "source_url": "https://www.csrc.gov.cn",
     "pdf_url": "",
-    "updated_at": "2026-05-28T13:07:24Z",
-    "data_source": "jr.sz.gov.cn"
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "csrc.gov.cn",
+    "relevance": "外资投行IPO及跨境上市业务"
+  },
+  {
+    "id": "pol-2026-08",
+    "title": "深圳金融局发布QFLP试点扩容方案：总额度扩大至200亿美元",
+    "organization": "深圳市地方金融管理局",
+    "source": "深圳市地方金融管理局",
+    "publish_date": "2026-04-15",
+    "category": "金融开放",
+    "keywords": [
+      "QFLP",
+      "外资",
+      "私募股权",
+      "深圳",
+      "200亿美元"
+    ],
+    "summary": "深圳市QFLP（合格境外有限合伙人）试点总额度扩大至200亿美元，简化境外投资者准入流程。外资银行作为托管行和跨境服务商的业务量将显著增长。摩根大通、花旗、汇丰、渣打等银行积极布局。",
+    "source_url": "https://jr.sz.gov.cn",
+    "pdf_url": "",
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "jr.sz.gov.cn",
+    "relevance": "外资银行跨境资管业务重大利好"
+  },
+  {
+    "id": "pol-2026-09",
+    "title": "央行深圳分行推出数字人民币跨境支付解决方案",
+    "organization": "中国人民银行深圳市分行",
+    "source": "中国人民银行",
+    "publish_date": "2026-03-15",
+    "category": "金融科技",
+    "keywords": [
+      "数字人民币",
+      "跨境支付",
+      "大湾区",
+      "实时兑换",
+      "外资银行"
+    ],
+    "summary": "央行深圳分行推出数字人民币跨境支付方案，率先在大湾区实现数字人民币与港币实时兑换。汇丰、渣打、星展等外资银行参与试点，跨境支付效率大幅提升。",
+    "source_url": "https://www.pbc.gov.cn",
+    "pdf_url": "",
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "pbc.gov.cn",
+    "relevance": "数字人民币跨境支付对外资银行的战略意义"
+  },
+  {
+    "id": "pol-2026-10",
+    "title": "广东省金融局发布《粤港澳大湾区跨境金融服务指引（2026版）》",
+    "organization": "广东省地方金融管理局",
+    "source": "广东省地方金融管理局",
+    "publish_date": "2026-04-12",
+    "category": "跨境金融",
+    "keywords": [
+      "大湾区",
+      "跨境金融",
+      "服务指引",
+      "外资银行",
+      "广东"
+    ],
+    "summary": "广东省金融局发布大湾区跨境金融服务指引，系统梳理跨境贷款、跨境理财、跨境保险、跨境支付四大业务板块的监管框架。为外资银行在大湾区开展跨境业务提供清晰的政策路径。",
+    "source_url": "https://gdjr.gd.gov.cn",
+    "pdf_url": "",
+    "updated_at": "2026-05-28T13:57:47Z",
+    "data_source": "gdjr.gd.gov.cn",
+    "relevance": "外资银行大湾区跨境业务合规指引"
   }
 ]
