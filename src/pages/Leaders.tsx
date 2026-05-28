@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { User, ExternalLink, Search, BookOpen, FileText, Languages, Building2 } from 'lucide-react'
 import Card from '@/components/ui/Card'
@@ -42,7 +43,6 @@ export default function Leaders() {
         <p className="text-base text-terminal-muted mt-1">广东/深圳 · 金融监管 · 银行 · 证券 · {leaders?.length ?? 0}位主要领导人 · 数据来自官方网站</p>
       </div>
 
-      {/* Filters */}
       <Card>
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
@@ -61,7 +61,6 @@ export default function Leaders() {
         </div>
       </Card>
 
-      {/* Results by organization */}
       {Object.entries(grouped).map(([orgShort, orgLeaders]) => (
         <div key={orgShort}>
           <div className="flex items-center gap-2 mb-4">
@@ -74,7 +73,6 @@ export default function Leaders() {
               {orgLeaders.map((leader: Leader, i: number) => (
                 <motion.div key={leader.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }}>
                   <Card hover className="h-full flex flex-col p-5">
-                    {/* Photo + Info */}
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-terminal-accent/10 to-terminal-accent2/10 border-2 border-terminal-accent/20 flex items-center justify-center flex-shrink-0 overflow-hidden">
                         {leader.photo ? (
@@ -92,19 +90,16 @@ export default function Leaders() {
                       </div>
                     </div>
 
-                    {/* Badges */}
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       <Badge label={leader.org_type} variant="default" />
                       {leader.data_quality === 'verified' && <Badge label="已验证" variant="accent" />}
                     </div>
 
-                    {/* Notes */}
                     {leader.notes && (
                       <p className="text-sm text-terminal-muted mb-4 line-clamp-2 flex-1">{leader.notes}</p>
                     )}
                     {!leader.notes && <div className="flex-1" />}
 
-                    {/* Action Buttons */}
                     <div className="flex flex-col gap-2 mt-auto pt-3 border-t border-terminal-border">
                       <div className="flex gap-2">
                         {leader.baidu_baike_url ? (
@@ -129,14 +124,14 @@ export default function Leaders() {
                         )}
                       </div>
                       <div className="flex gap-2">
-                        <a href={`/ginadashboard/leaders/${leader.id}`}
+                        <Link to={`/leaders/${leader.id}`}
                           className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-terminal-accent/10 border border-terminal-accent/20 text-sm text-terminal-accent hover:bg-terminal-accent/20 transition-all">
                           <FileText className="w-4 h-4" /> 中文简历
-                        </a>
-                        <a href={`/ginadashboard/leaders/${leader.id}`}
+                        </Link>
+                        <Link to={`/leaders/${leader.id}`}
                           className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-terminal-accent2/10 border border-terminal-accent2/20 text-sm text-terminal-accent2 hover:bg-terminal-accent2/20 transition-all">
                           <Languages className="w-4 h-4" /> English
-                        </a>
+                        </Link>
                       </div>
                     </div>
 
@@ -159,7 +154,7 @@ export default function Leaders() {
       )}
 
       <div className="p-4 rounded-xl bg-terminal-bg border border-terminal-border text-sm text-terminal-muted text-center">
-        所有数据来自官方网站公开信息。未使用AI编造或虚构任何人物履历。照片为官方公开照片（缺失照片将陆续补充）。
+        所有数据来自官方网站公开信息。未使用AI编造或虚构任何人物履历。照片为官方公开照片。
       </div>
     </div>
   )
