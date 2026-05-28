@@ -1,0 +1,1 @@
+import{l as e,n as t,r as n}from"./api-C-2wapB3.js";function r(){return e({queryKey:[`leaders`],queryFn:n})}function i(n){return e({queryKey:[`leader`,n],queryFn:()=>t(n),enabled:!!n})}export{r as n,i as t};
