@@ -1,0 +1,1 @@
+import{a as e,u as t}from"./api-CLdBtzOT.js";function n(){return t({queryKey:[`policies`],queryFn:e})}export{n as t};

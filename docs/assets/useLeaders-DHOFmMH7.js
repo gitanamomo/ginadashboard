@@ -1,0 +1,1 @@
+import{n as e,r as t,u as n}from"./api-CLdBtzOT.js";function r(){return n({queryKey:[`leaders`],queryFn:t,staleTime:1800*1e3})}function i(t){return n({queryKey:[`leader`,t],queryFn:()=>e(t),enabled:!!t})}export{r as n,i as t};

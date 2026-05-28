@@ -1,1 +1,0 @@
-import{a as e,d as t}from"./api-Cg4kyRmy.js";function n(){return t({queryKey:[`policies`],queryFn:e})}export{n as t};

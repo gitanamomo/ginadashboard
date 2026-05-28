@@ -6,6 +6,7 @@ export function useLeaders() {
   return useQuery<Leader[]>({
     queryKey: ['leaders'],
     queryFn: fetchLeaders,
+    staleTime: 30 * 60 * 1000,
   })
 }
 

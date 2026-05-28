@@ -1,19 +1,21 @@
-// Types matching real scraped data from official government websites.
-// All data sourced from: jr.sz.gov.cn, gov.cn, pbc.gov.cn
+// Types matching real data from official Chinese government websites.
+// All data sourced from: nfra.gov.cn, pbc.gov.cn, jr.sz.gov.cn, csrc.gov.cn, szse.cn
 
 export interface Leader {
   id: string
   name: string
   title: string
   organization: string
-  resume: string
-  appointment_history: { year?: string; event?: string; organization?: string }[]
-  source: string
-  source_url: string
-  updated_at: string
-  data_source: string
+  org_short: string
+  org_type: string
+  photo: string
+  photo_source: string
+  baidu_baike_url: string
+  official_url: string
+  source_type: string
   data_quality: string
   notes: string
+  updated_at: string
 }
 
 export interface Policy {

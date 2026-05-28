@@ -5,12 +5,11 @@ import penaltiesData from '@/data/penalties.json'
 import econData from '@/data/econData.json'
 
 export async function fetchLeaders(): Promise<Leader[]> {
-  return (leadersData as Leader[]).filter(l => l.name && l.name.length > 1)
+  return leadersData as Leader[]
 }
 
 export async function fetchLeaderById(id: string): Promise<Leader | null> {
-  const leaders = await fetchLeaders()
-  return leaders.find(l => l.id === id) ?? null
+  return (leadersData as Leader[]).find(l => l.id === id) ?? null
 }
 
 export async function fetchPolicies(): Promise<Policy[]> {
@@ -34,8 +33,10 @@ export async function searchLeaders(query: string): Promise<Leader[]> {
   const leaders = await fetchLeaders()
   return leaders.filter(l =>
     l.name.includes(query) ||
-    l.title.toLowerCase().includes(q) ||
-    l.organization.toLowerCase().includes(q)
+    l.title.includes(query) ||
+    l.organization.includes(query) ||
+    l.org_short.includes(query) ||
+    l.org_type.includes(query)
   )
 }
 
