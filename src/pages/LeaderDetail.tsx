@@ -105,9 +105,10 @@ export default function LeaderDetail() {
             <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-terminal-accent/20 to-terminal-accent2/20 border-2 border-terminal-accent/20 flex items-center justify-center flex-shrink-0 overflow-hidden">
               {leader.photo ? (
                 <img src={leader.photo} alt={leader.name} className="w-full h-full object-cover"
-                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display = 'none'; }} />
-              ) : (
-                <User className="w-14 h-14 text-terminal-accent" />
+                  onError={(e) => { const t = e.target as HTMLImageElement; t.style.display = 'none'; (t.nextElementSibling as HTMLElement).style.display = 'flex'; }} />
+              ) : null}
+              {!leader.photo && (
+                <span className="text-4xl font-bold text-terminal-accent">{leader.name.charAt(0)}</span>
               )}
             </div>
             <div className="flex-1">

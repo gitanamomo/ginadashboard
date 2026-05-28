@@ -79,9 +79,10 @@ export default function Leaders() {
                       <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-terminal-accent/10 to-terminal-accent2/10 border-2 border-terminal-accent/20 flex items-center justify-center flex-shrink-0 overflow-hidden">
                         {leader.photo ? (
                           <img src={leader.photo} alt={leader.name} className="w-full h-full object-cover"
-                            onError={(e) => { const t = e.target as HTMLImageElement; t.style.display = 'none'; }} />
-                        ) : (
-                          <User className="w-8 h-8 text-terminal-accent" />
+                            onError={(e) => { const t = e.target as HTMLImageElement; t.style.display = 'none'; (t.nextElementSibling as HTMLElement).style.display = 'flex'; }} />
+                        ) : null}
+                        {!leader.photo && (
+                          <span className="text-2xl font-bold text-terminal-accent">{leader.name.charAt(0)}</span>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">

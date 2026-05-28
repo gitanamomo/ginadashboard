@@ -19,8 +19,7 @@ const quickLinks = [
   { label: '深圳政府在线', url: 'https://www.sz.gov.cn' },
   { label: '中国政府网', url: 'https://www.gov.cn' },
   { label: '国务院政策', url: 'https://www.gov.cn/zhengce/' },
-  { label: '证监会深圳局', url: 'http://www.csrc.gov.cn/shenzhen' },
-  { label: '深交所', url: 'https://www.szse.cn' },
+  { label: '深圳开放数据', url: 'https://opendata.sz.gov.cn/?sign=1' },
 ]
 
 export default function Dashboard() {
