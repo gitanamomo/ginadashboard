@@ -15,13 +15,13 @@ import type { Policy, ForeignBank, MajorEvent } from '@/types'
 
 const quickLinks = [
   { label: '深圳统计局', url: 'https://tjj.sz.gov.cn', color: 'from-amber-500 to-orange-600', bg: 'bg-amber-500/10', border: 'border-amber-500/30', text: 'text-amber-400' },
-  { label: '金融监管总局深圳局', url: 'https://www.nfra.gov.cn/branch/shenzhen/', color: 'from-blue-600 to-indigo-700', bg: 'bg-blue-500/10', border: 'border-blue-500/30', text: 'text-blue-400' },
+  { label: '金融监管总局深圳局', url: 'https://www.nfra.gov.cn/branch/shenzhen/view/pages/index/index.html', color: 'from-blue-600 to-indigo-700', bg: 'bg-blue-500/10', border: 'border-blue-500/30', text: 'text-blue-400' },
   { label: '外管局深圳分局', url: 'https://www.safe.gov.cn/shenzhen/', color: 'from-emerald-500 to-teal-600', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', text: 'text-emerald-400' },
   { label: '人行深圳分行', url: 'http://shenzhen.pbc.gov.cn', color: 'from-cyan-500 to-blue-600', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30', text: 'text-cyan-400' },
   { label: '深圳市金融局', url: 'https://jr.sz.gov.cn', color: 'from-violet-500 to-purple-700', bg: 'bg-violet-500/10', border: 'border-violet-500/30', text: 'text-violet-400' },
   { label: '深圳政府在线', url: 'https://www.sz.gov.cn', color: 'from-rose-500 to-pink-600', bg: 'bg-rose-500/10', border: 'border-rose-500/30', text: 'text-rose-400' },
   { label: '中国政府网', url: 'https://www.gov.cn', color: 'from-red-500 to-red-700', bg: 'bg-red-500/10', border: 'border-red-500/30', text: 'text-red-400' },
-  { label: '国务院政策', url: 'https://www.gov.cn/zhengce/', color: 'from-orange-500 to-red-600', bg: 'bg-orange-500/10', border: 'border-orange-500/30', text: 'text-orange-400' },
+  { label: '国务院政策库', url: 'https://sousuo.www.gov.cn/zcwjk/policyDocumentLibrary', color: 'from-orange-500 to-red-600', bg: 'bg-orange-500/10', border: 'border-orange-500/30', text: 'text-orange-400' },
   { label: '深圳开放数据', url: 'https://opendata.sz.gov.cn/?sign=1', color: 'from-green-500 to-emerald-600', bg: 'bg-green-500/10', border: 'border-green-500/30', text: 'text-green-400' },
 ]
 
