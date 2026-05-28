@@ -1,0 +1,1 @@
+import{d as e,s as t}from"./api-CXhbAWqD.js";function n(){return e({queryKey:[`policies`],queryFn:t})}export{n as t};

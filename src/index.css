@@ -8,11 +8,18 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   background: #0a0e14;
   color: #c8d6e5;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 :root {
@@ -22,20 +29,10 @@ body {
   --warning: #ffa502;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0e14;
-}
-::-webkit-scrollbar-thumb {
-  background: #1e2a3a;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #2a3a4a;
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0a0e14; }
+::-webkit-scrollbar-thumb { background: #1e2a3a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2a3a4a; }
 
 @layer components {
   .glass-card {
@@ -57,19 +54,19 @@ body {
     box-shadow: 0 0 20px rgba(0, 212, 170, 0.3), inset 0 0 20px rgba(0, 212, 170, 0.05);
   }
   .btn-primary {
-    @apply px-6 py-2.5 rounded-xl bg-gradient-to-r from-terminal-accent to-terminal-accent2
-           text-black font-semibold text-sm transition-all duration-300
+    @apply px-6 py-3 rounded-xl bg-gradient-to-r from-terminal-accent to-terminal-accent2
+           text-black font-semibold transition-all duration-300 text-base
            hover:shadow-lg hover:shadow-terminal-accent/20 active:scale-95;
   }
   .btn-outline {
-    @apply px-6 py-2.5 rounded-xl border border-terminal-border text-terminal-text
-           font-medium text-sm transition-all duration-300
+    @apply px-6 py-3 rounded-xl border border-terminal-border text-terminal-text
+           font-medium transition-all duration-300 text-base
            hover:border-terminal-accent/50 hover:text-terminal-accent;
   }
   .stat-value {
     @apply text-3xl font-bold font-mono gradient-text;
   }
   .stat-label {
-    @apply text-xs text-terminal-muted uppercase tracking-wider;
+    @apply text-sm text-terminal-muted tracking-wider;
   }
 }

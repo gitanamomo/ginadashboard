@@ -21,8 +21,7 @@ export default function Header() {
               <TrendingUp className="w-5 h-5 text-black" />
             </div>
             <div>
-              <span className="text-lg font-bold gradient-text">华南外资银行监管情报</span>
-              <span className="hidden sm:inline text-xs text-terminal-muted ml-2">金融开放 · 大湾区 · Bloomberg Terminal</span>
+              <span className="text-lg font-bold gradient-text">Ginadashboard</span>
             </div>
           </Link>
 
